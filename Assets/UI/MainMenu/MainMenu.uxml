@@ -1,0 +1,52 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=788bbf5770e67034b8c4a7c01efd97ac&amp;type=3#MainMenuStyle"/>
+    <ui:VisualElement name="root" style="flex-grow: 1; align-items: center;">
+        <ui:VisualElement name="start-menu" class="base-page" style="flex-grow: 0; top: auto; flex-direction: column; display: flex;">
+            <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; min-height: 12%;">
+                <ui:Label text="Untitled Reconstruct" name="title-label" class="main-title game-title" style="border-top-left-radius: 200px; border-top-right-radius: 200px; border-bottom-right-radius: 200px; border-bottom-left-radius: 200px; background-size: 100% 100%; padding-top: 35px; padding-right: 35px; padding-bottom: 35px; padding-left: 35px; margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px; -unity-text-align: upper-center;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="centre" style="flex-grow: 1; height: 50%; align-items: center; padding-top: 0%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%; justify-content: flex-end; color: rgb(255, 255, 255); align-self: auto;">
+                <ui:VisualElement name="navigation-container" style="flex-grow: 0; background-color: rgb(93, 118, 118); width: 35%; height: 90%; align-self: flex-start; align-content: flex-start; justify-content: space-evenly; align-items: stretch; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                    <ui:Button text="Browse levels" name="browse-level" class="navigation-button" style="height: auto;"/>
+                    <ui:Button text="Download levels" name="download-level" class="navigation-button" style="height: auto;"/>
+                    <ui:Button text="Settings" name="settings-button" class="navigation-button" style="height: auto;"/>
+                    <ui:Button text="Close" name="close" class="return navigation-button"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 15%; min-height: 12%;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="level-browser" class="base-page" style="flex-grow: 1; display: none; justify-content: center; align-items: stretch;">
+            <ui:VisualElement name="content-tab" class="menu-content-tab">
+                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; height: 20%; min-height: 10%; flex-direction: row;">
+                    <ui:Label text="Level Browser" name="tab-header" class="tab-header"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 75%; height: 60%; min-height: 40%;"/>
+                <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 25%; height: 10%; min-height: 10%; justify-content: flex-start; flex-direction: row; align-self: stretch; align-items: flex-end;">
+                    <ui:Button text="Return" name="return-button" class="return tab-button" style="margin-bottom: 1%; margin-left: 1%; align-self: flex-end;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="level-downloader" class="base-page" style="flex-grow: 1; display: none; justify-content: center; align-items: stretch;">
+            <ui:VisualElement name="content-tab" class="menu-content-tab">
+                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; height: 20%; min-height: 10%; flex-direction: row;">
+                    <ui:Label text="Online level browser" name="tab-header" class="tab-header"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 75%; height: 60%; min-height: 40%;"/>
+                <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 25%; height: 10%; min-height: 10%; justify-content: flex-start; flex-direction: row; align-self: stretch; align-items: flex-end;">
+                    <ui:Button text="Return" name="return-button" class="return tab-button" style="margin-bottom: 1%; margin-left: 1%; align-self: flex-end;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="settings-menu" class="base-page" style="flex-grow: 1; display: none; justify-content: center; align-items: stretch;">
+            <ui:VisualElement name="content-tab" class="menu-content-tab">
+                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; height: 20%; min-height: 10%; flex-direction: row;">
+                    <ui:Label text="Settings" name="tab-header" class="tab-header"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 75%; height: 60%; min-height: 40%;"/>
+                <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 25%; height: 10%; min-height: 10%; justify-content: flex-start; flex-direction: row; align-self: stretch; align-items: flex-end;">
+                    <ui:Button text="Return" name="return-button" class="return tab-button" style="margin-bottom: 1%; margin-left: 1%; align-self: flex-end;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
