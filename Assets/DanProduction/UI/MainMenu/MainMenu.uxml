@@ -1,0 +1,157 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/DanProduction/UI/MainMenu/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=788bbf5770e67034b8c4a7c01efd97ac&amp;type=3#MainMenuStyle"/>
+    <Style src="project://database/Assets/DanProduction/UI/level%20browsing/LevelBrowserStyles.uss?fileID=7433441132597879392&amp;guid=44836ff17a614a74897f2c283b8d5fdb&amp;type=3#LevelBrowserStyles"/>
+    <ui:VisualElement name="root" style="flex-grow: 1; align-items: center;">
+        <ui:VisualElement name="start-menu" class="base-page" style="flex-grow: 0; top: auto; flex-direction: column; display: flex;">
+            <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; min-height: 12%;">
+                <ui:Label text="Untitled Reconstruct" name="title-label" class="main-title game-title" style="border-top-left-radius: 200px; border-top-right-radius: 200px; border-bottom-right-radius: 200px; border-bottom-left-radius: 200px; background-size: 100% 100%; padding-top: 35px; padding-right: 35px; padding-bottom: 35px; padding-left: 35px; margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px; -unity-text-align: upper-center;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="centre" style="flex-grow: 1; height: 50%; align-items: center; padding-top: 0%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%; justify-content: flex-end; color: rgb(255, 255, 255); align-self: auto;">
+                <ui:VisualElement name="navigation-container" style="flex-grow: 0; background-color: rgb(93, 118, 118); width: 35%; height: 90%; align-self: flex-start; align-content: flex-start; justify-content: space-evenly; align-items: stretch; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                    <ui:Button text="Browse levels" name="browse-level" class="navigation-button" style="height: auto;"/>
+                    <ui:Button text="Download levels" name="download-level" class="navigation-button" style="height: auto;"/>
+                    <ui:Button text="Settings" name="settings-button" class="navigation-button" style="height: auto;"/>
+                    <ui:Button text="Close" name="close" class="return navigation-button"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 15%; min-height: 12%;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="level-browser" class="base-page" style="flex-grow: 1; display: none; justify-content: center; align-items: stretch;">
+            <ui:VisualElement name="content-tab" class="menu-content-tab">
+                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 15%; height: 7%; min-height: 10%; flex-direction: row; align-self: flex-start; max-width: none; width: 100%;">
+                    <ui:Label text="Level Browser" name="tab-header" class="tab-header"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 90%; min-height: 40%; flex-direction: row;">
+                    <ui:VisualElement name="level-container" style="flex-grow: 1; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%; align-items: stretch; flex-direction: column; flex-wrap: wrap; justify-content: space-evenly;">
+                        <ui:ListView name="rows-list"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 10%; min-height: 10%; flex-direction: row; align-self: flex-end; max-width: none; width: 100%; height: 10%;">
+                    <ui:VisualElement name="left-region" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.525); max-width: 35%; align-items: auto; margin-left: 0; margin-bottom: 0; height: 100%; margin-top: 0; margin-right: 0; flex-direction: row; max-height: 100%;">
+                        <ui:Button text="Return" name="return-button" class="return tab-button" style="justify-content: flex-end; align-self: flex-end; margin-bottom: 1%; margin-left: 1%; margin-right: 0; margin-top: 0;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="central-region" style="flex-grow: 1; max-height: 100%; background-color: rgb(209, 137, 137); height: 100%; justify-content: flex-end;">
+                        <ui:Label text="1" name="page-number-label" class="tab-information-label" style="padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; margin-top: 6px; margin-right: 6px; margin-bottom: 6px; margin-left: 6px;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="right-region" style="flex-grow: 1; height: 100%; background-color: rgb(248, 25, 25); flex-direction: row; justify-content: flex-end; align-items: flex-end; max-width: 35%;">
+                        <ui:VisualElement name="navigation-buttons" style="flex-grow: 1; flex-direction: row; max-width: 70%; justify-content: space-evenly; align-content: center; align-items: flex-end; width: 60%;">
+                            <ui:Button text="Previous" name="previous-button" class="tab-button" style="min-width: 60px; max-width: 180px; width: 170px; font-size: 30px; margin-bottom: 1%;"/>
+                            <ui:Button text="Next" name="next-button" class="tab-button" style="min-width: 60px; max-width: 180px; width: 170px; font-size: 30px; margin-bottom: 1%;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="level-downloader" class="base-page" style="flex-grow: 1; display: none; justify-content: center; align-items: stretch;">
+            <ui:VisualElement name="content-tab" class="menu-content-tab">
+                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; height: 20%; min-height: 10%; flex-direction: row;">
+                    <ui:Label text="Online level browser" name="tab-header" class="tab-header"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 75%; height: 60%; min-height: 40%;">
+                    <ui:VisualElement name="row-container" class="level-content-row">
+                        <ui:VisualElement name="level-card" class="level-card">
+                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
+                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
+                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
+                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="level-card" class="level-card">
+                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
+                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
+                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
+                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="level-card" class="level-card">
+                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
+                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
+                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
+                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="level-card" class="level-card">
+                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
+                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
+                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
+                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="level-card" class="level-card">
+                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
+                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
+                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
+                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 25%; height: 10%; min-height: 10%; justify-content: flex-start; flex-direction: row; align-self: stretch; align-items: flex-end;">
+                    <ui:Button text="Return" name="return-button" class="return tab-button" style="margin-bottom: 1%; margin-left: 1%; align-self: flex-end;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="settings-menu" class="base-page" style="flex-grow: 1; display: none; justify-content: center; align-items: stretch;">
+            <ui:VisualElement name="content-tab" class="menu-content-tab">
+                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; height: 20%; min-height: 10%; flex-direction: row;">
+                    <ui:Label text="Settings" name="tab-header" class="tab-header"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 75%; height: 60%; min-height: 40%;"/>
+                <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 25%; height: 10%; min-height: 10%; justify-content: flex-start; flex-direction: row; align-self: stretch; align-items: flex-end;">
+                    <ui:Button text="Return" name="return-button" class="return tab-button" style="margin-bottom: 1%; margin-left: 1%; align-self: flex-end;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="menu-preview" class="base-page" style="flex-grow: 1; display: none;">
+            <ui:VisualElement name="content-tab" class="menu-content-tab">
+                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 15%; height: 7%; min-height: 10%; flex-direction: row; align-self: flex-start; max-width: none; width: 100%;">
+                    <ui:Label text="Level preview" name="tab-header" class="tab-header"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 90%; min-height: 40%; flex-direction: row;">
+                    <ui:VisualElement name="level-container" style="flex-grow: 1; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%; align-items: stretch; flex-direction: column; flex-wrap: nowrap; justify-content: space-evenly;">
+                        <ui:VisualElement name="info-container" style="flex-grow: 1; flex-direction: row;">
+                            <ui:VisualElement name="level-profile" style="flex-grow: 1; background-color: rgba(84, 108, 152, 0.502); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(84, 108, 152); border-right-color: rgb(84, 108, 152); border-top-color: rgb(84, 108, 152); border-bottom-color: rgb(84, 108, 152); flex-direction: column; max-width: 70%; align-self: stretch;">
+                                <ui:VisualElement name="main-data" style="flex-grow: 1; flex-direction: row;">
+                                    <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" style="aspect-ratio: 1; max-width: 400px; max-height: 400px;"/>
+                                    <ui:VisualElement name="caption-container" style="flex-grow: 1;">
+                                        <ui:Label text="My awesome level" name="level-title" enable-rich-text="true" style="font-size: 40px; color: rgb(255, 255, 255); flex-grow: 1; height: 15%;"/>
+                                        <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor augue augue, quis finibus est facilisis et. Morbi sed ultrices est, eu pretium est. Sed sit amet tellus pharetra, lacinia nulla non, vestibulum ipsum. Donec a sodales neque. Nunc vitae laoreet mauris. Vestibulum pellentesque, sapien id feugiat hendrerit, purus sem placerat nunc, in laoreet magna justo pellentesque leo. Nullam sed justo congue, vestibulum lectus non, fringilla risus. Nulla facilisi. Nullam nisi odio, viverra sed quam eu, malesuada eleifend nisi. Curabitur finibus convallis rutrum. Aliquam ligula mi, aliquam eget erat sed, hendrerit vestibulum risus. Nullam nec felis bibendum, iaculis augue in, viverra eros. Nullam hendrerit, quam vitae pulvinar varius, purus magna ornare elit, at tincidunt tortor arcu tempor leo. Fusce id varius sem. Vestibulum varius ut lacus sit amet pellentesque. Etiam vulputate augue eu commodo sodales." name="level-description" style="flex-wrap: wrap; white-space: normal; max-width: 100%; color: rgb(255, 255, 255); height: 75%; max-height: 80%; flex-shrink: 1;"/>
+                                        <ui:Label text="Created by me" name="author-credits" style="color: rgb(255, 255, 255); height: 5%;"/>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement name="metadata-container" style="flex-grow: 1; flex-direction: row; justify-content: flex-start;">
+                                    <ui:Label text="uploaded - 23/06/2026" name="upload-date" style="max-width: 50%; flex-shrink: 1; width: 50%; color: rgb(255, 255, 255);"/>
+                                    <ui:VisualElement name="download-info" style="flex-grow: 1; max-width: 50%; flex-direction: row;">
+                                        <ui:Label text="Downloaded -23/06/2026" name="download-date" style="max-width: none; width: auto; flex-shrink: 1; color: rgb(255, 255, 255);"/>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="author-profile" style="flex-grow: 1; background-color: rgba(248, 203, 219, 0.502); border-left-color: rgb(248, 203, 219); border-right-color: rgb(248, 203, 219); border-top-color: rgb(248, 203, 219); border-bottom-color: rgb(248, 203, 219); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; max-width: 35%;">
+                                <ui:VisualElement name="info-container" style="flex-grow: 1; flex-direction: row;">
+                                    <ui:VisualElement name="profile-page" style="flex-grow: 1; align-self: flex-start; max-width: 35%; width: 35%;">
+                                        <ui:Label text="danone" name="username" style="align-self: flex-start;"/>
+                                        <ui:Image name="profile-image" source="project://database/Assets/DanProduction/UI/images/subaru.jpg?fileID=2800000&amp;guid=21285ea7277bfd146b47e07a99bb041c&amp;type=3#subaru" style="aspect-ratio: 1; max-width: none; width: 250px; height: 150px;"/>
+                                    </ui:VisualElement>
+                                    <ui:Label text="&quot;HAPPY BIRTHDAY DANIEL!! did you really think I&apos;d let this day pass quietly!? I know the kind of power you vibe with, the kind that keeps climbing no matter what. So here&apos;s your gift, a profile picture wrapped in that same aura, use it anywhere, you know the rule, EVEN IF THE STAIRS NEVER END. WE KEEP CLIMBING!!!&quot;" name="about-me" style="flex-wrap: wrap; max-width: 65%; white-space: normal; width: 65%;"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement name="other-levels" style="flex-grow: 1; background-color: rgb(84, 108, 152); border-left-color: rgb(84, 108, 152); border-right-color: rgb(84, 108, 152); border-top-color: rgb(84, 108, 152); border-bottom-color: rgb(84, 108, 152); border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="level-options" style="flex-grow: 1; justify-content: center; flex-direction: row;">
+                            <ui:Button text="Play" name="play-button" class="tab-button"/>
+                            <ui:Button text="Download" name="play-button" class="tab-button"/>
+                            <ui:Button text="Delete" name="play-button" class="tab-button"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 10%; min-height: 10%; flex-direction: row; align-self: flex-end; max-width: none; width: 100%; height: 10%;">
+                    <ui:VisualElement name="left-region" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.525); max-width: 35%; align-items: auto; margin-left: 0; margin-bottom: 0; height: 100%; margin-top: 0; margin-right: 0; flex-direction: row; max-height: 100%;">
+                        <ui:Button text="Return" name="return-button" class="return tab-button" style="justify-content: flex-end; align-self: flex-end; margin-bottom: 1%; margin-left: 1%; margin-right: 0; margin-top: 0;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="central-region" style="flex-grow: 1; max-height: 100%; background-color: rgb(209, 137, 137); height: 100%; justify-content: flex-end;"/>
+                    <ui:VisualElement name="right-region" style="flex-grow: 1; height: 100%; background-color: rgb(248, 25, 25); flex-direction: row; justify-content: flex-end; align-items: flex-end; max-width: 35%;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
