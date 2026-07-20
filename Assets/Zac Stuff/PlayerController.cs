@@ -3,11 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
-    private Transform playerCamera;
-
-    private PlayerControls playerControls;
-
+    private Rigidbody _rb;
+    private Transform _playerCamera;
+    public PlayerInput playerInput;
+    
     [Header("Settings")]
     public float moveSpeed;
     public float jumpHeight;
@@ -15,34 +14,22 @@ public class PlayerController : MonoBehaviour
     public float interactRange;
 
     //Inputs
-    private bool inAir;
-    private Vector2 moveInput;
-    private Vector2 camMovement;
-    private Vector2 lookInput;
-
-    private void Awake()
-    {
-        playerControls = new PlayerControls();
-        playerControls.Player.Movement.performed += onMove;
-        playerControls.Player.Movement.canceled += onMove;
-        playerControls.Player.Camera.performed += onCameraMove;
-        playerControls.Player.Jump.performed += onJump;
-        playerControls.Player.Interact.performed += onInteract;
-
-        playerControls.Enable();
-        playerControls.Player.Enable();
-    }
+    private bool _inAir;
+    private Vector2 _moveInput;
+    private Vector2 _camMovement;
+    private Vector2 _lookInput;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
-        //interact.action.started += Interact;
+        _rb = gameObject.GetComponent<Rigidbody>();
 
-        playerCamera = Camera.main.transform; //transform.Find("Camera"); 
+        if (Camera.main) _playerCamera = Camera.main.transform; //transform.Find("Camera"); 
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
     }
 
 
@@ -51,37 +38,25 @@ public class PlayerController : MonoBehaviour
     {
         //Looking
         //camMovement += lookInput;
-        transform.rotation = Quaternion.Euler(0, camMovement.x * mouseSensitivity, 0);
-        playerCamera.localRotation = Quaternion.Euler(Mathf.Clamp(-camMovement.y * mouseSensitivity, -80f, 80f), 0, 0);
+        transform.rotation = Quaternion.Euler(0, _camMovement.x * mouseSensitivity, 0);
+        _playerCamera.localRotation = Quaternion.Euler(Mathf.Clamp(-_camMovement.y * mouseSensitivity, -80f, 80f), 0, 0);
 
         //Movement
-        if (!inAir)
+        if (!_inAir)
         {
-            Vector3 targetDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
+            Vector3 targetDirection = transform.right * _moveInput.x + transform.forward * _moveInput.y;
             Vector3 velocity = targetDirection * moveSpeed;
-            velocity.y = rb.linearVelocity.y;
-            rb.linearVelocity = velocity;
-        }
-        else
-        {
-            //Air Strafing probably
-
-            //Landing
-            if (Physics.Raycast(transform.position, Vector3.down, 1.5f))
-            {
-                inAir = false;
-                Debug.Log("Landed");
-            }
+            velocity.y = _rb.linearVelocity.y;
+            _rb.linearVelocity = velocity;
         }
     }
 
-    private void onJump(InputAction.CallbackContext obj)
+    public void OnJump(InputAction.CallbackContext obj)
     {
         //Jumping 
-        if (Physics.Raycast(transform.position, Vector3.down, 1.5f))
+        if (Physics.Raycast(transform.position, Vector3.down, 1.1f))
         {
-            inAir = true;
-            rb.linearVelocity += Vector3.up * jumpHeight ;
+            _rb.linearVelocity += Vector3.up * jumpHeight ;
             //Debug.Log("Jumped");
             Debug.DrawRay(transform.position, Vector3.down * 1.5f, Color.green, 5, true);
         }
@@ -91,39 +66,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //
-    private void onInteract(InputAction.CallbackContext obj)
-    {
-        Debug.DrawRay(playerCamera.position, playerCamera.TransformDirection(Vector3.forward) * interactRange, Color.red, 15, true);
-
-        RaycastHit hit;
-
-        //Raycast and see what u interacted with if something then fire the objects interact functuion    
-        if (Physics.Raycast(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), out hit, interactRange))
-        {
-            Debug.Log("Interacted with:" + hit.transform);
-            hit.transform.SendMessage("onInteract", SendMessageOptions.DontRequireReceiver);
-        }
-    }
-    //*/
-
-    private void onMove(InputAction.CallbackContext obj)
+    public void OnMove(InputAction.CallbackContext obj)
     {
         if (obj.canceled)
         {
-            moveInput = Vector2.zero;
+            _moveInput = Vector2.zero;
             return;
         }
 
-        moveInput = obj.ReadValue<Vector2>();
-        //Raycast and see what u interacted with if something then fire the objects interact functuion
+        _moveInput = obj.ReadValue<Vector2>();
+        //Raycast and see what u interacted with if something then fire the objects interact function
     }
 
-    private void onCameraMove(InputAction.CallbackContext obj)
+    public void OnCameraMove(InputAction.CallbackContext obj)
     {
-        camMovement += obj.ReadValue<Vector2>();
+        _camMovement += obj.ReadValue<Vector2>();
         //camMovement.y = Mathf.Clamp(-camMovement.y * mouseSensitivity, -80f, 80f);
     }
-
-
 }

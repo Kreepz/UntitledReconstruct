@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour, IInteractable
 {
-    private GameObject player;
     private PlayerGunSystem inventory;
     private bool dropped;
 
@@ -11,31 +10,40 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        inventory = player.GetComponent<PlayerGunSystem>();
+        //inventory = player.GetComponent<PlayerGunSystem>();
     }
 
 
-    public void onInteract()
+    public void OnInteract()
     {
+        
+    }
+
+    public void OnInteract(PlayerGunSystem playerContext)
+    {
+        inventory = playerContext;
         Debug.Log("Gun Interacted With");
-        if (inventory.slot1 == null)
+        if (playerContext.slot1 == null)
         {
             Debug.Log(gameObject.name + "equipped to slot1");
-            inventory.slot1 = gameObject;
-            transform.SetParent(player.transform.Find("Hand"),false);
+            playerContext.slot1 = gameObject;
+            Debug.Log(inventory.handPivot);
+            transform.SetParent(inventory.handPivot,false);
+            transform.localPosition = Vector3.zero;
             //Set pos + Disable collider
+            
         }
-        else if (inventory.slot1 == null)
+        else if (inventory.slot2 == null)
         {
             Debug.Log(gameObject.name + "equipped to slot1");
             inventory.slot2 = gameObject;
-            transform.SetParent(player.transform.Find("Hand"), false);
+            
+            transform.SetParent(inventory.handPivot,false);
+            transform.localPosition = Vector3.zero;
         }
         else
         {
             Debug.Log("Inventory Slots full");
         }
-
     }
 }
