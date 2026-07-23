@@ -1,0 +1,53 @@
+:root {
+}
+
+.menu-header {
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    background-color: rgb(26, 26, 26);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    align-self: center;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+}
+
+.main-function-button {
+    font-size: 25px;
+}
+
+.content-thumbnail {
+    max-width: 250px;
+    min-width: 100px;
+    max-height: 250px;
+    min-height: 100px;
+    flex-grow: 1;
+    align-self: center;
+}
+
+.content-label {
+    -unity-text-align: middle-left;
+}
+
+.content-display {
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgb(79, 76, 76);
+    -unity-text-align: middle-left;
+    border-top-width: 0.5px;
+    border-right-width: 0.5px;
+    border-bottom-width: 0.5px;
+    border-left-width: 0.5px;
+}
+
+

@@ -44,11 +44,7 @@ public class MainMenuNavigationController : UiScreenController
 
     public override void CloseMenu()
     {
-        if (!ScreenEnabled)
-        {
-            Debug.LogError("Screen is not enabled");
-            return;
-        }
+        if (!ScreenEnabled)return;
         HideScreen();
         ScreenEnabled = false;
     }
