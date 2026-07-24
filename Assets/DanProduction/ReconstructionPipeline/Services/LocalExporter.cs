@@ -8,7 +8,8 @@ public static class LocalExporter
 {
     public static void ExportLevel(LevelMetadata exportingMetadata, Texture2D thumbnail)
     {
-        EnsureDepositDirectory();
+        DirectoryInfo repo = EnsureDepositDirectory();
+        DirectoryInfo targetDirectory = ResolveExportsDirectory(repo, exportingMetadata.LevelName, exportingMetadata.ContentID);
         
         //prepare naming
         string guidSnippet = exportingMetadata.ContentID[..10];
@@ -78,18 +79,100 @@ public static class LocalExporter
 
     //helper functions
 
-    static DirectoryInfo CheckExistingEntries(string folderName)
+    static DirectoryInfo ResolveExportsDirectory(DirectoryInfo repo, string contentName, string id)
     {
+        if (repo == null)
+        {
+            Debug.LogError("Directory of repo is null, please ensure it exists.");
+            return null;
+        }
+        DirectoryInfo result = null;
+        string idSnippet = id[..10];
+        string folderName = $"{contentName}_{idSnippet}";
+        string targetPath = Path.Combine(LocalPaths.ExportPath, folderName);
+
         
-        return null;
+        //check for possible entry matches
+        DirectoryInfo[] matches = repo.GetDirectories()
+            .Where(folder => folder.Name.EndsWith($"_{idSnippet}"))
+            .ToArray();
+
+        //compare all
+        bool matchFound = false;
+        foreach (DirectoryInfo candidate in matches)
+        {
+            if (matchFound) break;
+            bool isValidStructure = false;
+            
+            DirectoryInfo[] versions = candidate.GetDirectories()
+                .Where(folder => GetVersionNumber(folder.Name) >= 0)
+                .OrderByDescending(folder => GetVersionNumber(folder.Name))
+                .ToArray();
+
+            if (versions.Length > 0)
+            {
+                isValidStructure = true;
+                foreach (DirectoryInfo version in versions)
+                {
+                    string metadataPath = Path.Combine(version.FullName, "metadata.json");
+                    
+                    if (!File.Exists(metadataPath))
+                    {
+                        Debug.LogError($"metadata.json missing from {version.FullName}");
+                        isValidStructure = false;
+                        continue;
+                    }
+                    
+                    isValidStructure = true;
+                    string json = File.ReadAllText(metadataPath);
+                    LevelMetadata metaData = JsonUtility.FromJson<LevelMetadata>(json);
+                    
+                    if (metaData == null)
+                    {
+                        Debug.LogError($"Invalid metadata.json in {version.FullName}");
+                        isValidStructure = false;
+                        continue;
+                    }
+                    
+                    if (metaData.ContentID != id) continue;
+                    
+                    result = candidate;
+                    matchFound = true;
+                    break;
+
+                }
+            }
+            else Debug.LogError($"{candidate.FullName} is missing version folders, " +
+                                $"ensure proper name formatting e.g. V001");
+            
+            if (!isValidStructure)
+            {
+                Debug.LogError($"{candidate.FullName} is corrupted, please check previous errors and fix");
+                return null;
+            }
+        }
+        
+        //if not, create a new one and return
+        if (result == null)
+        {
+            Directory.CreateDirectory(targetPath);
+        }
+        else if (result.FullName != targetPath)
+        {
+            Directory.Move(result.FullName, targetPath);
+        }
+        result = new DirectoryInfo(targetPath);
+        return result;
     }
-    static void EnsureDepositDirectory()
+    
+    static DirectoryInfo EnsureDepositDirectory()
     {
         if (!Directory.Exists(LocalPaths.ExportPath))
         {
             Directory.CreateDirectory(LocalPaths.ExportPath);
             AssetDatabase.Refresh();
         }
+        return new DirectoryInfo(LocalPaths.ExportPath);
     }
     static int GetVersionNumber(string folderName)
     {
