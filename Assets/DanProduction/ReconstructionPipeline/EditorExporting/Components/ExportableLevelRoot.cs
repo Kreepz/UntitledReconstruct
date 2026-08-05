@@ -9,9 +9,21 @@ public class ExportableLevelRoot : MonoBehaviour
     [SerializeField, CreateProperty] LevelAuthorMetadata authoredMetadata;
     public LevelAuthorMetadata AuthoredMetadata => authoredMetadata;
 
-    public void ExportLevel()
+    public void ExportLevel(ExportSettings exportSettings)
     {
         LevelMetadata metadata = new LevelMetadata(authoredMetadata);
-        LocalExporter.ExportLevel(metadata, authoredMetadata.Thumbnail);
+        LocalExporter.ExportLevel(metadata, authoredMetadata.Thumbnail, exportSettings);
+    }
+    
+    public bool ValidateHierarchy()
+    {
+        bool results = true;
+        
+        return results;
+    }
+
+    public LevelMetadata GetLevelMetadata()
+    {
+        return new LevelMetadata(authoredMetadata);
     }
 }

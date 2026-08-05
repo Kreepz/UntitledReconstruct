@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/DanProduction/ReconstructionPipeline/Tool%20UI/Exporting/CompilerMenuStyle.uss?fileID=7433441132597879392&amp;guid=919c03abd4f595b49b8d34823aecb0bc&amp;type=3#CompilerMenuStyle"/>
+    <Style src="project://database/Assets/DanProduction/ReconstructionPipeline/EditorExporting/Editor/ExporterUI/CompilerMenuStyle.uss?fileID=7433441132597879392&amp;guid=919c03abd4f595b49b8d34823aecb0bc&amp;type=3#CompilerMenuStyle"/>
     <ui:VisualElement name="root" data-source-type="LevelAuthorMetadata, Assembly-CSharp" style="flex-grow: 1;">
         <ui:VisualElement name="compiler-window" style="flex-grow: 1; background-color: rgb(56, 56, 56); position: absolute; left: auto; width: 100%; height: 100%;">
             <ui:VisualElement name="top-region" style="flex-grow: 1; flex-direction: row; justify-content: center; max-height: 15%; min-height: 15%;">
@@ -34,7 +34,14 @@
                             <ui:DataBinding property="value" data-source-path="Author" binding-mode="TwoWay"/>
                         </Bindings>
                     </ui:EnumField>
-                    <ui:IntegerField label="Version" value="1" name="version-field"/>
+                    <ui:VisualElement name="content-version-field" style="flex-grow: 0; flex-direction: row; justify-content: flex-start; align-items: center; align-self: flex-start; flex-shrink: 0; align-content: center;">
+                        <ui:Toggle label="Automatic content versioning" name="version-automation-field" value="false" toggle-on-label-click="false"/>
+                        <ui:IntegerField label="Version" value="1" name="manual-version-field" enabled="true" readonly="false" hide-placeholder-on-focus="false">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="contentVer" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:IntegerField>
+                    </ui:VisualElement>
                     <ui:FloatField label="Required Application Version" value="1" name="required-version-field" placeholder-text="Enter a version" password="false" max-length="100" style="height: 19px;">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="RequiredAppVer" binding-mode="TwoWay"/>
@@ -52,8 +59,8 @@
             </ui:VisualElement>
             <ui:VisualElement name="bottom-region" style="flex-grow: 1; flex-direction: row; max-height: 15%; justify-content: space-evenly; align-items: center; min-height: 15%;">
                 <ui:Button text="Export" name="export-button" class="main-function-button"/>
-                <ui:Button text="Upload" name="upload-button" class="main-function-button"/>
-                <ui:Button text="Export &amp; upload" name="export-upload-button" class="main-function-button"/>
+                <ui:Button text="Ship" name="ship-button" class="main-function-button"/>
+                <ui:Button text="Export &amp; Ship" name="export-ship-button" class="main-function-button"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

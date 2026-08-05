@@ -9,11 +9,12 @@ public class LevelMetadata
     
     //System data
     public readonly string ContentID;
-    public readonly int ContentVersion;
-    public readonly float RequiredAppVersion;
+    public int ContentVersion {get; private set;}
+    public float RequiredAppVersion{get; private set;}
     
     //misc
     public readonly bool Official;
+    
     
     public LevelMetadata(LevelAuthorMetadata authoredMetadata)
     {
@@ -23,5 +24,10 @@ public class LevelMetadata
         Author =  authoredMetadata.Author;
         ContentVersion = authoredMetadata.ContentVer;
         RequiredAppVersion = authoredMetadata.RequiredAppVer;
+    }
+    
+    public void SetContentVersion(int contentVersion)
+    {
+        ContentVersion = contentVersion;
     }
 }
