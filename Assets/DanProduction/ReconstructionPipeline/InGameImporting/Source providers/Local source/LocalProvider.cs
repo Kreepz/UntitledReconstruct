@@ -11,7 +11,7 @@ public class LocalProvider : IContentProvider
         List<LevelMetadata> catalogue = new();
         try
         {
-            catalogue = await ContentReader.LoadCatalogue(LocalPaths.LibraryPath);
+            catalogue = await ContentReader.LoadCatalogue(LocalPaths.CataloguePath);
         }
         catch (Exception ex)
         {

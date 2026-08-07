@@ -91,15 +91,18 @@ public static class ContentManager
         foreach (DirectoryInfo ver in context.Versions)
         {
             string metadataPath = Path.Combine(ver.FullName, "metadata.json");
+            Debug.Log($"Validating:\n{metadataPath}");
             string json = File.ReadAllText(metadataPath);
             
-            LevelMetadata metadata = JsonUtility.FromJson<LevelMetadata>(json);
-            if (metadata == null)
+            LevelMetadataDTO metadataDTO = JsonUtility.FromJson<LevelMetadataDTO>(json);
+            if (metadataDTO == null)
             {
                 results.Success = false;
                 results.Errors.Add($"{ver.Name} has corrupted metadata");
                 continue;
             }
+
+            LevelMetadata metadata = new LevelMetadata(metadataDTO);
             
             if(!packageIDs.ContainsKey(metadata.ContentID))
                 packageIDs.Add(metadata.ContentID, new List<int>());
@@ -193,7 +196,7 @@ public static class ContentManager
     static void UpdateCatalogue(InstallContext context)
     {
         string cataloguePath = Path.Combine(
-            LocalPaths.LibraryPath, $"{context.ContentID}.json");
+            LocalPaths.CataloguePath, $"{context.ContentID}.json");
         if (File.Exists(cataloguePath))
         {
             string installedMetadata = File.ReadAllText(cataloguePath);

@@ -25,7 +25,16 @@ public class LevelMetadata
         ContentVersion = authoredMetadata.ContentVer;
         RequiredAppVersion = authoredMetadata.RequiredAppVer;
     }
-    
+
+    public LevelMetadata(LevelMetadataDTO dto)
+    {
+        ContentID = dto.ContentID;
+        LevelName = dto.LevelName;
+        LevelDescription = dto.LevelDescription;
+        Author = dto.Author;
+        ContentVersion = dto.ContentVersion;
+        RequiredAppVersion = dto.RequiredAppVersion;
+    }
     public void SetContentVersion(int contentVersion)
     {
         ContentVersion = contentVersion;
