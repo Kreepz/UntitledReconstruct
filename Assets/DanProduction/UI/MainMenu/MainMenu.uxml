@@ -9,7 +9,7 @@
             <ui:VisualElement name="centre" style="flex-grow: 1; height: 50%; align-items: center; padding-top: 0%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%; justify-content: flex-end; color: rgb(255, 255, 255); align-self: auto;">
                 <ui:VisualElement name="navigation-container" style="flex-grow: 0; background-color: rgb(93, 118, 118); width: 35%; height: 90%; align-self: flex-start; align-content: flex-start; justify-content: space-evenly; align-items: stretch; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                     <ui:Button text="Browse levels" name="browse-level" class="navigation-button" style="height: auto;"/>
-                    <ui:Button text="Download levels" name="download-level" class="navigation-button" style="height: auto;"/>
+                    <ui:Button text="Download levels" name="download-level" enabled="false" class="navigation-button" style="height: auto;"/>
                     <ui:Button text="Settings" name="settings-button" class="navigation-button" style="height: auto;"/>
                     <ui:Button text="Close" name="close" class="return navigation-button"/>
                 </ui:VisualElement>
@@ -18,8 +18,13 @@
         </ui:VisualElement>
         <ui:VisualElement name="level-browser" class="base-page" style="flex-grow: 1; display: none; justify-content: center; align-items: stretch;">
             <ui:VisualElement name="content-tab" class="menu-content-tab">
-                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 15%; height: 7%; min-height: 10%; flex-direction: row; align-self: flex-start; max-width: none; width: 100%;">
-                    <ui:Label text="Level Browser" name="tab-header" class="tab-header"/>
+                <ui:VisualElement name="top" style="flex-grow: 1; max-height: 15%; height: 7%; min-height: 10%; flex-direction: row; max-width: none; width: 100%; align-items: center; justify-content: flex-start;">
+                    <ui:VisualElement name="left-region" style="flex-grow: 1; align-items: auto;">
+                        <ui:Label text="Level Browser" name="tab-header" class="tab-header"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="right-region" style="flex-grow: 1; align-items: flex-end;">
+                        <ui:Button text="Import Level" name="import-content-button" class="navigation-button"/>
+                    </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 90%; min-height: 40%; flex-direction: row;">
                     <ui:VisualElement name="level-container" style="flex-grow: 1; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%; align-items: stretch; flex-direction: column; flex-wrap: wrap; justify-content: space-evenly;">
@@ -150,6 +155,23 @@
                     </ui:VisualElement>
                     <ui:VisualElement name="central-region" style="flex-grow: 1; max-height: 100%; background-color: rgb(209, 137, 137); height: 100%; justify-content: flex-end;"/>
                     <ui:VisualElement name="right-region" style="flex-grow: 1; height: 100%; background-color: rgb(248, 25, 25); flex-direction: row; justify-content: flex-end; align-items: flex-end; max-width: 35%;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="overlay" class="base-page" style="flex-direction: column; display: none;">
+            <ui:VisualElement name="top" style="flex-grow: 1;">
+                <ui:VisualElement name="task-result-panel" style="flex-grow: 0; background-color: rgba(50, 50, 50, 0.749); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(0, 140, 0); border-right-color: rgb(0, 140, 0); border-top-color: rgb(0, 140, 0); border-bottom-color: rgb(0, 140, 0); align-self: center; justify-content: flex-start; align-items: flex-start; min-width: 75%; max-width: 75%;">
+                    <ui:VisualElement name="header" style="flex-direction: row; align-self: stretch;">
+                        <ui:VisualElement name="left-region" style="flex-grow: 0; max-width: 10%; min-width: 10%;"/>
+                        <ui:VisualElement name="middle-region" style="flex-grow: 1; max-width: 80%; align-items: center;">
+                            <ui:Label text="Yo lol" name="result-caption" style="color: rgb(255, 255, 255); font-size: 64px; flex-wrap: wrap; white-space: normal; -unity-text-align: upper-center;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="right-region" style="flex-grow: 0; max-width: 10%; min-width: 10%;">
+                            <ui:Button text="Close" name="close-button" enabled="true" class="tab-button return"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:Label text="Warnings: No versions found" name="warning-list" style="color: rgb(192, 96, 8); font-size: 42px; background-color: rgb(0, 0, 0);"/>
+                    <ui:Label text="Errors: Installation folder invalid" name="error-list" style="font-size: 42px; color: rgb(194, 0, 0); background-color: rgb(0, 0, 0);"/>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

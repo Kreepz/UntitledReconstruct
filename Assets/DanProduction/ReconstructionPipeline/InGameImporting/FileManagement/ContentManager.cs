@@ -6,6 +6,18 @@ using UnityEngine;
 
 public static class ContentManager
 {
+    public static TaskResults InstallLevel(string path)
+    {
+        TaskResults results = new();
+        DirectoryInfo importDirectory = new(path);
+        if (!importDirectory.Exists)
+        {
+            results.SubmitResults(false, "Installation failed");
+            results.Errors.Add("Importing content directory not found");
+            return results;
+        }
+        return InstallLevel(new InstallContext(importDirectory));
+    }
     public static TaskResults InstallLevel(InstallContext context)
     {
         TaskResults validationResults = ValidateLevelPackage(context);
@@ -32,6 +44,7 @@ public static class ContentManager
         TaskResults consistencyResults = ValidatePackageIdentity(context);
         if(!consistencyResults.Success) return consistencyResults;
         
+        results.SubmitResults(true, "Validation successful");
         return results;
     }
 
@@ -45,40 +58,42 @@ public static class ContentManager
 
         if (context.Versions.Length == 0)
         {
-            results.Success = false;
+            results.SubmitResults(false, "Installation failed");
             results.Errors.Add("No versions found");
+            return results;
         }
-        else
+        
+        foreach (DirectoryInfo ver in context.Versions)
         {
-            foreach (DirectoryInfo ver in context.Versions)
+            List<string> invalidComponents = new();
+            
+            FileInfo metadataFile = new(
+                Path.Combine(ver.FullName, "metadata.json"));
+            if (!metadataFile.Exists)
             {
-                List<string> invalidComponents = new();
-                
-                FileInfo metadataFile = new(
-                    Path.Combine(ver.FullName, "metadata.json"));
-                if (!metadataFile.Exists)
-                {
-                    invalidComponents.Add("Metadata");
-                }
-                
-                FileInfo thumbnailFile = new(
-                    Path.Combine(ver.FullName, "thumbnail.png"));
-                if (!thumbnailFile.Exists)
-                {
-                    invalidComponents.Add("Thumbnail");
-                }
-                //do the same for levels
-
-                
-                if (invalidComponents.Count > 0)
-                {
-                    results.Success = false;
-                    string errorMessage = $"{ver.Name} is missing the following components: " +
-                                          $"{string.Join(", ", invalidComponents)}";
-                    results.Errors.Add(errorMessage);
-                }
+                invalidComponents.Add("Metadata");
             }
+            
+            FileInfo thumbnailFile = new(
+                Path.Combine(ver.FullName, "thumbnail.png"));
+            if (!thumbnailFile.Exists)
+            {
+                invalidComponents.Add("Thumbnail");
+            }
+            //do the same for levels
+
+            
+            if (invalidComponents.Count > 0)
+            {
+                results.SubmitResults(false, "Installation failed");
+                string errorMessage = $"{ver.Name} is missing the following components: " +
+                                      $"{string.Join(", ", invalidComponents)}";
+                results.Errors.Add(errorMessage);
+                return results;
+            }
+            
         }
+        results.SubmitResults(true, "Structure validation successful");
         return results;
     }
 
@@ -86,7 +101,7 @@ public static class ContentManager
     {
         TaskResults results = new();
         Dictionary<string, List<int>> packageIDs = new();
-        
+        int corruptedCount = 0;
         //Load metadata and ensure class compatibility
         foreach (DirectoryInfo ver in context.Versions)
         {
@@ -97,8 +112,9 @@ public static class ContentManager
             LevelMetadataDTO metadataDTO = JsonUtility.FromJson<LevelMetadataDTO>(json);
             if (metadataDTO == null)
             {
-                results.Success = false;
+                results.SubmitResults(false, "Identity validation failed");
                 results.Errors.Add($"{ver.Name} has corrupted metadata");
+                corruptedCount++;
                 continue;
             }
 
@@ -112,11 +128,16 @@ public static class ContentManager
             if(context.latestMetadata == null || context.latestMetadata.ContentVersion < metadata.ContentVersion)
                 context.latestMetadata = metadata;
         }
+        if (corruptedCount > 0)
+        {
+            results.Errors.Add($"A total of {corruptedCount} entries had corrupted data");
+            return results;
+        }
         
         //check for differences
         if (packageIDs.Count > 1)
         {
-            results.Success = false;
+            results.SubmitResults(false, "Identity validation failed");
             
             string errorMessage = $"Package contains multiple IDs:\n";
             foreach (KeyValuePair<string, List<int>> id in packageIDs)
@@ -125,11 +146,10 @@ public static class ContentManager
             }
             
             results.Errors.Add(errorMessage);
+            return results;
         }
-        else
-        {
-            context.ContentID =  packageIDs.First().Key;
-        }
+        context.ContentID =  packageIDs.First().Key;
+        results.SubmitResults(true, "Identity validation passed");
         return results;
     }
     #endregion
@@ -158,10 +178,11 @@ public static class ContentManager
 
         if (context.UninstalledVersions.Length == 0)
         {
-            results.Success = false;
-            results.Warnings.Add("No new content was found to install");
+            results.SubmitResults(false, "Installation unnecessary");
+            results.Warnings.Add("Content is already installed");
+            return results;
         }
-        
+        results.SubmitResults(true, "Planning successful");
         return results;
     }
     #endregion

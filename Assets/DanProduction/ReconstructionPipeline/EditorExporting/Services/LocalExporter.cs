@@ -13,6 +13,15 @@ public static class LocalExporter
     public static void ExportLevel(ExportableLevelRoot root, ExportSettings settings, DirectoryInfo depositDirectory)
     {
         ExportContext context = new(root, settings, depositDirectory);
+        
+        TaskResults validationResults = ValidateExport(context);
+        DebugDisplayTaskResults(validationResults);
+        if (!validationResults.Success)
+        { 
+            ExportDisplay.CloseProgressionBar();
+            return;
+        }
+        
         if (!ValidateExport(context))
         {
             Debug.LogError($"Validation failed, check errors");
@@ -34,13 +43,19 @@ public static class LocalExporter
         DeployExport(context);
         Debug.Log("Export complete");
         ExportDisplay.CloseProgressionBar();
+        AssetDatabase.Refresh();
     }
 
     #region Validation functions
-    static bool ValidateExport(ExportContext context)
+    static TaskResults ValidateExport(ExportContext context)
     {
         //start validating metadata format
         ExportDisplay.StartStage(ExportStage.Validating);
+        TaskResults dataValidationResults = 
+            context.RootComponent.AuthoredMetadata.ValidateData();
+        if(!dataValidationResults.Success)
+            return dataValidationResults;
+        
         List<bool> results = new();
         results.Add(context.RootComponent.AuthoredMetadata.ValidateData());
         
@@ -133,7 +148,7 @@ public static class LocalExporter
                 
                 //if a valid entry is found exit out of the loop.
                 //Set variables only if the correct match is found
-                if (discoveredMetadata.ContentID == context.Metadata.ContentID)
+                if (discoveredMetadata.ContentID == context.RootComponent.AuthoredMetadata.LevelId)
                 {
                     matchDirectory = candidate;
                 }
@@ -272,5 +287,18 @@ public static class LocalExporter
         }
     }
     #endregion
-    
+
+    #region Other functions
+
+    static void DebugDisplayTaskResults(TaskResults results)
+    {
+        Debug.Log(results.Caption);
+        if (results.Warnings.Count > 0)
+            Debug.LogWarning($"Warnings: " +
+                             $"{string.Join("\n", results.Warnings)}");
+        if (results.Errors.Count > 0)
+            Debug.LogError($"Errors: " +
+                           $"{string.Join("\n", results.Errors)}");
+    }
+    #endregion
 }

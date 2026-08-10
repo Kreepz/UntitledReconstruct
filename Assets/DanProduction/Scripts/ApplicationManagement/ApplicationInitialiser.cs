@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using SimpleFileBrowser;
 using UnityEngine;
 
 public class ApplicationInitialiser : MonoBehaviour
@@ -6,6 +9,14 @@ public class ApplicationInitialiser : MonoBehaviour
     public void Init()
     {
         if (_initialised) return;
+        string downloadsPath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+            "Downloads");
+
+        FileBrowser.AddQuickLink(
+            "Downloads",
+            downloadsPath);
+        
         LibraryInitialiser.Initialise();
     }
 

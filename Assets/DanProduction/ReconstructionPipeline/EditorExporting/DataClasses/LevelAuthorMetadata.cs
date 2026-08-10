@@ -29,31 +29,27 @@ public class LevelAuthorMetadata
         Debug.Log($"Generated new level ID: {LevelId}");
     }
 
-    public bool ValidateData()
+    public TaskResults ValidateData()
     {
-        bool results = true;
+        TaskResults results = new();
         
         //warnings
         if (string.IsNullOrEmpty(LevelDesc))
-        {
-            Debug.LogWarning("Level description field is empty");
-        }
+            results.Warnings.Add("Level description field is empty");
+        
         //error cases
-        if (string.IsNullOrEmpty(LevelName))
-        {
-            Debug.LogError("Level name field is empty");
-            results = false;
-        }
-        if (string.IsNullOrEmpty(LevelId))
-        {
-            Debug.LogError("Level ID description field is empty");
-            results = false;
-        }
+        if (string.IsNullOrEmpty(LevelName)) 
+            results.Errors.Add("Level name field is empty");
+        if (string.IsNullOrEmpty(LevelId)) 
+            results.Errors.Add("Level ID is empty");
         if (!Thumbnail)
-        {
-            Debug.LogError("Thumbnail field is empty");
-            results = false;
-        }
+            results.Errors.Add("Thumbnail field is empty");
+
+        //results resolution
+        if (results.Errors.Count > 0)
+            results.SubmitResults(false, "Data validation failed");
+        else
+            results.SubmitResults(true, "Data validation passed");
         
         return results;
     }

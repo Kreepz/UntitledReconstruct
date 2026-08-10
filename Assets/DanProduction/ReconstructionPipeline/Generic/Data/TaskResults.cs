@@ -3,7 +3,17 @@ using UnityEngine;
 
 public class TaskResults
 {
-    public bool Success = true;
+    public bool ResultSubmitted { get; private set; }
+    public bool Success { get; private set; }
+    public string Caption { get; private set; }
     public List<string> Warnings = new();
     public List<string> Errors =  new();
+
+
+    public void SubmitResults(bool success, string caption)
+    {
+        ResultSubmitted = true;
+        Success = success;
+        Caption = caption;
+    }
 }
