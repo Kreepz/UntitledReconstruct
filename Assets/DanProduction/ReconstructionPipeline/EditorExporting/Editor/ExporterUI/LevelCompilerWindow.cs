@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -123,7 +124,13 @@ public class LevelCompilerWindow : EditorWindow
 
     void ExportLevel()
     {
-        LocalExporter.ExportLevel(_levelRoot, _settings, LocalPaths.EditorExport);
+        string exportPath = EditorUtility.OpenFolderPanel(
+            "Choose Export Location",
+            "",
+            "");
+
+        if (string.IsNullOrEmpty(exportPath)) return;
+        LocalExporter.ExportLevel(_levelRoot, _settings, new DirectoryInfo(exportPath));
     }
     void ShipLevel()
     {
@@ -142,7 +149,6 @@ public class LevelCompilerWindow : EditorWindow
     }
     
     #endregion
-    
     
     #region Helper functions
     void RegisterDirtyCallback<T>(BaseField<T> field)

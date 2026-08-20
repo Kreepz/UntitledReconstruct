@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 public class TaskReportController : MonoBehaviour
@@ -46,6 +47,7 @@ public class TaskReportController : MonoBehaviour
 
     public void DisplayTaskResult(TaskResults results, float displayDuration, float fadeDuration)
     {
+        Debug.Log("Producing results");
         if (!results.ResultSubmitted)
         {
             Debug.LogError("The result attempted to display has not been submitted");
@@ -53,7 +55,7 @@ public class TaskReportController : MonoBehaviour
         }
         //reset visual state
         _rootContainer.style.display = DisplayStyle.Flex;
-        _resultError.style.opacity = 1f;
+        _resultContainer.style.opacity = 1f;
         
         //reset labels
         _resultCaption.text = "";
@@ -85,6 +87,7 @@ public class TaskReportController : MonoBehaviour
             if (_fadeCoroutine != null)
             {
                 StopCoroutine(_fadeCoroutine);
+                _fadeCoroutine = null;
             }
             _fadeCoroutine = StartCoroutine(FadeOut(displayDuration, fadeDuration));
         }
@@ -115,5 +118,10 @@ public class TaskReportController : MonoBehaviour
     {
         _rootContainer.style.display = DisplayStyle.None;
         _closeButton.style.display = DisplayStyle.None;
+        if (_fadeCoroutine != null) 
+        {
+            StopCoroutine(_fadeCoroutine);
+            _fadeCoroutine = null;
+        }
     }
 }

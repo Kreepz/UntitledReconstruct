@@ -71,8 +71,8 @@ public class LevelBrowserController : UiScreenController
     void OnFolderSubmitted(string[] paths)
     {
         string packagePath = paths[0];
-        TaskResults installResuts = ContentManager.InstallLevel(packagePath);
-        _reportController.DisplayTaskResult(installResuts, 4f, 1f);
+        TaskResults installResults = ContentManager.InstallLevel(packagePath);
+        _reportController.DisplayTaskResult(installResults, 1f, 1f);
     } 
 }
 

@@ -20,6 +20,8 @@ public static class ContentManager
     }
     public static TaskResults InstallLevel(InstallContext context)
     {
+        TaskResults results = new();
+        
         TaskResults validationResults = ValidateLevelPackage(context);
         if(!validationResults.Success) return validationResults;
 
@@ -28,7 +30,11 @@ public static class ContentManager
         
         InstallLevelPackage(context);
         
-        return new TaskResults();
+        results.SubmitResults(true, "Installation complete");
+        results.AppendIssues(validationResults);
+        results.AppendIssues(planningResults);
+        Debug.Log(results.ResultSubmitted);
+        return results;
     }
 
     #region Validation functions
@@ -165,6 +171,7 @@ public static class ContentManager
         if (!context.InstallationDirectory.Exists)
         {
             context.UninstalledVersions = context.Versions.ToArray();
+            results.SubmitResults(true, "Planning successful,fresh install planned");
             return results;
         }
         

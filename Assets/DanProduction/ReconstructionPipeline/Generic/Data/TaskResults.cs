@@ -16,4 +16,10 @@ public class TaskResults
         Success = success;
         Caption = caption;
     }
+
+    public void AppendIssues(TaskResults incomingResults)
+    {
+        Warnings.AddRange(incomingResults.Warnings);
+        Errors.AddRange(incomingResults.Errors);
+    }
 }

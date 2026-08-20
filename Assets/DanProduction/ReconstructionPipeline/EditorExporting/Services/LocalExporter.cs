@@ -1,10 +1,15 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Unity.Tutorials.Core.Editor;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 public static class LocalExporter
 {
@@ -22,20 +27,13 @@ public static class LocalExporter
             return;
         }
         
-        if (!ValidateExport(context))
+        TaskResults resolutionResults = ResolveExport(context);
+        DebugDisplayTaskResults(resolutionResults);
+        if (!resolutionResults.Success)
         {
-            Debug.LogError($"Validation failed, check errors");
             ExportDisplay.CloseProgressionBar();
             return;
         }
-        Debug.Log("Validation succeeded");
-        if (!ResolveExport(context))
-        {
-            Debug.LogError($"Resolution failed, check errors");
-            ExportDisplay.CloseProgressionBar();
-            return;
-        }
-        Debug.Log("Resolution succeeded");
         
         CompileExport(context);
         Debug.Log("Compilation succeeded");
@@ -43,7 +41,8 @@ public static class LocalExporter
         DeployExport(context);
         Debug.Log("Export complete");
         ExportDisplay.CloseProgressionBar();
-        AssetDatabase.Refresh();
+        
+        SignOffExport(context.FinalDirectory.FullName);
     }
 
     #region Validation functions
@@ -56,35 +55,47 @@ public static class LocalExporter
         if(!dataValidationResults.Success)
             return dataValidationResults;
         
-        List<bool> results = new();
-        results.Add(context.RootComponent.AuthoredMetadata.ValidateData());
-        
+        //validate hierarchy
         ExportDisplay.UpdateTask(ValidatingStage.ValidatingHierarchy);
-        results.Add(context.RootComponent.ValidateHierarchy());
-        
-        bool success = !results.Contains(false);
-        return success;
+        TaskResults hierarchyValidationResults =
+            context.RootComponent.ValidateHierarchy();
+        if (!hierarchyValidationResults.Success)
+            return hierarchyValidationResults;
+
+        //build unified final report
+        TaskResults validationResults = new();
+        validationResults.AppendIssues(dataValidationResults);
+        validationResults.AppendIssues(hierarchyValidationResults);
+        validationResults.SubmitResults(true, "Validation passed");
+        return validationResults;
     }
     
     #endregion
 
     #region Resolution functions
 
-    static bool ResolveExport(ExportContext context)
+    static TaskResults ResolveExport(ExportContext context)
     {
         ExportDisplay.StartStage(ExportStage.Resolving);
-        List<bool> results = new();
-        results.Add(ResolveLevelDirectory(context));
+        TaskResults directoryResults = ResolveLevelDirectory(context);
+        if (!directoryResults.Success) 
+            return directoryResults;
         
         ExportDisplay.UpdateTask(ResolutionStage.ResolvingVersion);
-        results.Add(ResolveVersion(context));
+        TaskResults versioningResults = ResolveVersion(context);
+        if (!versioningResults.Success)
+            return versioningResults;
         
-        bool success = !results.Contains(false);
-        return success;
+        TaskResults results = new();
+        results.AppendIssues(directoryResults);
+        results.AppendIssues(versioningResults);
+        results.SubmitResults(true, "Resolution successful");
+        return results;
     }
     
-    static bool ResolveLevelDirectory(ExportContext context)
+    static TaskResults ResolveLevelDirectory(ExportContext context)
     {
+        TaskResults results = new();
         if(!context.DepositDirectory.Exists) 
             context.DepositDirectory.Create();
         
@@ -101,7 +112,8 @@ public static class LocalExporter
         if (matches.Length == 0)
         {
             context.LevelDirectory = context.DepositDirectory.CreateSubdirectory(folderName);
-            return true;
+            results.SubmitResults(true, "New content detected, created new directory");
+            return results;
         }
         
         //check through versions for verification
@@ -117,14 +129,14 @@ public static class LocalExporter
             //if no version folders exist, cancel function and return an error
             if (versions.Length == 0)
             {
-                Debug.LogError($"{candidate.FullName} is corrupted," +
-                               $"missing version folders, ensure proper name formatting" +
-                               $"e.g. V001");
-                return false;
+                results.SubmitResults(false, "Corrupted directory detected");
+                results.Errors.Add($"{candidate.FullName} is missing version folders," +
+                                   $"ensure proper formatting, e.g. V001");
+                return results;
             }
             
             //compare the versioned folders inside the level repository
-            LevelMetadata discoveredMetadata = null;
+            LevelMetadataDTO discoveredMetadata = null;
             foreach (DirectoryInfo version in versions)
             {
                 //check through contents inside the versioned folders for metadata
@@ -133,16 +145,15 @@ public static class LocalExporter
                 
                 if (!File.Exists(metadataPath))
                 {
-                    Debug.LogError($"metadata is missing from {version.FullName}");
+                    results.Warnings.Add($"metadata is missing from {version.FullName}");
                     continue;
                 }
                 
                 string json = File.ReadAllText(metadataPath);
-                discoveredMetadata = JsonUtility.FromJson<LevelMetadata>(json);
-
+                discoveredMetadata = JsonUtility.FromJson<LevelMetadataDTO>(json);
                 if (discoveredMetadata == null)
                 {
-                    Debug.LogError($"Invalid metadata in {version.FullName}");
+                    results.Warnings.Add($"Invalid metadata found in {version.FullName}");
                     continue;
                 }
                 
@@ -159,7 +170,9 @@ public static class LocalExporter
             //exit the function and return a false result.
             if (discoveredMetadata == null)
             {
-                return false;
+                results.SubmitResults(false, "Resolution failed, attempted comparison could not be executed");
+                results.Errors.Add($"No valid metadata was found in {candidate.FullName}, directory may be corrupted");
+                return results;
             } 
         }
         
@@ -173,10 +186,11 @@ public static class LocalExporter
                 //extremely unlikely case, but just in case
                 if (Directory.Exists(newPath))
                 {
-                    Debug.LogError($"Attempting to move {matchDirectory.FullName} to" +
+                    results.SubmitResults(false, "Resolution unable to complete");
+                    results.Errors.Add($"Attempting to move {matchDirectory.FullName} to" +
                                    $"\n {newPath}" +
-                                   $"\n however, the new directory already exists");
-                    return false;
+                                   $"\n however, that directory already exists");
+                    return results;
                 }
                 
                 //otherwise apply normally
@@ -193,11 +207,13 @@ public static class LocalExporter
             context.LevelDirectory = 
                 context.DepositDirectory.CreateSubdirectory(folderName);
         }
-        return true;
+        results.SubmitResults(true, "Resolution completed");
+        return results;
     }
 
-    static bool ResolveVersion(ExportContext context)
+    static TaskResults ResolveVersion(ExportContext context)
     {
+        TaskResults results = new();
         DirectoryInfo latestFolder = context.LevelDirectory.GetDirectories()
             .Where(folder => FileServices.GetVersionNumber(folder.Name) >= 0)
             .OrderByDescending(folder => FileServices.GetVersionNumber(folder.Name))
@@ -210,21 +226,22 @@ public static class LocalExporter
             int resolvedVersion = 1;
             if (latestVer > 0)
                 resolvedVersion = latestVer + 1;
-            context.Metadata.SetContentVersion(resolvedVersion);
+            context.RootComponent.AuthoredMetadata.ContentVer = resolvedVersion;
         }
         else
         {
             if (latestVer >= context.RootComponent.AuthoredMetadata.ContentVer)
             {
-                Debug.LogError(
-                    $"Entered version :{context.Metadata.ContentVersion} already exists " +
-                    $"or is older than the latest version :{latestVer}");
-                return false;
+                results.SubmitResults(false, "Version resolution failed");
+                results.Errors.Add($"Entered version : {context.RootComponent.AuthoredMetadata.ContentVer} already exists " +
+                                   $"or is older than the latest version : {latestVer}");
+                return results;
             }
         }
         context.FinalDirectory = 
             context.LevelDirectory.CreateSubdirectory($"v{context.RootComponent.AuthoredMetadata.ContentVer:D3}");
-        return true;
+        results.SubmitResults(true, "Version resolution completed");
+        return results;
     }
     
     #endregion
@@ -270,21 +287,23 @@ public static class LocalExporter
             (context.FinalDirectory.FullName, $"thumbnail.png");
         File.WriteAllBytes(thumbnailPath, context.ThumbnailImage);
 
+        /*
         if (!shipping)
         {
             AssetDatabase.Refresh();
             string assetPath = LocalPaths.GetAssetPath(thumbnailPath);
             TextureImporter importer = 
                 AssetImporter.GetAtPath(assetPath) as TextureImporter;
+            
             if (!importer)
-            {
                 throw new Exception($"Failed to retrieve importer for {assetPath}");
-            }
+            
             importer.textureType = TextureImporterType.Default;
             importer.textureCompression = TextureImporterCompression.Uncompressed;
             importer.mipmapEnabled = false;
             importer.SaveAndReimport();
         }
+        */
     }
     #endregion
 
@@ -292,6 +311,7 @@ public static class LocalExporter
 
     static void DebugDisplayTaskResults(TaskResults results)
     {
+        Debug.Log($"Task results: {results.Success}");
         Debug.Log(results.Caption);
         if (results.Warnings.Count > 0)
             Debug.LogWarning($"Warnings: " +
@@ -299,6 +319,25 @@ public static class LocalExporter
         if (results.Errors.Count > 0)
             Debug.LogError($"Errors: " +
                            $"{string.Join("\n", results.Errors)}");
+    }
+
+    static void SignOffExport(string exportPath)
+    {
+       AssetDatabase.Refresh(); 
+       string assetPath = LocalPaths.GetAssetPath(exportPath);
+       Object exportedAsset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
+
+       if (exportedAsset)
+       {
+           Selection.activeObject = exportedAsset;
+           EditorGUIUtility.PingObject(exportedAsset);
+           return;
+       }
+       else
+       {
+           Process.Start("explorer.exe", exportPath);
+       }
+       
     }
     #endregion
 }

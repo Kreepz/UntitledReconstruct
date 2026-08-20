@@ -383,6 +383,58 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &511835779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 511835781}
+  - component: {fileID: 511835780}
+  m_Layer: 0
+  m_Name: test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &511835780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511835779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7138730efdf05b248a06dd4cb0f0382f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExportableLevelRoot
+  authoredMetadata:
+    LevelName: lol test
+    LevelDesc: hhhhh
+    Author: 0
+    Thumbnail: {fileID: 2800000, guid: b8320e20fe7db384aaf7aac564b71472, type: 3}
+    contentVer: 4
+    RequiredAppVer: 0
+    LevelId: 4474593749f148ac9aca95cbf6fd6287
+--- !u!4 &511835781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511835779}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.90119, y: -9.72697, z: 25.03039}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1321819124
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,10 +518,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExportableLevelRoot
   authoredMetadata:
     LevelName: SMIRK
-    LevelDesc: We making it out of da hood with this one AGAIN
+    LevelDesc: ARMED AND DANGEROUS
     Author: 0
     Thumbnail: {fileID: 2800000, guid: b8320e20fe7db384aaf7aac564b71472, type: 3}
-    contentVer: 2
+    contentVer: 1
     RequiredAppVer: 1
     LevelId: 7768738f4c9f4e67a4924ac7f92765bb
 --- !u!4 &1461292436
@@ -487,6 +539,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1608310862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608310864}
+  - component: {fileID: 1608310863}
+  m_Layer: 0
+  m_Name: demonstration level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1608310863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608310862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7138730efdf05b248a06dd4cb0f0382f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExportableLevelRoot
+  authoredMetadata:
+    LevelName: My awesome new level
+    LevelDesc: version 4 update
+    Author: 0
+    Thumbnail: {fileID: 2800000, guid: b8320e20fe7db384aaf7aac564b71472, type: 3}
+    contentVer: 6
+    RequiredAppVer: 1
+    LevelId: 79e1e15d3c774292801a267fdf2883f5
+--- !u!4 &1608310864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608310862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.90119, y: -9.72697, z: 25.03039}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -495,3 +599,5 @@ SceneRoots:
   - {fileID: 394091604}
   - {fileID: 1321819125}
   - {fileID: 1461292436}
+  - {fileID: 511835781}
+  - {fileID: 1608310864}
