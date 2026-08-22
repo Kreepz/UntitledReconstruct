@@ -7872,6 +7872,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelBrowserController
   _reportController: {fileID: 1484256777}
+  _paginator:
+    cardPerRow: 5
+    rowPerPage: 6
+    currentPage: 0
+  _rowTemplate: {fileID: 9197481963319205126, guid: 746987a2474f17e449471c81a2d26ad4,
+    type: 3}
 --- !u!4 &1697025502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0635a80fcdf3cab45b9f3442d068cd7c,

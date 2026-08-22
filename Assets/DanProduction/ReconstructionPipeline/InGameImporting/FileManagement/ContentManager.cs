@@ -6,6 +6,7 @@ using UnityEngine;
 
 public static class ContentManager
 {
+    #region Installation
     public static TaskResults InstallLevel(string path)
     {
         TaskResults results = new();
@@ -37,7 +38,7 @@ public static class ContentManager
         return results;
     }
 
-    #region Validation functions
+    #region Validation
     static TaskResults ValidateLevelPackage(InstallContext context)
     {
         TaskResults results = new();
@@ -160,7 +161,7 @@ public static class ContentManager
     }
     #endregion
 
-    #region Planning functions
+    #region Planning
     static TaskResults PlanLevelPackage(InstallContext context)
     {
         TaskResults results = new();
@@ -193,9 +194,8 @@ public static class ContentManager
         return results;
     }
     #endregion
-
-
-    #region Installation functions
+    
+    #region Writing
     static void InstallLevelPackage(InstallContext context)
     {
         InstallContent(context);
@@ -242,5 +242,29 @@ public static class ContentManager
         File.WriteAllText(cataloguePath, metadataJson);
     }
     #endregion
+    #endregion
 
+    #region Reading
+
+    public static List<LevelMetadata> GetCatalogue()
+    {
+        List<LevelMetadata> catalogue = new();
+        DirectoryInfo catalogueDirectory = new(LocalPaths.CataloguePath);
+        FileInfo[] catalogueEntries = catalogueDirectory.GetFiles("*.json");
+        foreach (FileInfo entry in catalogueEntries)
+        {
+            string json = File.ReadAllText(entry.FullName);
+
+            LevelMetadataDTO metadataDto = JsonUtility.FromJson<LevelMetadataDTO>(json);
+            if (metadataDto == null)
+            {
+                Debug.LogError($"Cannot read catalogue entry: {entry.FullName}");
+                continue;
+            }
+            catalogue.Add(new(metadataDto));
+        }
+        
+        return catalogue;
+    }
+    #endregion
 }

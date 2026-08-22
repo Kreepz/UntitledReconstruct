@@ -1,8 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="row-container" src="project://database/Assets/DanProduction/UI/level%20browsing/BrowserCards/row-container.uxml?fileID=9197481963319205126&amp;guid=746987a2474f17e449471c81a2d26ad4&amp;type=3#row-container"/>
     <Style src="project://database/Assets/DanProduction/UI/MainMenu/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=788bbf5770e67034b8c4a7c01efd97ac&amp;type=3#MainMenuStyle"/>
     <Style src="project://database/Assets/DanProduction/UI/level%20browsing/LevelBrowserStyles.uss?fileID=7433441132597879392&amp;guid=44836ff17a614a74897f2c283b8d5fdb&amp;type=3#LevelBrowserStyles"/>
     <ui:VisualElement name="root" style="flex-grow: 1; align-items: center;">
-        <ui:VisualElement name="start-menu" class="base-page" style="flex-grow: 0; top: auto; flex-direction: column; display: none;">
+        <ui:VisualElement name="start-menu" class="base-page" style="flex-grow: 0; top: auto; flex-direction: column; display: flex;">
             <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; min-height: 12%;">
                 <ui:Label text="Untitled Reconstruct" name="title-label" class="main-title game-title" style="border-top-left-radius: 200px; border-top-right-radius: 200px; border-bottom-right-radius: 200px; border-bottom-left-radius: 200px; background-size: 100% 100%; padding-top: 35px; padding-right: 35px; padding-bottom: 35px; padding-left: 35px; margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px; -unity-text-align: upper-center;"/>
             </ui:VisualElement>
@@ -27,8 +28,8 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 90%; min-height: 40%; flex-direction: row;">
-                    <ui:VisualElement name="level-container" style="flex-grow: 1; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%; align-items: stretch; flex-direction: column; flex-wrap: wrap; justify-content: space-evenly;">
-                        <ui:ListView name="rows-list"/>
+                    <ui:VisualElement name="level-container" style="flex-grow: 1; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%; align-items: stretch; flex-direction: column; flex-wrap: wrap; justify-content: flex-start;">
+                        <ui:ListView name="rows-list" fixed-item-height="360" allow-add="false" allow-remove="false" item-template="project://database/Assets/DanProduction/UI/level%20browsing/BrowserCards/row-container.uxml?fileID=9197481963319205126&amp;guid=746987a2474f17e449471c81a2d26ad4&amp;type=3#row-container" show-bound-collection-size="false" focusable="false" selection-type="None"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 10%; min-height: 10%; flex-direction: row; align-self: flex-end; max-width: none; width: 100%; height: 10%;">
@@ -53,43 +54,8 @@
                     <ui:Label text="Online level browser" name="tab-header" class="tab-header"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="centre" style="flex-grow: 1; max-height: 75%; height: 60%; min-height: 40%;">
-                    <ui:VisualElement name="row-container" class="level-content-row">
-                        <ui:VisualElement name="level-card" class="level-card">
-                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
-                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
-                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
-                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                        <ui:VisualElement name="level-card" class="level-card">
-                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
-                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
-                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
-                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                        <ui:VisualElement name="level-card" class="level-card">
-                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
-                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
-                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
-                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                        <ui:VisualElement name="level-card" class="level-card">
-                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
-                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
-                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
-                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                        <ui:VisualElement name="level-card" class="level-card">
-                            <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="thumbnail" scale-mode="ScaleToFit" style="flex-shrink: 1; flex-grow: 1; flex-direction: column; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%;"/>
-                            <ui:VisualElement name="caption-container" style="flex-grow: 1; background-color: rgba(113, 113, 113, 0.502); max-width: none; width: 100%; max-height: 20%;">
-                                <ui:Label text="My amazing levelkkkkkkkkk" name="level-name" style="align-self: stretch; color: rgb(255, 255, 255); font-size: 15px; flex-shrink: 1; flex-grow: 1; text-overflow: ellipsis; overflow: hidden;"/>
-                                <ui:Label text="Creator : Me" name="credits-text" style="color: rgb(255, 255, 255); flex-shrink: 1; align-self: flex-start; font-size: 12px; flex-grow: 1;"/>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
+                    <ui:Instance template="row-container" name="row-container"/>
+                    <ui:Instance template="row-container"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 25%; height: 10%; min-height: 10%; justify-content: flex-start; flex-direction: row; align-self: stretch; align-items: flex-end;">
                     <ui:Button text="Return" name="return-button" class="return tab-button" style="margin-bottom: 1%; margin-left: 1%; align-self: flex-end;"/>
@@ -107,7 +73,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="menu-preview" class="base-page" style="flex-grow: 1; display: flex;">
+        <ui:VisualElement name="menu-preview" class="base-page" style="flex-grow: 1; display: none;">
             <ui:VisualElement name="content-tab" class="menu-content-tab">
                 <ui:VisualElement name="top" style="flex-grow: 1; max-height: 15%; height: 7%; min-height: 10%; flex-direction: row; align-self: flex-start; max-width: none; width: 100%;">
                     <ui:Label text="Level preview" name="tab-header" class="tab-header"/>

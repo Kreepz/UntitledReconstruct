@@ -19,12 +19,13 @@ public class LevelCompilerWindow : EditorWindow
     VisualElement _root;
     ExportableLevelRoot _levelRoot;
     
-    //input elements
-    ObjectField _thumbnailField;
+    //UI elements
     VisualElement _versioningField;
+    Image _thumbnailPreview;
     Toggle _automaticVersionToggle;
     
     //button elements
+    Button _selectThumbnailButton;
     Button _exportButton;
     Button _shipButton;
     Button _exportShipButton;
@@ -53,6 +54,7 @@ public class LevelCompilerWindow : EditorWindow
         _root = compilerWindow.CloneTree();
         var root = _root.Q<VisualElement>("root");
         rootVisualElement.Add(root ?? _root);
+        Undo.undoRedoPerformed += OnUndo;
         
         //style inclusion
         if(compilerStyle)rootVisualElement.styleSheets.Add(compilerStyle);
@@ -64,9 +66,8 @@ public class LevelCompilerWindow : EditorWindow
        _levelRoot.AuthoredMetadata.GenerateNewId();
        rootVisualElement.dataSource = _levelRoot.AuthoredMetadata;
        
-       //custom metadata fields
-       _thumbnailField = rootVisualElement.Q<ObjectField>("thumbnail-field");
-       _thumbnailField.value = _levelRoot.AuthoredMetadata.Thumbnail;
+       //other UI elements
+       _thumbnailPreview = rootVisualElement.Q<Image>("level-thumbnail");
        
        //export window settings
        BindExportSettings();
@@ -90,6 +91,14 @@ public class LevelCompilerWindow : EditorWindow
         }
         _shipButton.clicked += ShipLevel;
         
+        _selectThumbnailButton = rootVisualElement.Q<Button>("thumbnail-selection-button");
+        if (_selectThumbnailButton == null)
+        {
+            Debug.LogError("Thumbnail button not found");
+            return;
+        }
+        _selectThumbnailButton.clicked += SelectThumbnail;
+        
         //register callbacks after initial setup
         rootVisualElement.schedule.Execute(RegisterCallbacks).StartingIn(100);
     }
@@ -101,7 +110,6 @@ public class LevelCompilerWindow : EditorWindow
         RegisterDirtyCallback(rootVisualElement.Q<EnumField>("author-field"));
         RegisterDirtyCallback(rootVisualElement.Q<IntegerField>("manual-version-field"));
         RegisterDirtyCallback(rootVisualElement.Q<FloatField>("required-version-field"));
-        _thumbnailField.RegisterValueChangedCallback(OnThumbnailChanged);
     }
     
     void BindExportSettings()
@@ -136,6 +144,19 @@ public class LevelCompilerWindow : EditorWindow
     {
         LocalExporter.ExportLevel(_levelRoot, _settings, LocalPaths.ShipExport);
     }
+
+    void SelectThumbnail()
+    {
+        string thumbnailPath = EditorUtility.OpenFilePanel(
+            "Choose thumbnail",
+            "",
+            ".png");
+        if (string.IsNullOrEmpty(thumbnailPath)) return;
+        if (!File.Exists(thumbnailPath)) return;
+        _levelRoot.SetLevelThumbnail(thumbnailPath);
+        UpdateThumbnailPreview();
+        _thumbnailPreview.image = _levelRoot.AuthoredMetadata.GetPreviewThumbnail();
+    }
     
     #endregion
     
@@ -151,6 +172,13 @@ public class LevelCompilerWindow : EditorWindow
     #endregion
     
     #region Helper functions
+
+    void OnUndo()
+    {
+        UpdateThumbnailPreview();
+        EditorUtility.SetDirty(_levelRoot);
+    }
+    
     void RegisterDirtyCallback<T>(BaseField<T> field)
     {
         if (field == null)
@@ -178,4 +206,11 @@ public class LevelCompilerWindow : EditorWindow
         EditorUtility.SetDirty(_levelRoot);
     }
     #endregion
+
+    void UpdateThumbnailPreview()
+    {
+        Texture2D preview = _levelRoot.AuthoredMetadata.GetPreviewThumbnail();
+        _thumbnailPreview.image = !preview ? preview : defaultThumbnail;
+    }
+    
 }

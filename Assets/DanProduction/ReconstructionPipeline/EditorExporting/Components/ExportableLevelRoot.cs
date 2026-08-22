@@ -8,6 +8,11 @@ public class ExportableLevelRoot : MonoBehaviour
 {
     [SerializeField, CreateProperty] LevelAuthorMetadata authoredMetadata;
     public LevelAuthorMetadata AuthoredMetadata => authoredMetadata;
+
+    public void SetLevelThumbnail(string path)
+    {
+        authoredMetadata.ThumbnailPath = path;
+    }
     
     public TaskResults ValidateHierarchy()
     {

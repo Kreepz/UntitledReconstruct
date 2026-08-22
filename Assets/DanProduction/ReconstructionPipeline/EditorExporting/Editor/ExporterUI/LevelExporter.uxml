@@ -28,7 +28,11 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="bottom-region" style="flex-grow: 1; max-height: none; min-height: 35%; justify-content: space-around;">
-                    <uie:ObjectField name="thumbnail-field" data-source-path="Thumbnail" label="Thumbnail" enabled="true" type="UnityEngine.Texture2D, UnityEngine.CoreModule" value="" allow-scene-objects="false" style="min-width: 10px; min-height: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); color: rgb(0, 0, 0);"/>
+                    <ui:VisualElement name="thumbnail-container" style="flex-grow: 1; flex-direction: row;">
+                        <ui:Label text="Label - " name="thumbnail-label" class="content-label"/>
+                        <ui:Button text="None" name="thumbnail-selection-button"/>
+                    </ui:VisualElement>
+                    <uie:ObjectField name="thumbnail-field" data-source-path="Thumbnail" label="Thumbnail" enabled="true" type="UnityEngine.Texture2D, UnityEngine.CoreModule" value="" allow-scene-objects="false" style="min-width: 10px; min-height: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); color: rgb(0, 0, 0); display: none;"/>
                     <ui:EnumField label="Author" name="author-field" type="Authors, Assembly-CSharp" value="">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="Author" binding-mode="TwoWay"/>

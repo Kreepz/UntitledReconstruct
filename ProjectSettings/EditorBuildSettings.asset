@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/FPSTemplate/FPS/Scenes/MainScene.unity
     guid: d794a2ef8ba31d847ad3c19d03e2ddb9
   m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: 22b27ec3cfed7e3469e732450b051e27,
+    com.unity.addressableassets: {fileID: 11400000, guid: bb26134bec1ae224d8e5e89e80888410,
       type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 05b4aeda8533b704f9be24b556a43d98,
       type: 3}

@@ -11,6 +11,7 @@ public class LevelAuthorMetadata
     [SerializeField, CreateProperty, HideInInspector] public string LevelName;
     [SerializeField, CreateProperty, HideInInspector] public string LevelDesc;
     [SerializeField, CreateProperty, HideInInspector] public Authors Author;
+    [SerializeField, CreateProperty, HideInInspector] public string ThumbnailPath;
     [SerializeField, CreateProperty, HideInInspector] public Texture2D Thumbnail;
     [SerializeField, HideInInspector] int contentVer;
     public int ContentVer
