@@ -416,6 +416,7 @@ MonoBehaviour:
     LevelName: lol test
     LevelDesc: hhhhh
     Author: 0
+    ThumbnailPath: 
     Thumbnail: {fileID: 2800000, guid: b8320e20fe7db384aaf7aac564b71472, type: 3}
     contentVer: 4
     RequiredAppVer: 0
@@ -483,10 +484,64 @@ MonoBehaviour:
     LevelName: Goated test
     LevelDesc: This time i got it fr
     Author: 1
+    ThumbnailPath: 
     Thumbnail: {fileID: 2800000, guid: b8320e20fe7db384aaf7aac564b71472, type: 3}
     contentVer: 2
     RequiredAppVer: 1
     LevelId: aba0e7fb0ac844f99b9033e5770c0f76
+--- !u!1 &1358573135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358573137}
+  - component: {fileID: 1358573136}
+  m_Layer: 0
+  m_Name: ThumbnailFix
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1358573136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358573135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7138730efdf05b248a06dd4cb0f0382f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExportableLevelRoot
+  authoredMetadata:
+    LevelName: Ouuuuhh
+    LevelDesc: I will pass
+    Author: 0
+    ThumbnailPath: C:/Users/drolo/Downloads/04e6391b0ad0c31a5e70454506cdcc1a.png
+    Thumbnail: {fileID: 0}
+    contentVer: 1
+    RequiredAppVer: 1
+    LevelId: 5d30dc41a1e04b6392eaeb8a2e802ab4
+--- !u!4 &1358573137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358573135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.90119, y: -9.72697, z: 25.03039}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461292434
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +575,7 @@ MonoBehaviour:
     LevelName: SMIRK
     LevelDesc: ARMED AND DANGEROUS
     Author: 0
+    ThumbnailPath: 
     Thumbnail: {fileID: 2800000, guid: b8320e20fe7db384aaf7aac564b71472, type: 3}
     contentVer: 1
     RequiredAppVer: 1
@@ -572,6 +628,7 @@ MonoBehaviour:
     LevelName: My awesome new level
     LevelDesc: version 4 update
     Author: 0
+    ThumbnailPath: 
     Thumbnail: {fileID: 2800000, guid: b8320e20fe7db384aaf7aac564b71472, type: 3}
     contentVer: 6
     RequiredAppVer: 1
@@ -591,6 +648,165 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1725861576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1725861578}
+  - component: {fileID: 1725861577}
+  m_Layer: 0
+  m_Name: WegoAgain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1725861577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725861576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7138730efdf05b248a06dd4cb0f0382f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExportableLevelRoot
+  authoredMetadata:
+    LevelName: Lets try again
+    LevelDesc: ohohoo
+    Author: 0
+    ThumbnailPath: C:/Users/drolo/Downloads/HMjwd0RWYAAbYsg.png
+    Thumbnail: {fileID: 0}
+    contentVer: 1
+    RequiredAppVer: 0
+    LevelId: 2e85c387407b4fef9e8b2af8e8917a9e
+--- !u!4 &1725861578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725861576}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.90119, y: -9.72697, z: 25.03039}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1860428151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860428153}
+  - component: {fileID: 1860428152}
+  m_Layer: 0
+  m_Name: DefaultThumbnailTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1860428152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860428151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7138730efdf05b248a06dd4cb0f0382f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExportableLevelRoot
+  authoredMetadata:
+    LevelName: i fixed it trust me???
+    LevelDesc: lets see
+    Author: 0
+    ThumbnailPath: C:/Users/drolo/Downloads/hellofix-ezgif.com-webp-to-png-converter.png
+    Thumbnail: {fileID: 0}
+    contentVer: 3
+    RequiredAppVer: 1
+    LevelId: d9ff104aeac845baadb41884d9ed3cbd
+--- !u!4 &1860428153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860428151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.90119, y: -9.72697, z: 25.03039}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2030215005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2030215007}
+  - component: {fileID: 2030215006}
+  m_Layer: 0
+  m_Name: Unomas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2030215006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030215005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7138730efdf05b248a06dd4cb0f0382f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExportableLevelRoot
+  authoredMetadata:
+    LevelName: Una vez mas
+    LevelDesc: vamos
+    Author: 0
+    ThumbnailPath: C:/Users/drolo/Downloads/07fa84a171d5f16417889f337bb128ee.png
+    Thumbnail: {fileID: 0}
+    contentVer: 1
+    RequiredAppVer: 0
+    LevelId: fa535bbdd0ae42aeac2cca0945de0080
+--- !u!4 &2030215007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030215005}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.90119, y: -9.72697, z: 25.03039}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -601,3 +817,7 @@ SceneRoots:
   - {fileID: 1461292436}
   - {fileID: 511835781}
   - {fileID: 1608310864}
+  - {fileID: 1358573137}
+  - {fileID: 1860428153}
+  - {fileID: 1725861578}
+  - {fileID: 2030215007}

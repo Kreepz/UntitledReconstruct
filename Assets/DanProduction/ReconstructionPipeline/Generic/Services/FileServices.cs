@@ -1,10 +1,21 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
 public static class FileServices
 {
+    public static string GetSafeFileName(string name)
+    {
+        char[] invalidChars = Path.GetInvalidFileNameChars();
+
+        return new string(
+            name
+                .Where(c => !invalidChars.Contains(c))
+                .ToArray()
+        ).TrimEnd(' ', '.');
+    }
     public static int GetVersionNumber(string folderName)
     {
         //expected format : v001
@@ -34,6 +45,9 @@ public static class FileServices
 
     public static Texture2D GetPreviewThumbnail(this LevelAuthorMetadata data)
     {
+        if(string.IsNullOrEmpty(data.ThumbnailPath))
+            return null;
+        
         var texture = new Texture2D(2, 2);
         FileInfo imageFile = new(data.ThumbnailPath);
         if (!File.Exists(imageFile.FullName))

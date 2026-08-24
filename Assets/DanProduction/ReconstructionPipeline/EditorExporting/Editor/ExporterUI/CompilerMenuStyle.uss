@@ -31,6 +31,7 @@
 
 .content-label {
     -unity-text-align: middle-left;
+    padding-left: 5px;
 }
 
 .content-display {
@@ -48,6 +49,32 @@
     border-right-width: 0.5px;
     border-bottom-width: 0.5px;
     border-left-width: 0.5px;
+}
+
+.content-display.invalid {
+    color: rgb(255, 0, 0);
+}
+
+.content-display.button {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-width: 0.5px;
+    border-right-width: 0.5px;
+    border-bottom-width: 0.5px;
+    border-left-width: 0.5px;
+}
+
+.content-display.button:hover {
+    border-top-width: 0.5px;
+    border-right-width: 0.5px;
+    border-bottom-width: 0.5px;
+    border-left-width: 0.5px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
 }
 
 

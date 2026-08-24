@@ -17,6 +17,9 @@ public class ExportContext
     public DirectoryInfo LevelDirectory { get; set; }
     public DirectoryInfo FinalDirectory { get; set; }
     
+    //resolvers
+    public IImageResolver ImageResolver { get; set; }
+    
     //Deploy-ready formats
     public LevelMetadata Metadata { get; set; }
     public byte[] ThumbnailImage { get; set; }

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Unity.Collections;
 using Unity.Properties;
 using UnityEngine;
@@ -12,6 +13,11 @@ public class ExportableLevelRoot : MonoBehaviour
     public void SetLevelThumbnail(string path)
     {
         authoredMetadata.ThumbnailPath = path;
+    }
+
+    public bool IsThumbnailValid()
+    {
+        return !string.IsNullOrEmpty(authoredMetadata.ThumbnailPath) && File.Exists(authoredMetadata.ThumbnailPath);
     }
     
     public TaskResults ValidateHierarchy()

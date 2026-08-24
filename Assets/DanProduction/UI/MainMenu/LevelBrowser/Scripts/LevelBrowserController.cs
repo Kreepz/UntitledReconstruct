@@ -9,13 +9,17 @@ using SimpleFileBrowser;
 public class LevelBrowserController : UiScreenController
 {
     //references
-    [SerializeField] TaskReportController _reportController;
-    [SerializeField] ContentPaginator _paginator;
-    [SerializeField] VisualTreeAsset _rowTemplate;
+    [SerializeField] TaskReportController reportController;
+    [SerializeField] ContentPaginator paginator;
+    [SerializeField] VisualTreeAsset rowTemplate;
     
     //parameters
     public override bool ScreenEnabled { get; protected set; }
     protected override string RootName => "level-browser";
+    
+    //handlers
+    Func<List<LevelMetadata>> _sourceContent;
+    Func<LevelMetadata, Texture2D> _resolveThumbnail;
     
     //state
     BrowsingContext _currentBrowsingContext;
@@ -23,40 +27,39 @@ public class LevelBrowserController : UiScreenController
     
     //ui elements
     Label _headerLabel;
-    Button _ImportLevelButton;
+    Button _importLevelButton;
     ListView _rowList;
 
     void Start()
     {
         _headerLabel = ScreenRoot.Q<Label>("tab-header");
-        _ImportLevelButton = ScreenRoot.Q<Button>("import-content-button");
-        _ImportLevelButton.clicked += OnImportPressed;
+        
+        //button binding
+        _importLevelButton = ScreenRoot.Q<Button>("import-content-button");
+        _importLevelButton.clicked += OnImportPressed;
+        
+        //initialise row list
         _rowList = ScreenRoot.Q<ListView>("rows-list");
-        /*
-        TemplateContainer rowElementRoot = _rowList.contentContainer.;
-        Debug.Log(rowElementRoot == null);
-        var color = Color.white;
-        color.a = 0;
-        rowElementRoot.style.backgroundColor = new StyleColor(color);
-        */
+        _rowList.makeItem = MakeRow;
+        _rowList.bindItem = BindRowData;
     }
     
     #region Open/Close functions
     public void OpenMenu(BrowsingContext ctx)
     {
         _currentBrowsingContext = ctx;
-
-        _headerLabel.text = ctx switch
+        switch (_currentBrowsingContext)
         {
-            BrowsingContext.Local => "Level library",
-            BrowsingContext.Online => "Level browser",
-            _ => _headerLabel.text
-        };
-        _content = ctx switch
-        {
-            BrowsingContext.Local => ContentManager.GetCatalogue(),
-            _ => new List<LevelMetadata>()
-        };
+            case BrowsingContext.Local:
+                _headerLabel.text = "Level library";
+                _sourceContent = ContentManager.GetCatalogue;
+                _resolveThumbnail = ContentManager.GetThumbnail;
+                break;
+            case BrowsingContext.Online:
+                _headerLabel.text = "Level browser";
+                Debug.LogWarning("Remote importer not yet implemented");
+                break;
+        }
         LoadCatalogue();
         RevealScreen();
     }
@@ -70,23 +73,18 @@ public class LevelBrowserController : UiScreenController
             "Level browser requires opening context, please use the overloaded function");
     }
     #endregion
-
+    
     #region Element loading
-
     void LoadCatalogue()
     {
-        _paginator.BuildPages(_content);
-        _rowList.itemsSource = _paginator.CurrentPage.Rows;
-        _rowList.makeItem = MakeRow;
-        _rowList.bindItem = BindRowData;
-        
+        paginator.BuildPages(_sourceContent(), _resolveThumbnail);
+        _rowList.itemsSource = paginator.CurrentPage.Rows;
         _rowList.Rebuild();
-        Debug.Log("Item source assigned");
     }
-
+    
     TemplateContainer MakeRow()
     {
-        TemplateContainer newRow = _rowTemplate.CloneTree();
+        TemplateContainer newRow = rowTemplate.CloneTree();
         var color = Color.white;
         color.a = 0;
         newRow.style.backgroundColor = new StyleColor(color);
@@ -104,7 +102,7 @@ public class LevelBrowserController : UiScreenController
             return;
         }
         Debug.Log($"Binding row at index {index}");
-        List<LevelMetadata> rowData = _paginator.CurrentPage.Rows[index].Contents;
+        List<ContentCardData> rowData = paginator.CurrentPage.Rows[index].Contents;
         contentRow.BindCards(rowData);
     }
     
@@ -117,7 +115,7 @@ public class LevelBrowserController : UiScreenController
         FileBrowser.ShowLoadDialog(
             OnFolderSubmitted,
             ()=> Debug.Log("Import cancelled"),
-                SimpleFileBrowser.FileBrowser.PickMode.Folders,
+                FileBrowser.PickMode.Folders,
                 false,
                 null,
                 null,
@@ -129,11 +127,20 @@ public class LevelBrowserController : UiScreenController
     {
         string packagePath = paths[0];
         TaskResults installResults = ContentManager.InstallLevel(packagePath);
-        _reportController.DisplayTaskResult(installResults, 1f, 1f);
-    } 
-    
+        reportController.DisplayTaskResult(installResults, 1f, 1f);
+        if(installResults.Success) RebuildCatalogue();
+    }
+
+    void RebuildCatalogue()
+    {
+        _content = _currentBrowsingContext switch
+        {
+            BrowsingContext.Local => ContentManager.GetCatalogue(),
+            _ => null
+        };
+        LoadCatalogue();
+    }
     #endregion
-    
 }
 
 public enum BrowsingContext

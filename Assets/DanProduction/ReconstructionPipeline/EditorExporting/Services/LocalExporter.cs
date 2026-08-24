@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
-using Unity.Tutorials.Core.Editor;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -86,6 +85,9 @@ public static class LocalExporter
         if (!versioningResults.Success)
             return versioningResults;
         
+        ExportDisplay.UpdateTask(ResolutionStage.ResolvingImageCompiler);
+        ResolveImageCompiler(context);
+        
         TaskResults results = new();
         results.AppendIssues(directoryResults);
         results.AppendIssues(versioningResults);
@@ -101,7 +103,8 @@ public static class LocalExporter
         
         //setup identifiers
         string idSnippet = context.RootComponent.AuthoredMetadata.LevelId[..10];
-        string folderName = $"{context.RootComponent.AuthoredMetadata.LevelName}_{idSnippet}";
+        string safeName = FileServices.GetSafeFileName(context.RootComponent.AuthoredMetadata.LevelName);
+        string folderName = $"{safeName}_{idSnippet}";
         
         //check possible entry matches
         DirectoryInfo[] matches = context.DepositDirectory.GetDirectories()
@@ -243,7 +246,14 @@ public static class LocalExporter
         results.SubmitResults(true, "Version resolution completed");
         return results;
     }
-    
+
+    static void ResolveImageCompiler(ExportContext context)
+    {
+        if (context.RootComponent.IsThumbnailValid())
+            context.ImageResolver = new FileToImage(context.RootComponent.AuthoredMetadata.ThumbnailPath);
+        else 
+            context.ImageResolver = new TextureToImage(context.Settings.DefaultThumbnail);
+    }
     #endregion
     
     #region Compiler functions
@@ -253,7 +263,7 @@ public static class LocalExporter
         context.Metadata = context.RootComponent.GetLevelMetadata();
         
         ExportDisplay.UpdateTask(CompilationStage.CompilingThumbnail);
-        context.ThumbnailImage = ImageCompiler.ToPng(context.RootComponent.AuthoredMetadata.Thumbnail);
+        context.ThumbnailImage = context.ImageResolver.GetImage();
         
         ExportDisplay.UpdateTask(CompilationStage.CompilingLevel);
         //call root to compile level and extract into the portable format
@@ -282,28 +292,9 @@ public static class LocalExporter
 
     static void DeployThumbnail(ExportContext context)
     {
-        bool shipping = context.DepositDirectory.FullName == LocalPaths.ShipExport.FullName;
         string thumbnailPath = Path.Combine
             (context.FinalDirectory.FullName, $"thumbnail.png");
         File.WriteAllBytes(thumbnailPath, context.ThumbnailImage);
-
-        /*
-        if (!shipping)
-        {
-            AssetDatabase.Refresh();
-            string assetPath = LocalPaths.GetAssetPath(thumbnailPath);
-            TextureImporter importer = 
-                AssetImporter.GetAtPath(assetPath) as TextureImporter;
-            
-            if (!importer)
-                throw new Exception($"Failed to retrieve importer for {assetPath}");
-            
-            importer.textureType = TextureImporterType.Default;
-            importer.textureCompression = TextureImporterCompression.Uncompressed;
-            importer.mipmapEnabled = false;
-            importer.SaveAndReimport();
-        }
-        */
     }
     #endregion
 

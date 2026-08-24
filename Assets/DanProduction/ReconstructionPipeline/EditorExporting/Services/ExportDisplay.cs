@@ -13,6 +13,8 @@ public class ExportDisplay
     ExportStage? _currentStage;
     ValidatingStage? _currentValidationTask;
     ResolutionStage? _currentResolutionTask;
+    CompilationStage? _currentCompilationTask;
+    DeployStage? _currentDeployTask;
     
     public void StartStage(ExportStage newStage)
     {
@@ -64,7 +66,6 @@ public class ExportDisplay
             _ => "Unknown task"
         };
         
-        //Disregard inactive entry
         int taskCount = Enum.GetValues(typeof(ValidatingStage)).Length;
         int currentTask = (int)_currentValidationTask;
         
@@ -72,13 +73,29 @@ public class ExportDisplay
         RefreshDisplay();
     }
 
-    public void UpdateTask(ResolutionStage resolutionStage)
+    public void UpdateTask(ResolutionStage resolutionTask)
     {
         if (_currentStage != ExportStage.Resolving)
         {
             Debug.LogError($"Current stage is {_currentStage}, attempting to engage in resolution task");
             return;
         }
+        _currentResolutionTask = resolutionTask;
+        
+        _currentInfo = resolutionTask switch
+        {
+            ResolutionStage.ResolvingDirectories => "Resolving export directory",
+            ResolutionStage.ResolvingVersion => "Resolving version",
+            ResolutionStage.ResolvingImageCompiler => "Resolving image compiler",
+            _ => "Unknown task"
+        };
+        
+        int taskCount = Enum.GetValues(typeof(ResolutionStage)).Length;
+        int currentTask = (int)_currentResolutionTask;
+        
+        _currentProgress = currentTask / (float)taskCount;
+        RefreshDisplay();
+        
     }
     public void UpdateTask(CompilationStage compilationTask)
     {
@@ -87,18 +104,44 @@ public class ExportDisplay
             Debug.LogError($"Current stage is {_currentStage}, attempting to engage in compilation task");
             return;
         }
+        _currentCompilationTask = compilationTask;
+
+        _currentInfo = compilationTask switch
+        {
+            CompilationStage.CompilingMetadata => "Compiling metadata",
+            CompilationStage.CompilingThumbnail => "Compiling thumbnail",
+            CompilationStage.CompilingLevel => "Compiling level",
+            _ => "Unknown task"
+        };
         
+        int taskCount = Enum.GetValues(typeof(CompilationStage)).Length;
+        int currentTask = (int)_currentCompilationTask;
+        
+        _currentProgress = currentTask / (float)taskCount;
         RefreshDisplay();
     }
 
-    public void UpdateTask(DeployStage deployStage)
+    public void UpdateTask(DeployStage deployTask)
     {
         if (_currentStage != ExportStage.Deploying)
         {
             Debug.LogError($"Current stage is {_currentStage}, attempting to engage in deploy task");
             return;
         }
+        _currentDeployTask = deployTask;
+
+        _currentInfo = deployTask switch
+        {
+            DeployStage.DeployingMetadata => "Deploying metadata",
+            DeployStage.DeployingThumbnail => "Deploying thumbnail",
+            DeployStage.DeployingLevel => "Deploying level",
+            _ => "Unknown task"
+        };
         
+        int taskCount = Enum.GetValues(typeof(DeployStage)).Length;
+        int currentTask = (int)_currentDeployTask;
+        
+        _currentProgress = currentTask / (float)taskCount;
         RefreshDisplay();
     }
     
@@ -130,6 +173,9 @@ public class ExportDisplay
     {
         _currentStage = null;
         _currentValidationTask = null;
+        _currentResolutionTask = null;
+        _currentCompilationTask = null;
+        _currentDeployTask = null;
         _currentTitle = "";
         _currentInfo = "";
         _currentProgress = 0;

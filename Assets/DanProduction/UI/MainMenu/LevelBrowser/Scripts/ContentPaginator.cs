@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class ContentPaginator
     public int currentPage;
     public PageData CurrentPage => _pages[currentPage];
     
-    public void BuildPages(List<LevelMetadata> source)
+    public void BuildPages(List<LevelMetadata> source, Func<LevelMetadata, Texture2D> thumbnailResolver)
     {
         _pages.Clear();
         currentPage = 0;
@@ -41,7 +42,12 @@ public class ContentPaginator
                      cardIndex < cardPerRow && sourceIndex < source.Count;
                      cardIndex++)
                 {
-                    row.Contents.Add(source[sourceIndex]);
+                    ContentCardData cardData = new()
+                    {
+                        Metadata = source[sourceIndex],
+                        FetchThumbnail = thumbnailResolver
+                    };
+                    row.Contents.Add(cardData);
                     sourceIndex++;
                 }
                 page.Rows.Add(row);

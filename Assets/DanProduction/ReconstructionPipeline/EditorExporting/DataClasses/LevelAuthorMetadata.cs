@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Unity.Collections;
 using Unity.Properties;
 using UnityEditor;
@@ -38,14 +39,17 @@ public class LevelAuthorMetadata
         if (string.IsNullOrEmpty(LevelDesc))
             results.Warnings.Add("Level description field is empty");
         
+        if (string.IsNullOrEmpty(ThumbnailPath))
+            results.Warnings.Add("Thumbnail path is empty");
+        else if(!File.Exists(ThumbnailPath))
+            results.Warnings.Add("Thumbnail path does not exist");
+        
         //error cases
         if (string.IsNullOrEmpty(LevelName)) 
             results.Errors.Add("Level name field is empty");
         if (string.IsNullOrEmpty(LevelId)) 
             results.Errors.Add("Level ID is empty");
-        if (!Thumbnail)
-            results.Errors.Add("Thumbnail field is empty");
-
+        
         //results resolution
         if (results.Errors.Count > 0)
             results.SubmitResults(false, "Data validation failed");

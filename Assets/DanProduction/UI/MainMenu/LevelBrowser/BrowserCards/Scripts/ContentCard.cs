@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class ContentCard : VisualElement
 {
-    LevelMetadata _assignedData;
+    ContentCardData _assignedData;
     
     //ui elements
     Image _thumbnail;
@@ -27,16 +27,17 @@ public partial class ContentCard : VisualElement
         _author = this.Q<Label>("credits-text");
     }
     
-    public void BindMetadata(LevelMetadata source)
+    public void BindData(ContentCardData source)
     {
         _assignedData = source;
-        _thumbnail.image = source.GetThumbnail();
-        _title.text = source.LevelName;
-        _author.text = $"Created by: {source.Author}";
+        _thumbnail.image = source.Thumbnail;
+        _title.text = source.Metadata.LevelName;
+        _author.text = $"Created by: {source.Metadata.Author}";
         
         SetVisible(true);
     }
 
+    
     void SetVisible(bool toggle)
     {
         visible = toggle;

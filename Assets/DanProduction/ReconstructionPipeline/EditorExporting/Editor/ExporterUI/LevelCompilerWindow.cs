@@ -42,6 +42,7 @@ public class LevelCompilerWindow : EditorWindow
         window._settings = new ExportSettings();
         window._levelRoot = level;
         window._settings.ImportPreferences();
+        window._settings.DefaultThumbnail = window.defaultThumbnail;
         window.CreateWindow();
         window.BindData();
         window.BindBehaviour();
@@ -99,6 +100,7 @@ public class LevelCompilerWindow : EditorWindow
         }
         _selectThumbnailButton.clicked += SelectThumbnail;
         
+        UpdateThumbnailPreview();
         //register callbacks after initial setup
         rootVisualElement.schedule.Execute(RegisterCallbacks).StartingIn(100);
     }
@@ -150,7 +152,7 @@ public class LevelCompilerWindow : EditorWindow
         string thumbnailPath = EditorUtility.OpenFilePanel(
             "Choose thumbnail",
             "",
-            ".png");
+            "png");
         if (string.IsNullOrEmpty(thumbnailPath)) return;
         if (!File.Exists(thumbnailPath)) return;
         _levelRoot.SetLevelThumbnail(thumbnailPath);
@@ -209,8 +211,25 @@ public class LevelCompilerWindow : EditorWindow
 
     void UpdateThumbnailPreview()
     {
+        string path = _levelRoot.AuthoredMetadata.ThumbnailPath;
+
+        _selectThumbnailButton.text =
+            string.IsNullOrEmpty(path) ? "None" : path;
+        
+        //otherwise attempt to load
         Texture2D preview = _levelRoot.AuthoredMetadata.GetPreviewThumbnail();
-        _thumbnailPreview.image = !preview ? preview : defaultThumbnail;
+
+        if (preview)
+        {
+            _thumbnailPreview.image = preview;
+            _selectThumbnailButton.RemoveFromClassList("invalid");
+        }
+
+        else
+        {
+            _thumbnailPreview.image = defaultThumbnail;
+            _selectThumbnailButton.AddToClassList("invalid");
+        }
     }
     
 }

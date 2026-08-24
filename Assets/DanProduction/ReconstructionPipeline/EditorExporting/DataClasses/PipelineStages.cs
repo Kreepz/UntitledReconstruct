@@ -15,7 +15,8 @@ public enum ValidatingStage
 public enum ResolutionStage
 {
     ResolvingDirectories,
-    ResolvingVersion
+    ResolvingVersion,
+    ResolvingImageCompiler,
 }
 
 public enum CompilationStage

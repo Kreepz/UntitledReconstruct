@@ -266,5 +266,10 @@ public static class ContentManager
         
         return catalogue;
     }
+
+    public static Texture2D GetThumbnail(LevelMetadata metaData)
+    {
+        return metaData.GetThumbnail();
+    }
     #endregion
 }

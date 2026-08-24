@@ -8,11 +8,7 @@
             <ui:VisualElement name="middle-region" style="flex-grow: 1; justify-content: space-around; max-height: 70%;">
                 <ui:VisualElement name="top-region" style="flex-grow: 1; flex-direction: row; height: auto;">
                     <ui:VisualElement name="left-region" style="flex-grow: 1; max-width: 250px; min-width: 100px; max-height: none; align-items: center;">
-                        <ui:Image name="level-thumbnail" source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" class="content-thumbnail">
-                            <Bindings>
-                                <ui:DataBinding property="source" data-source-path="Thumbnail" binding-mode="ToTarget"/>
-                            </Bindings>
-                        </ui:Image>
+                        <ui:Image name="level-thumbnail" source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" class="content-thumbnail"/>
                     </ui:VisualElement>
                     <ui:VisualElement name="right-region" style="flex-grow: 1; justify-content: center;">
                         <ui:TextField label="Name" placeholder-text="Enter a name" name="level-name-field" multiline="false" value="" max-length="35">
@@ -28,9 +24,9 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="bottom-region" style="flex-grow: 1; max-height: none; min-height: 35%; justify-content: space-around;">
-                    <ui:VisualElement name="thumbnail-container" style="flex-grow: 1; flex-direction: row;">
-                        <ui:Label text="Label - " name="thumbnail-label" class="content-label"/>
-                        <ui:Button text="None" name="thumbnail-selection-button"/>
+                    <ui:VisualElement name="thumbnail-container" style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+                        <ui:Label text="Image - " name="thumbnail-label" class="content-label"/>
+                        <ui:Button text="None" name="thumbnail-selection-button" class="content-display button" style="max-width: 85%; text-overflow: ellipsis; overflow: hidden;"/>
                     </ui:VisualElement>
                     <uie:ObjectField name="thumbnail-field" data-source-path="Thumbnail" label="Thumbnail" enabled="true" type="UnityEngine.Texture2D, UnityEngine.CoreModule" value="" allow-scene-objects="false" style="min-width: 10px; min-height: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); color: rgb(0, 0, 0); display: none;"/>
                     <ui:EnumField label="Author" name="author-field" type="Authors, Assembly-CSharp" value="">
