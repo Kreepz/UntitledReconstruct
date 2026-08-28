@@ -9,6 +9,7 @@ using SimpleFileBrowser;
 public class LevelBrowserController : UiScreenController
 {
     //references
+    [SerializeField] LevelPreviewController previewController;
     [SerializeField] TaskReportController reportController;
     [SerializeField] ContentPaginator paginator;
     [SerializeField] VisualTreeAsset rowTemplate;
@@ -27,16 +28,29 @@ public class LevelBrowserController : UiScreenController
     
     //ui elements
     Label _headerLabel;
+    Label _currentPageLabel;
+    
     Button _importLevelButton;
     ListView _rowList;
+    
+    Button _nextPageButton;
+    Button _previousPageButton;
 
     void Start()
     {
+        //Labels
         _headerLabel = ScreenRoot.Q<Label>("tab-header");
+        _currentPageLabel = ScreenRoot.Q<Label>("page-number-label");
         
         //button binding
         _importLevelButton = ScreenRoot.Q<Button>("import-content-button");
         _importLevelButton.clicked += OnImportPressed;
+        
+        _nextPageButton = ScreenRoot.Q<Button>("next-button");
+        _nextPageButton.clicked += NavigateNextPage;
+        
+        _previousPageButton = ScreenRoot.Q<Button>("previous-button");
+        _previousPageButton.clicked += NavigatePreviousPage;
         
         //initialise row list
         _rowList = ScreenRoot.Q<ListView>("rows-list");
@@ -45,8 +59,14 @@ public class LevelBrowserController : UiScreenController
     }
     
     #region Open/Close functions
-    public void OpenMenu(BrowsingContext ctx)
+    public override void OpenMenuWithContext<T>(T openingContext)
     {
+        if (openingContext is not BrowsingContext ctx)
+        {
+            Debug.LogError("Browser opened without appropriate context");
+            return;
+        }
+        
         _currentBrowsingContext = ctx;
         switch (_currentBrowsingContext)
         {
@@ -63,6 +83,7 @@ public class LevelBrowserController : UiScreenController
         LoadCatalogue();
         RevealScreen();
     }
+
     public override void CloseMenu()
     {
         HideScreen();
@@ -77,17 +98,55 @@ public class LevelBrowserController : UiScreenController
     #region Element loading
     void LoadCatalogue()
     {
-        paginator.BuildPages(_sourceContent(), _resolveThumbnail);
-        _rowList.itemsSource = paginator.CurrentPage.Rows;
-        _rowList.Rebuild();
+        PaginationContext paginationCtx = new PaginationContext()
+        {
+            Source = _sourceContent(),
+            ThumbnailResolver = _resolveThumbnail,
+            OnCardInteract = PreviewLevel
+        };
+        
+        paginator.BuildPages(paginationCtx);
+        
+        if (paginator.CurrentPage == null)
+        {
+            _rowList.itemsSource = null;
+            _rowList.Rebuild();
+            return;
+        }
+        
+        LoadList();
+    }
+
+    void RebuildCatalogue()
+    {
+        _content = _currentBrowsingContext switch
+        {
+            BrowsingContext.Local => ContentManager.GetCatalogue(),
+            _ => null
+        };
+        LoadCatalogue();
     }
     
+    void LoadList()
+    {
+        _rowList.itemsSource = paginator.CurrentPage.Rows;
+        _rowList.Rebuild();
+        _currentPageLabel.text = paginator.CurrentPageNumber.ToString();
+        _nextPageButton.style.display = paginator.HasNextPage ? DisplayStyle.Flex : DisplayStyle.None;
+        _previousPageButton.style.display = paginator.HasPreviousPage ? DisplayStyle.Flex : DisplayStyle.None;
+    }
     TemplateContainer MakeRow()
     {
         TemplateContainer newRow = rowTemplate.CloneTree();
+        
+        //Overwrite the style assigned by the list element
         var color = Color.white;
         color.a = 0;
         newRow.style.backgroundColor = new StyleColor(color);
+        
+        //Initialise the classes
+        ContentRow rowClass = newRow.Q<ContentRow>();
+        rowClass.InitialiseElement();
         
         return newRow;
     }
@@ -109,7 +168,22 @@ public class LevelBrowserController : UiScreenController
     #endregion
     
     #region Button logic binding
+    //Page navigation
+    void NavigateNextPage()
+    {
+        if (!paginator.HasNextPage) return;
+        paginator.NextPage();
+        LoadList();
+    }
 
+    void NavigatePreviousPage()
+    {
+        if (!paginator.HasPreviousPage) return;
+        paginator.PreviousPage();
+        LoadList();
+    }
+    
+    //Importing
     void OnImportPressed()
     {
         FileBrowser.ShowLoadDialog(
@@ -131,14 +205,10 @@ public class LevelBrowserController : UiScreenController
         if(installResults.Success) RebuildCatalogue();
     }
 
-    void RebuildCatalogue()
+    void PreviewLevel(LevelMetadata metadata)
     {
-        _content = _currentBrowsingContext switch
-        {
-            BrowsingContext.Local => ContentManager.GetCatalogue(),
-            _ => null
-        };
-        LoadCatalogue();
+        HideScreen();
+        previewController.OpenMenuWithContext(metadata);
     }
     #endregion
 }

@@ -9,18 +9,29 @@ public class ContentPaginator
     [SerializeField] int cardPerRow = 5;
     [SerializeField] int rowPerPage = 6;
     
-    public List<PageData> _pages = new List<PageData>();
-    public int currentPage;
-    public PageData CurrentPage => _pages[currentPage];
     
-    public void BuildPages(List<LevelMetadata> source, Func<LevelMetadata, Texture2D> thumbnailResolver)
+    List<PageData> _pages = new();
+    int _currentPage;
+    
+    //Getters
+    public PageData CurrentPage => 
+        _currentPage >= 0 && _currentPage < _pages.Count 
+            ? _pages[_currentPage] : null;
+
+    public int CurrentPageNumber => _currentPage + 1;
+    public int PageCount => _pages.Count;
+    public bool HasNextPage => _currentPage < _pages.Count - 1;
+    public bool HasPreviousPage => _currentPage > 0;
+    
+    public void BuildPages(PaginationContext context)
     {
         _pages.Clear();
-        currentPage = 0;
+        _currentPage = 0;
 
         int sourceIndex = 0;
-
-        while (sourceIndex < source.Count)
+        int sourceCount = context.Source.Count;
+        
+        while (sourceIndex < sourceCount)
         {
             //build page
             PageData page = new()
@@ -29,7 +40,7 @@ public class ContentPaginator
             };
 
             for (int rowIndex = 0;
-                 rowIndex < rowPerPage && sourceIndex < source.Count;
+                 rowIndex < rowPerPage && sourceIndex < sourceCount;
                  rowIndex++)
             {
                 RowData row = new()
@@ -39,13 +50,14 @@ public class ContentPaginator
 
                 //build row
                 for (int cardIndex = 0;
-                     cardIndex < cardPerRow && sourceIndex < source.Count;
+                     cardIndex < cardPerRow && sourceIndex < sourceCount;
                      cardIndex++)
                 {
                     ContentCardData cardData = new()
                     {
-                        Metadata = source[sourceIndex],
-                        FetchThumbnail = thumbnailResolver
+                        Metadata = context.Source[sourceIndex],
+                        FetchThumbnail = context.ThumbnailResolver,
+                        OnCardInteract = context.OnCardInteract
                     };
                     row.Contents.Add(cardData);
                     sourceIndex++;
@@ -54,5 +66,17 @@ public class ContentPaginator
             }
             _pages.Add(page);
         }
+    }
+
+    public void NextPage()
+    {
+        if(_currentPage < _pages.Count - 1)
+            _currentPage++;
+    }
+
+    public void PreviousPage()
+    {
+        if (_currentPage > 0) 
+            _currentPage--;
     }
 }

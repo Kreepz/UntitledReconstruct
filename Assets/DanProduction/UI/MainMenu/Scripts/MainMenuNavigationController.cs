@@ -42,6 +42,9 @@ public class MainMenuNavigationController : UiScreenController
         ScreenEnabled = true;
     }
 
+    public override void OpenMenuWithContext<T>(T context)
+    {}
+
     public override void CloseMenu()
     {
         if (!ScreenEnabled)return;
@@ -91,20 +94,14 @@ public class MainMenuNavigationController : UiScreenController
                 break;
             case MainMenuStates.LevelBrowser:
             {
-                if (browserContext.Controller is LevelBrowserController browser)
-                {
-                    cameraController.MoveTo(browserContext.CameraPos);
-                    browser.OpenMenu(BrowsingContext.Local);
-                }
+                cameraController.MoveTo(browserContext.CameraPos);
+                browserContext.Controller.OpenMenuWithContext(BrowsingContext.Local);
                 break;
             }
             case MainMenuStates.LevelDownloader:
             {
-                if (browserContext.Controller is LevelBrowserController browser)
-                {
-                    cameraController.MoveTo(downloaderPos);
-                    browser.OpenMenu(BrowsingContext.Online);
-                }
+                cameraController.MoveTo(downloaderPos);
+                browserContext.Controller.OpenMenuWithContext(BrowsingContext.Online);
                 break;
             }
             case MainMenuStates.Settings:

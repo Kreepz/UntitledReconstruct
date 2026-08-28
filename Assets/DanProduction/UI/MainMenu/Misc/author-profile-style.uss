@@ -1,0 +1,71 @@
+:root {
+}
+
+#root {
+    width: 500px;
+    height: 500px;
+    flex-shrink: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.author-title {
+    --text-colour: rgb(255, 255, 255);
+    color: var(--text-colour);
+    --backdrop-colour: rgb(59, 71, 167);
+    background-color: var(--backdrop-colour);
+    --border-radius-top-left: 2px;
+    --border-radius-top-right: 2px;
+    --border-radius-bottom-left: 20px;
+    --border-radius-bottom-right: 20px;
+    border-top-left-radius: var(--border-radius-top-left);
+    border-bottom-left-radius: var(--border-radius-bottom-left);
+    --border-width: 1px;
+    border-top-width: var(--border-width);
+    border-right-width: var(--border-width);
+    border-bottom-width: var(--border-width);
+    border-left-width: var(--border-width);
+    --border-colour: rgb(0, 0, 0);
+    border-top-right-radius: var(--border-radius-top-right);
+    border-bottom-right-radius: var(--border-radius-bottom-right);
+    border-top-color: var(--border-colour);
+    border-right-color: var(--border-colour);
+    border-bottom-color: var(--border-colour);
+    border-left-color: var(--border-colour);
+    font-size: 30px;
+}
+
+.author-description {
+    --backdrop-colour: rgb(203, 182, 187);
+    background-color: var(--backdrop-colour);
+    white-space: pre-wrap;
+    max-width: 65%;
+}
+
+.main-info-panel {
+    height: 65%;
+    --backdrop-colour: rgb(181, 121, 140);
+    background-color: var(--backdrop-colour);
+}
+
+.sub-info-panel {
+    height: 35%;
+    --backdrop-colour: rgb(84, 108, 152);
+    background-color: var(--backdrop-colour);
+}
+
+.profile-image {
+    width: 200px;
+    aspect-ratio: 1;
+    height: 200px;
+}

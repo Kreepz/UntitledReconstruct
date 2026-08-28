@@ -10,21 +10,20 @@ public partial class ContentCard : VisualElement
     Image _thumbnail;
     Label _title;
     Label _author;
-
+    
     public ContentCard()
     {
-        _thumbnail = this.Q<Image>("thumbnail");
-        _title = this.Q<Label>("level-name");
-        _author = this.Q<Label>("credits-text");
-        
-        //ClearCard();
+        RegisterCallback<ClickEvent>(_ => _assignedData?.TriggerInteraction());
     }
-
+    
+    #region Initialisation
     public void InitCard()
     {
         _thumbnail = this.Q<Image>("thumbnail");
         _title = this.Q<Label>("level-name");
         _author = this.Q<Label>("credits-text");
+        
+        ClearCard();
     }
     
     public void BindData(ContentCardData source)
@@ -36,8 +35,11 @@ public partial class ContentCard : VisualElement
         
         SetVisible(true);
     }
-
     
+
+    #endregion
+    
+    #region State management
     void SetVisible(bool toggle)
     {
         visible = toggle;
@@ -52,4 +54,17 @@ public partial class ContentCard : VisualElement
         _author.text = "";
         SetVisible(false);
     }
+    
+
+    #endregion
+
+    #region Functionality
+
+    void PromptContentPreview()
+    {
+        
+    }
+    
+    #endregion
+    
 }

@@ -7871,11 +7871,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182088a7b38f31f4b9ae5180a490e488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelBrowserController
+  previewController: {fileID: 2107329243}
   reportController: {fileID: 1484256777}
   paginator:
     cardPerRow: 5
     rowPerPage: 6
-    currentPage: 0
   rowTemplate: {fileID: 9197481963319205126, guid: 746987a2474f17e449471c81a2d26ad4,
     type: 3}
 --- !u!4 &1697025502 stripped
@@ -9629,6 +9629,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1425545706}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2107329241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107329242}
+  - component: {fileID: 2107329243}
+  m_Layer: 5
+  m_Name: PreviewController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107329242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107329241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2115346663}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2107329243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107329241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde3422419d75a94e9d4dd1e493c6b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelPreviewController
 --- !u!4 &2107818791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 847fb83c11c9fa34096ad9040493b728,
@@ -9691,6 +9735,7 @@ Transform:
   m_Children:
   - {fileID: 18942553}
   - {fileID: 1690771404}
+  - {fileID: 2107329242}
   - {fileID: 1484256776}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
