@@ -208,7 +208,13 @@ public class LevelBrowserController : UiScreenController
     void PreviewLevel(LevelMetadata metadata)
     {
         HideScreen();
-        previewController.OpenMenuWithContext(metadata);
+
+        PreviewContext previewCtx = new()
+        {
+            Data =  metadata,
+            OnClose = RevealScreen
+        };
+        previewController.OpenMenuWithContext(previewCtx);
     }
     #endregion
 }

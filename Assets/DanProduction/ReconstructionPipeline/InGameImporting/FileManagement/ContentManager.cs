@@ -58,10 +58,8 @@ public static class ContentManager
     static TaskResults ValidatePackageStructure(InstallContext context)
     {
         TaskResults results = new();
-        
-        context.Versions = context.LevelPackageDirectory.GetDirectories()
-            .Where(folder => FileServices.GetVersionNumber(folder.Name) > 0)
-            .ToArray();
+
+        context.Versions = FileServices.GetVersionFolders(context.LevelPackageDirectory);
 
         if (context.Versions.Length == 0)
         {
@@ -176,9 +174,7 @@ public static class ContentManager
             return results;
         }
         
-        DirectoryInfo[] installedVersions = context.InstallationDirectory.GetDirectories()
-            .Where(folder => FileServices.GetVersionNumber(folder.Name) > 0)
-            .ToArray();
+        DirectoryInfo[] installedVersions = FileServices.GetVersionFolders(context.InstallationDirectory);
 
         context.UninstalledVersions = context.Versions
             .Where(ver => installedVersions.All(installed => installed.Name != ver.Name))
@@ -267,9 +263,64 @@ public static class ContentManager
         return catalogue;
     }
 
+    public static List<int> GetVersions(LevelMetadata metadata)
+    {
+        List<int> results = new();
+        DirectoryInfo levelRepo = new(
+            Path.Combine(LocalPaths.ContentPath, metadata.ContentID));
+
+        if (!levelRepo.Exists)
+        {
+            Debug.LogError($"Cannot find the files for {metadata.ContentID}");
+            return null;
+        }
+        DirectoryInfo[] versions = FileServices.GetVersionFolders(levelRepo);
+        
+        foreach (DirectoryInfo version in versions)
+            results.Add(FileServices.GetVersionNumber(version.Name));
+        
+        return results;
+    }
+    
     public static Texture2D GetThumbnail(LevelMetadata metaData)
     {
         return metaData.GetThumbnail();
+    }
+
+    public static LevelMetadata GetMetadataVersion(LevelMetadata metaData, int desiredVer)
+    {
+        DirectoryInfo levelRepo = new(
+            Path.Combine(LocalPaths.ContentPath, metaData.ContentID));
+        if (!levelRepo.Exists)
+        {
+            Debug.LogError($"Cannot find the files for {metaData.ContentID}");
+            return null;
+        }
+
+        DirectoryInfo versionRepo = new(
+            Path.Combine(levelRepo.FullName, $"v{desiredVer:D3}"));
+        if (!versionRepo.Exists)
+        {
+            Debug.LogError($"Requested version: {desiredVer} does not exist");
+            return null;
+        }
+        
+        
+        string metadataPath = Path.Combine(versionRepo.FullName, "metadata.json");
+        if (!File.Exists(metadataPath))
+        {
+            Debug.LogError($"Metadata file not found at {metadataPath}");
+            return null;
+        }
+        string jsonData = File.ReadAllText(metadataPath);
+        LevelMetadataDTO metadataDTO = JsonUtility.FromJson<LevelMetadataDTO>(jsonData);
+        if (metadataDTO == null)
+        {
+            Debug.LogError("Failed to deserialize metadata");
+            return null;
+        }
+        
+        return new(metadataDTO);
     }
     #endregion
 }

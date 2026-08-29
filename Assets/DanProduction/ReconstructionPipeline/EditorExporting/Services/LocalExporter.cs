@@ -124,11 +124,15 @@ public static class LocalExporter
         foreach (DirectoryInfo candidate in matches)
         {
             if (matchDirectory != null) break;
-            DirectoryInfo[] versions = candidate.GetDirectories()
+            
+            DirectoryInfo[] versions = FileServices.GetVersionFolders(candidate);
+                /*
+                candidate.GetDirectories()
                 .Where(folder => FileServices.GetVersionNumber(folder.Name) >= 0)
                 .OrderByDescending(folder => FileServices.GetVersionNumber(folder.Name))
                 .ToArray();
-            
+                */
+                
             //if no version folders exist, cancel function and return an error
             if (versions.Length == 0)
             {
@@ -217,10 +221,9 @@ public static class LocalExporter
     static TaskResults ResolveVersion(ExportContext context)
     {
         TaskResults results = new();
-        DirectoryInfo latestFolder = context.LevelDirectory.GetDirectories()
-            .Where(folder => FileServices.GetVersionNumber(folder.Name) >= 0)
-            .OrderByDescending(folder => FileServices.GetVersionNumber(folder.Name))
+        DirectoryInfo latestFolder = FileServices.GetVersionFolders(context.LevelDirectory)
             .FirstOrDefault();
+        
         int latestVer = latestFolder == null
             ? 0: FileServices.GetVersionNumber(latestFolder.Name);
 

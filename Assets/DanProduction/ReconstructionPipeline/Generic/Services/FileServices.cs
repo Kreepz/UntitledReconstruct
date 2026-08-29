@@ -16,6 +16,11 @@ public static class FileServices
                 .ToArray()
         ).TrimEnd(' ', '.');
     }
+
+    public static string GetVersionFolderFormat(int version)
+    {
+        return "";
+    }
     public static int GetVersionNumber(string folderName)
     {
         //expected format : v001
@@ -26,7 +31,7 @@ public static class FileServices
         }
         return -1;
     }
-
+    
     public static Texture2D GetThumbnail(this LevelMetadata data)
     {
         var texture = new Texture2D(2, 2);
@@ -42,7 +47,6 @@ public static class FileServices
         texture.LoadImage(File.ReadAllBytes(imageFile.FullName));
         return texture;
     }
-
     public static Texture2D GetPreviewThumbnail(this LevelAuthorMetadata data)
     {
         if(string.IsNullOrEmpty(data.ThumbnailPath))
@@ -58,5 +62,13 @@ public static class FileServices
         
         texture.LoadImage(File.ReadAllBytes(imageFile.FullName));
         return texture;
+    }
+
+    public static DirectoryInfo[] GetVersionFolders(DirectoryInfo levelRepo)
+    {
+        return levelRepo.GetDirectories()
+            .Where(folder => GetVersionNumber(folder.Name) > 0)
+            .OrderByDescending(folder => GetVersionNumber(folder.Name))
+            .ToArray();
     }
 }

@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="author-profile-danone" src="project://database/Assets/DanProduction/UI/MainMenu/Misc/author-profile-danone.uxml?fileID=9197481963319205126&amp;guid=b3aeea1e36d252240acbced85440042c&amp;type=3#author-profile-danone"/>
+    <Style src="project://database/Assets/DanProduction/UI/MainMenu/LevelBrowser/LevelPreviewStyle.uss?fileID=7433441132597879392&amp;guid=95e1ce5a961afd84b985b051360c0f67&amp;type=3#LevelPreviewStyle"/>
     <Style src="project://database/Assets/DanProduction/UI/MainMenu/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=788bbf5770e67034b8c4a7c01efd97ac&amp;type=3#MainMenuStyle"/>
     <Style src="project://database/Assets/DanProduction/UI/MainMenu/LevelBrowser/LevelBrowserStyles.uss?fileID=7433441132597879392&amp;guid=44836ff17a614a74897f2c283b8d5fdb&amp;type=3#LevelBrowserStyles"/>
     <ui:VisualElement name="root" style="flex-grow: 1; align-items: center;">
@@ -71,32 +72,30 @@
                                 <ui:VisualElement name="main-data" style="flex-grow: 1; flex-direction: row;">
                                     <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="level-thumbnail" style="aspect-ratio: 1; max-width: 400px; max-height: 400px;"/>
                                     <ui:VisualElement name="caption-container" style="flex-grow: 1;">
-                                        <ui:Label text="My awesome level" name="level-title" enable-rich-text="true" style="font-size: 40px; color: rgb(255, 255, 255); flex-grow: 1; height: 15%;"/>
-                                        <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor augue augue, quis finibus est facilisis et. Morbi sed ultrices est, eu pretium est. Sed sit amet tellus pharetra, lacinia nulla non, vestibulum ipsum. Donec a sodales neque. Nunc vitae laoreet mauris. Vestibulum pellentesque, sapien id feugiat hendrerit, purus sem placerat nunc, in laoreet magna justo pellentesque leo. Nullam sed justo congue, vestibulum lectus non, fringilla risus. Nulla facilisi. Nullam nisi odio, viverra sed quam eu, malesuada eleifend nisi. Curabitur finibus convallis rutrum. Aliquam ligula mi, aliquam eget erat sed, hendrerit vestibulum risus. Nullam nec felis bibendum, iaculis augue in, viverra eros. Nullam hendrerit, quam vitae pulvinar varius, purus magna ornare elit, at tincidunt tortor arcu tempor leo. Fusce id varius sem. Vestibulum varius ut lacus sit amet pellentesque. Etiam vulputate augue eu commodo sodales." name="level-description" style="flex-wrap: wrap; white-space: normal; max-width: 100%; color: rgb(255, 255, 255); height: 75%; max-height: 80%; flex-shrink: 1;"/>
+                                        <ui:Label text="My awesome level" name="level-title" enable-rich-text="true" class="content-title" style="background-color: rgba(20, 95, 74, 0.749); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);"/>
+                                        <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor augue augue, quis finibus est facilisis et. Morbi sed ultrices est, eu pretium est. Sed sit amet tellus pharetra, lacinia nulla non, vestibulum ipsum. Donec a sodales neque. Nunc vitae laoreet mauris. Vestibulum pellentesque, sapien id feugiat hendrerit, purus sem placerat nunc, in laoreet magna justo pellentesque leo. Nullam sed justo congue, vestibulum lectus non, fringilla risus. Nulla facilisi. Nullam nisi odio, viverra sed quam eu, malesuada eleifend nisi. Curabitur finibus convallis rutrum. Aliquam ligula mi, aliquam eget erat sed, hendrerit vestibulum risus. Nullam nec felis bibendum, iaculis augue in, viverra eros. Nullam hendrerit, quam vitae pulvinar varius, purus magna ornare elit, at tincidunt tortor arcu tempor leo. Fusce id varius sem. Vestibulum varius ut lacus sit amet pellentesque. Etiam vulputate augue eu commodo sodales." name="level-description" class="content-desc" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"/>
                                     </ui:VisualElement>
                                 </ui:VisualElement>
-                                <ui:VisualElement name="metadata-container" style="flex-grow: 1; flex-direction: row; justify-content: flex-start;">
-                                    <ui:Label text="uploaded - 23/06/2026" name="upload-date" style="max-width: 50%; flex-shrink: 1; width: 50%; color: rgb(255, 255, 255);"/>
-                                    <ui:VisualElement name="download-info" style="flex-grow: 1; max-width: 50%; flex-direction: row;">
-                                        <ui:Label text="Downloaded -23/06/2026" name="download-date" style="max-width: none; width: auto; flex-shrink: 1; color: rgb(255, 255, 255);"/>
-                                    </ui:VisualElement>
+                                <ui:VisualElement name="metadata-container" style="flex-grow: 1; flex-direction: row; justify-content: flex-start; align-items: center;">
+                                    <ui:DropdownField label="Version" choices="1,2" name="version-dropdown" focusable="false" class="dropdown-selector" style="color: rgb(0, 0, 0); height: 50px;"/>
+                                    <ui:Button text="Delete level" name="delete-level-button" class="delete-button"/>
+                                    <ui:Button text="Delete version" name="delete-version-button" class="delete-button"/>
                                 </ui:VisualElement>
                             </ui:VisualElement>
-                            <ui:Instance template="author-profile-danone" name="author-profile-danone" style="width: 500px; height: 500px;"/>
-                        </ui:VisualElement>
-                        <ui:VisualElement name="level-options" style="flex-grow: 1; justify-content: center; flex-direction: row;">
-                            <ui:Button text="Play" name="play-button" class="tab-button"/>
-                            <ui:Button text="Download" name="play-button" class="tab-button"/>
-                            <ui:Button text="Delete" name="play-button" class="tab-button"/>
+                            <ui:VisualElement name="author-panel" style="flex-grow: 0; width: 500px; height: 500px; flex-shrink: 0;">
+                                <ui:Instance template="author-profile-danone" name="author-profile-danone" style="width: 500px; height: 500px;"/>
+                            </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="bottom" style="flex-grow: 1; max-height: 10%; min-height: 10%; flex-direction: row; align-self: flex-end; max-width: none; width: 100%; height: 10%;">
-                    <ui:VisualElement name="left-region" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.525); max-width: 35%; align-items: auto; margin-left: 0; margin-bottom: 0; height: 100%; margin-top: 0; margin-right: 0; flex-direction: row; max-height: 100%;">
+                    <ui:VisualElement name="left-region" style="flex-grow: 1; max-width: 35%; align-items: auto; margin-left: 0; margin-bottom: 0; height: 100%; margin-top: 0; margin-right: 0; flex-direction: row; max-height: 100%;">
                         <ui:Button text="Return" name="return-button" class="return tab-button" style="justify-content: flex-end; align-self: flex-end; margin-bottom: 1%; margin-left: 1%; margin-right: 0; margin-top: 0;"/>
                     </ui:VisualElement>
-                    <ui:VisualElement name="central-region" style="flex-grow: 1; max-height: 100%; background-color: rgb(209, 137, 137); height: 100%; justify-content: flex-end;"/>
-                    <ui:VisualElement name="right-region" style="flex-grow: 1; height: 100%; background-color: rgb(248, 25, 25); flex-direction: row; justify-content: flex-end; align-items: flex-end; max-width: 35%;"/>
+                    <ui:VisualElement name="central-region" style="flex-grow: 1; max-height: 100%; height: 100%; justify-content: flex-end;"/>
+                    <ui:VisualElement name="right-region" style="flex-grow: 1; height: 100%; flex-direction: row; justify-content: center; align-items: flex-end; max-width: 35%;">
+                        <ui:Button text="Play" name="play-button" class="play-button"/>
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

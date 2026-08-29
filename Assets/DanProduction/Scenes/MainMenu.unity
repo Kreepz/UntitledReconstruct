@@ -9673,6 +9673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde3422419d75a94e9d4dd1e493c6b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelPreviewController
+  danoneAuthorPage: {fileID: 9197481963319205126, guid: b3aeea1e36d252240acbced85440042c,
+    type: 3}
+  katsyAuthorPage: {fileID: 9197481963319205126, guid: 7a4ef6ec349cc7045a3499a0ed2edcd8,
+    type: 3}
 --- !u!4 &2107818791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 847fb83c11c9fa34096ad9040493b728,
