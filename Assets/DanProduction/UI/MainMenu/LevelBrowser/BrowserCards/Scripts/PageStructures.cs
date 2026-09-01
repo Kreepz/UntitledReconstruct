@@ -30,5 +30,6 @@ public class PaginationContext
     public List<LevelMetadata> Source{get;set;}
     public Func<LevelMetadata, Texture2D> ThumbnailResolver{get;set;}
     public Action<LevelMetadata> OnCardInteract{get;set;}
+    public bool ResetPage { get; set; }
     
 }

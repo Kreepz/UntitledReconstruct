@@ -143,26 +143,13 @@ public static class LocalExporter
             }
             
             //compare the versioned folders inside the level repository
-            LevelMetadataDTO discoveredMetadata = null;
+            LevelMetadata discoveredMetadata = null;
             foreach (DirectoryInfo version in versions)
             {
                 //check through contents inside the versioned folders for metadata
                 //for ID comparisons, keep searching until a valid comparison can be made
                 string metadataPath = Path.Combine(version.FullName, "metadata.json");
-                
-                if (!File.Exists(metadataPath))
-                {
-                    results.Warnings.Add($"metadata is missing from {version.FullName}");
-                    continue;
-                }
-                
-                string json = File.ReadAllText(metadataPath);
-                discoveredMetadata = JsonUtility.FromJson<LevelMetadataDTO>(json);
-                if (discoveredMetadata == null)
-                {
-                    results.Warnings.Add($"Invalid metadata found in {version.FullName}");
-                    continue;
-                }
+                discoveredMetadata = FileServices.GetMetaDataFile(metadataPath);
                 
                 //if a valid entry is found exit out of the loop.
                 //Set variables only if the correct match is found

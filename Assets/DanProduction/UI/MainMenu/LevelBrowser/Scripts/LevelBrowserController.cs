@@ -24,7 +24,6 @@ public class LevelBrowserController : UiScreenController
     
     //state
     BrowsingContext _currentBrowsingContext;
-    List<LevelMetadata> _content;
     
     //ui elements
     Label _headerLabel;
@@ -96,45 +95,48 @@ public class LevelBrowserController : UiScreenController
     #endregion
     
     #region Element loading
-    void LoadCatalogue()
+
+    void SoftLoadCatalogue()
+    {
+        LoadCatalogue(false);
+    }
+    
+    void LoadCatalogue(bool resetPage = true)
     {
         PaginationContext paginationCtx = new PaginationContext()
         {
             Source = _sourceContent(),
             ThumbnailResolver = _resolveThumbnail,
-            OnCardInteract = PreviewLevel
+            OnCardInteract = PreviewLevel,
+            ResetPage = resetPage
         };
         
         paginator.BuildPages(paginationCtx);
         
+        RefreshCatalogueUI();
+    }
+    
+    void RefreshCatalogueUI()
+    {
         if (paginator.CurrentPage == null)
         {
             _rowList.itemsSource = null;
             _rowList.Rebuild();
+
+            _currentPageLabel.text = "";
+            _nextPageButton.style.display = DisplayStyle.None;
+            _previousPageButton.style.display = DisplayStyle.None;
             return;
         }
         
-        LoadList();
-    }
-
-    void RebuildCatalogue()
-    {
-        _content = _currentBrowsingContext switch
-        {
-            BrowsingContext.Local => ContentManager.GetCatalogue(),
-            _ => null
-        };
-        LoadCatalogue();
-    }
-    
-    void LoadList()
-    {
         _rowList.itemsSource = paginator.CurrentPage.Rows;
         _rowList.Rebuild();
+        
         _currentPageLabel.text = paginator.CurrentPageNumber.ToString();
         _nextPageButton.style.display = paginator.HasNextPage ? DisplayStyle.Flex : DisplayStyle.None;
         _previousPageButton.style.display = paginator.HasPreviousPage ? DisplayStyle.Flex : DisplayStyle.None;
     }
+    
     TemplateContainer MakeRow()
     {
         TemplateContainer newRow = rowTemplate.CloneTree();
@@ -173,14 +175,14 @@ public class LevelBrowserController : UiScreenController
     {
         if (!paginator.HasNextPage) return;
         paginator.NextPage();
-        LoadList();
+        RefreshCatalogueUI();
     }
 
     void NavigatePreviousPage()
     {
         if (!paginator.HasPreviousPage) return;
         paginator.PreviousPage();
-        LoadList();
+        RefreshCatalogueUI();
     }
     
     //Importing
@@ -202,7 +204,7 @@ public class LevelBrowserController : UiScreenController
         string packagePath = paths[0];
         TaskResults installResults = ContentManager.InstallLevel(packagePath);
         reportController.DisplayTaskResult(installResults, 1f, 1f);
-        if(installResults.Success) RebuildCatalogue();
+        if(installResults.Success) LoadCatalogue();
     }
 
     void PreviewLevel(LevelMetadata metadata)
@@ -212,7 +214,8 @@ public class LevelBrowserController : UiScreenController
         PreviewContext previewCtx = new()
         {
             Data =  metadata,
-            OnClose = RevealScreen
+            OnClose = RevealScreen,
+            OnDataModified = SoftLoadCatalogue
         };
         previewController.OpenMenuWithContext(previewCtx);
     }

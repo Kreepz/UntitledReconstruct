@@ -18,8 +18,12 @@ public class LevelPreviewController : UiScreenController
     //relevant data
     LevelMetadata _levelData;
     
+    //states
+    bool _dataModified;
+    
     //actions
     Action _onPreviewClose;
+    Action _onDataModified;
     
     //UI elements
     VisualElement _authorContainer;
@@ -44,7 +48,10 @@ public class LevelPreviewController : UiScreenController
         _versionSelection.RegisterValueChangedCallback(OnVersionChanged);
 
         _deleteLevelButton = ScreenRoot.Q<Button>("delete-level-button");
+        _deleteLevelButton.clicked += OnLevelDelete;
+        
         _deleteVersionButton = ScreenRoot.Q<Button>("delete-version-button");
+        _deleteVersionButton.clicked += OnDeleteVersion;
         
         _returnButton = ScreenRoot.Q<Button>("return-button");
         _returnButton.clicked += CloseMenu;
@@ -66,6 +73,7 @@ public class LevelPreviewController : UiScreenController
         }
         LoadElements(previewContext.Data);
         _onPreviewClose = previewContext.OnClose;
+        _onDataModified = previewContext.OnDataModified;
         RevealScreen();
     }
 
@@ -76,7 +84,7 @@ public class LevelPreviewController : UiScreenController
         _thumbnail.image = ContentManager.GetThumbnail(data);
         _levelTitle.text = _levelData.LevelName;
         _levelDescription.text = _levelData.LevelDescription;
-
+        
         VisualTreeAsset authorCard = data.Author switch
         {
             Authors.danone => danoneAuthorPage,
@@ -121,7 +129,46 @@ public class LevelPreviewController : UiScreenController
         LevelMetadata requestedData = ContentManager.GetMetadataVersion(_levelData, version);
         if (requestedData == null) return;
         LoadElements(requestedData);
-        
+    }
+
+    void OnLevelDelete()
+    {
+        TaskResults deleteResults =ContentManager.DeleteLevel(_levelData);
+        if (deleteResults.Success)
+        {
+            _dataModified = true;
+            CloseMenu();
+        }
+    }
+
+    void OnDeleteVersion()
+    {
+        TaskResults deleteResults = ContentManager.DeleteVersion(_levelData);
+        if (deleteResults.Success)
+        {
+            if (_versionSelection.choices.Count < 2)
+            {
+                Debug.LogError("Tried to delete the only version left in the list? exiting menu");
+                CloseMenu();
+                return;
+            }
+            //update currently selected entry
+            int deletedVersion = _levelData.ContentVersion;
+            int deletedIndex = _versionSelection.choices.IndexOf(deletedVersion.ToString());
+            
+            if (deletedIndex < 0)
+            {
+                Debug.LogError($"Could not locate deleted version: {deletedVersion}");
+                return;
+            }
+            
+            int newIndex = deletedIndex > 0 
+                ? deletedIndex - 1 
+                : deletedIndex + 1;
+            
+            _dataModified = true;
+            _versionSelection.value = _versionSelection.choices[newIndex];
+        }
     }
     #endregion
     
@@ -134,10 +181,14 @@ public class LevelPreviewController : UiScreenController
         _authorContainer.Clear();
         
         
-        
         HideScreen();
+        if(_dataModified)
+            _onDataModified?.Invoke();
         _onPreviewClose?.Invoke();
+        
+        _onDataModified = null;
         _onPreviewClose = null;
+        _dataModified = false;
     }
 }
 
@@ -145,4 +196,5 @@ public class PreviewContext
 {
     public LevelMetadata Data { get; set; }
     public Action OnClose { get; set; }
+    public Action OnDataModified { get; set; }
 }

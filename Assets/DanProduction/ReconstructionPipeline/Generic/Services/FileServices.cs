@@ -16,7 +16,6 @@ public static class FileServices
                 .ToArray()
         ).TrimEnd(' ', '.');
     }
-
     public static string GetVersionFolderFormat(int version)
     {
         return "";
@@ -70,5 +69,23 @@ public static class FileServices
             .Where(folder => GetVersionNumber(folder.Name) > 0)
             .OrderByDescending(folder => GetVersionNumber(folder.Name))
             .ToArray();
+    }
+
+    public static LevelMetadata GetMetaDataFile(string expectedPath)
+    {
+        if (!File.Exists(expectedPath))
+        {
+            Debug.LogError($"Metadata file not found at {expectedPath}");
+            return null;
+        }
+
+        string json = File.ReadAllText(expectedPath);
+        LevelMetadataDTO DTO = JsonUtility.FromJson<LevelMetadataDTO>(json);
+        if (DTO == null)
+        {
+            Debug.LogError("Failed to deserialise metadata");
+            return null;
+        }
+        return new (DTO);
     }
 }

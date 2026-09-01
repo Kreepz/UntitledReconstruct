@@ -26,8 +26,9 @@ public class ContentPaginator
     public void BuildPages(PaginationContext context)
     {
         _pages.Clear();
-        _currentPage = 0;
-
+        if(context.ResetPage) 
+            _currentPage = 0;
+        
         int sourceIndex = 0;
         int sourceCount = context.Source.Count;
         
@@ -65,6 +66,12 @@ public class ContentPaginator
                 page.Rows.Add(row);
             }
             _pages.Add(page);
+        }
+
+        //Prevent out of index exemptions
+        if (!context.ResetPage && _currentPage >= _pages.Count)
+        {
+            _currentPage = _pages.Count - 1;
         }
     }
 

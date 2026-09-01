@@ -112,18 +112,14 @@ public static class ContentManager
         {
             string metadataPath = Path.Combine(ver.FullName, "metadata.json");
             Debug.Log($"Validating:\n{metadataPath}");
-            string json = File.ReadAllText(metadataPath);
-            
-            LevelMetadataDTO metadataDTO = JsonUtility.FromJson<LevelMetadataDTO>(json);
-            if (metadataDTO == null)
+            LevelMetadata metadata = FileServices.GetMetaDataFile(metadataPath);
+            if (metadata == null)
             {
                 results.SubmitResults(false, "Identity validation failed");
                 results.Errors.Add($"{ver.Name} has corrupted metadata");
                 corruptedCount++;
                 continue;
             }
-
-            LevelMetadata metadata = new LevelMetadata(metadataDTO);
             
             if(!packageIDs.ContainsKey(metadata.ContentID))
                 packageIDs.Add(metadata.ContentID, new List<int>());
@@ -221,18 +217,14 @@ public static class ContentManager
     {
         string cataloguePath = Path.Combine(
             LocalPaths.CataloguePath, $"{context.ContentID}.json");
-        if (File.Exists(cataloguePath))
+        
+        LevelMetadata metadata = FileServices.GetMetaDataFile(cataloguePath);
+        if (metadata != null && 
+            metadata.ContentVersion >= context.latestMetadata.ContentVersion)
         {
-            string installedMetadata = File.ReadAllText(cataloguePath);
-            LevelMetadata metadata = JsonUtility.FromJson<LevelMetadata>(installedMetadata);
-            
-            if (metadata != null && 
-                metadata.ContentVersion >= context.latestMetadata.ContentVersion)
-            {
-                //Existing catalogue entry is newer or equal
-                return;
-            } 
-        }
+            //Existing catalogue entry is newer or equal
+            return;
+        } 
         string metadataJson = JsonConvert.SerializeObject(
             context.latestMetadata, Formatting.Indented);
         File.WriteAllText(cataloguePath, metadataJson);
@@ -249,15 +241,7 @@ public static class ContentManager
         FileInfo[] catalogueEntries = catalogueDirectory.GetFiles("*.json");
         foreach (FileInfo entry in catalogueEntries)
         {
-            string json = File.ReadAllText(entry.FullName);
-
-            LevelMetadataDTO metadataDto = JsonUtility.FromJson<LevelMetadataDTO>(json);
-            if (metadataDto == null)
-            {
-                Debug.LogError($"Cannot read catalogue entry: {entry.FullName}");
-                continue;
-            }
-            catalogue.Add(new(metadataDto));
+            catalogue.Add(FileServices.GetMetaDataFile(entry.FullName));
         }
         
         return catalogue;
@@ -305,22 +289,97 @@ public static class ContentManager
             return null;
         }
         
-        
         string metadataPath = Path.Combine(versionRepo.FullName, "metadata.json");
-        if (!File.Exists(metadataPath))
+        return FileServices.GetMetaDataFile(metadataPath);
+    }
+    #endregion
+
+    #region Management
+
+    public static TaskResults DeleteLevel(LevelMetadata levelData)
+    {
+        TaskResults results = new();
+        string levelID = levelData.ContentID;
+        
+        //Catalogue
+        FileInfo catalogueEntry = new(
+            Path.Combine(LocalPaths.CataloguePath, $"{levelID}.json"));
+        if (!catalogueEntry.Exists)
         {
-            Debug.LogError($"Metadata file not found at {metadataPath}");
-            return null;
-        }
-        string jsonData = File.ReadAllText(metadataPath);
-        LevelMetadataDTO metadataDTO = JsonUtility.FromJson<LevelMetadataDTO>(jsonData);
-        if (metadataDTO == null)
-        {
-            Debug.LogError("Failed to deserialize metadata");
-            return null;
+            results.SubmitResults(false, "Failed to delete level");
+            results.Errors.Add($"Catalogue entry does not exist for: {levelID}");
+            return results;
         }
         
-        return new(metadataDTO);
+        //Content
+        DirectoryInfo contentFolder = new(
+            Path.Combine(LocalPaths.ContentPath, levelID));
+        if (!contentFolder.Exists)
+        {
+            results.SubmitResults(false, "Failed to delete content");
+            results.Errors.Add($"Content folder does not exist for: {levelID}");
+            return results;
+        }
+        
+        //Delete
+        catalogueEntry.Delete();
+        contentFolder.Delete(true);
+        
+        results.SubmitResults(true, "Deleted content successfully");
+        return results;
+    }
+
+    public static TaskResults DeleteVersion(LevelMetadata levelData)
+    {
+        TaskResults results = new();
+        string catalogueEntryPath = Path.Combine(LocalPaths.CataloguePath, $"{levelData.ContentID}.json");
+        LevelMetadata catalogueEntry = FileServices.GetMetaDataFile(catalogueEntryPath);
+        if (catalogueEntry == null)
+        {
+            results.SubmitResults(false, "Failed to delete version");
+            results.Errors.Add($"Catalogue entry does not exist for: {levelData.ContentID}"); 
+            return results;
+        }
+        
+        DirectoryInfo versionFolder = new(
+            Path.Combine(LocalPaths.ContentPath, levelData.ContentID, $"v{levelData.ContentVersion:D3}"));
+        if (!versionFolder.Exists)
+        {
+            results.SubmitResults(false, "Failed to delete version");
+            results.Errors.Add($"Version folder does not exist for: {levelData.ContentID}");
+            return results;
+        }
+
+        if (catalogueEntry.ContentVersion <= levelData.ContentVersion)
+        {
+            //find latest version and recreate the catalogue entry
+            DirectoryInfo[] versionFolders = FileServices.GetVersionFolders(
+                new(Path.Combine(LocalPaths.ContentPath, levelData.ContentID)));
+
+            if (versionFolders.Length <= 1)
+            {
+                results.SubmitResults(false, "Failed to delete version");
+                results.Errors.Add($"Cannot delete versions for level {levelData.ContentID}\n" +
+                                    $"Only one version remains, please delete level instead");
+                return results;
+            }
+            DirectoryInfo secondLatestVersion = versionFolders[1];
+            string secondLatestMetadataPath = Path.Combine(secondLatestVersion.FullName, $"metadata.json");
+            LevelMetadata secondLatestMetadata = FileServices.GetMetaDataFile(secondLatestMetadataPath);
+            if (secondLatestMetadata == null)
+            {
+                results.SubmitResults(false, "Failed to delete version");
+                results.Errors.Add($"Could not find new metadata to replace the catalogue\n" +
+                               $"Second to last version may have corrupted content {secondLatestVersion.FullName}");
+                return results;
+            }
+            FileInfo newCatalogueEntry = new(secondLatestMetadataPath);
+            newCatalogueEntry.CopyTo(catalogueEntryPath, true);
+        }
+        versionFolder.Delete(true);
+        
+        results.SubmitResults(true, "Deleted version successfully");
+        return results;
     }
     #endregion
 }
