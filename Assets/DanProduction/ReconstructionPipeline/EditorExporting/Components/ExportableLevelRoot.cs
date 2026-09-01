@@ -26,9 +26,5 @@ public class ExportableLevelRoot : MonoBehaviour
         results.SubmitResults(true, "Yet to add any rules but working so far!!");
         return results;
     }
-
-    public LevelMetadata GetLevelMetadata()
-    {
-        return new LevelMetadata(authoredMetadata);
-    }
+    
 }

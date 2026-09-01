@@ -101,6 +101,10 @@ public static class LocalExporter
         if(!context.DepositDirectory.Exists) 
             context.DepositDirectory.Create();
         
+        //Resolve export status
+        context.IsOfficial =
+            context.DepositDirectory.FullName == LocalPaths.ShipExport.FullName;
+        
         //setup identifiers
         string idSnippet = context.RootComponent.AuthoredMetadata.LevelId[..10];
         string safeName = FileServices.GetSafeFileName(context.RootComponent.AuthoredMetadata.LevelName);
@@ -201,6 +205,8 @@ public static class LocalExporter
             context.LevelDirectory = 
                 context.DepositDirectory.CreateSubdirectory(folderName);
         }
+        //Final success scenario
+        
         results.SubmitResults(true, "Resolution completed");
         return results;
     }
@@ -250,7 +256,11 @@ public static class LocalExporter
     static void CompileExport(ExportContext context)
     {
         ExportDisplay.StartStage(ExportStage.Compiling);
-        context.Metadata = context.RootComponent.GetLevelMetadata();
+        context.Metadata = new(context.RootComponent.AuthoredMetadata, context.IsOfficial);
+        if (LocalPaths.GetAssetPath(context.FinalDirectory.FullName) != null)
+        {
+            //context.Metadata
+        }
         
         ExportDisplay.UpdateTask(CompilationStage.CompilingThumbnail);
         context.ThumbnailImage = context.ImageResolver.GetImage();

@@ -1,0 +1,29 @@
+:root {
+}
+
+#root {
+    background-color: rgb(98, 147, 127);
+}
+
+.main-text-container {
+    align-items: center;
+    width: 80%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.749);
+    justify-content: flex-end;
+}
+
+.title-label {
+    color: rgb(255, 255, 255);
+    font-size: 60px;
+    -unity-font-style: bold;
+}
+
+.subtitle-label {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+}
+
+.profile-image {
+    position: absolute;
+}

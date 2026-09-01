@@ -9,4 +9,17 @@ public class LevelMetadataDTO
     public string ContentID;
     public int ContentVersion;
     public float RequiredAppVersion;
+
+    public bool Official;
+
+    public LevelMetadataDTO(LevelAuthorMetadata authorableMetadata, bool isOfficial)
+    {
+        ContentID = authorableMetadata.LevelId;
+        LevelName = authorableMetadata.LevelName;
+        LevelDescription = authorableMetadata.LevelDesc;
+        Author = authorableMetadata.Author;
+        ContentVersion = authorableMetadata.ContentVer;
+        RequiredAppVersion = authorableMetadata.RequiredAppVer;
+        Official = isOfficial;
+    }
 }

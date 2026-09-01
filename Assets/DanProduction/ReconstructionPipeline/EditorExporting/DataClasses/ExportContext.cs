@@ -12,6 +12,9 @@ public class ExportContext
     #endregion
     
     #region Generated variables
+    //decisions
+    public bool IsOfficial { get; set; }
+    
     
     //Directories
     public DirectoryInfo LevelDirectory { get; set; }
@@ -21,7 +24,7 @@ public class ExportContext
     public IImageResolver ImageResolver { get; set; }
     
     //Deploy-ready formats
-    public LevelMetadata Metadata { get; set; }
+    public LevelMetadataDTO Metadata { get; set; }
     public byte[] ThumbnailImage { get; set; }
     #endregion
     

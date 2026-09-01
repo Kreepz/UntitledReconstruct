@@ -34,6 +34,7 @@ public class LevelMetadata
         Author = dto.Author;
         ContentVersion = dto.ContentVersion;
         RequiredAppVersion = dto.RequiredAppVersion;
+        Official = dto.Official;
     }
     public void SetContentVersion(int contentVersion)
     {

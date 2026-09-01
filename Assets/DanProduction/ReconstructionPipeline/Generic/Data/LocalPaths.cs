@@ -31,4 +31,10 @@ public static class LocalPaths
         return path.Substring(assetIndex).
             Replace("\\", "/");
     }
+
+    public static bool IsInStreamingAssets(string path)
+    {
+        int results = path.IndexOf("StreamingAssets", StringComparison.Ordinal);
+        return results > 0;
+    }
 }
