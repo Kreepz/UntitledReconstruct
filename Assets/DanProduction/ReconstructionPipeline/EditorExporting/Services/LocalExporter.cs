@@ -257,16 +257,12 @@ public static class LocalExporter
     {
         ExportDisplay.StartStage(ExportStage.Compiling);
         context.Metadata = new(context.RootComponent.AuthoredMetadata, context.IsOfficial);
-        if (LocalPaths.GetAssetPath(context.FinalDirectory.FullName) != null)
-        {
-            //context.Metadata
-        }
         
         ExportDisplay.UpdateTask(CompilationStage.CompilingThumbnail);
         context.ThumbnailImage = context.ImageResolver.GetImage();
         
         ExportDisplay.UpdateTask(CompilationStage.CompilingLevel);
-        //call root to compile level and extract into the portable format
+        context.CompiledLevel = new LevelCollection(context.RootComponent.gameObject);
     }
 
     #endregion
@@ -279,6 +275,9 @@ public static class LocalExporter
         
         ExportDisplay.UpdateTask(DeployStage.DeployingThumbnail);
         DeployThumbnail(context);
+        
+        ExportDisplay.UpdateTask(DeployStage.DeployingLevel);
+        DeployLevel(context);
     }
 
     static void DeployMetadata(ExportContext context)
@@ -295,6 +294,20 @@ public static class LocalExporter
         string thumbnailPath = Path.Combine
             (context.FinalDirectory.FullName, $"thumbnail.png");
         File.WriteAllBytes(thumbnailPath, context.ThumbnailImage);
+    }
+
+    static void DeployLevel(ExportContext context)
+    {
+        //Apply settings for vectors and quaternion
+        JsonSerializerSettings settings = new JsonSerializerSettings();
+        settings.Converters.Add(new Vector3Converter());
+        settings.Converters.Add(new QuaternionConverter());
+        
+        string json = JsonConvert.SerializeObject
+        (context.CompiledLevel, Formatting.Indented,  settings);
+        string levelPath = Path.Combine
+            (context.FinalDirectory.FullName, $"level.json");
+        File.WriteAllText(levelPath, json);
     }
     #endregion
 

@@ -26,6 +26,8 @@ public class ExportContext
     //Deploy-ready formats
     public LevelMetadataDTO Metadata { get; set; }
     public byte[] ThumbnailImage { get; set; }
+
+    public LevelCollection CompiledLevel { get; set; }
     #endregion
     
     

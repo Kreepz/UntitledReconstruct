@@ -7,6 +7,7 @@ using UnityEditor;
 
 public class ExportableLevelRoot : MonoBehaviour
 {
+    [SerializeField] ExtractableLevelRules extractionRules;
     [SerializeField, CreateProperty] LevelAuthorMetadata authoredMetadata;
     public LevelAuthorMetadata AuthoredMetadata => authoredMetadata;
 
@@ -22,9 +23,7 @@ public class ExportableLevelRoot : MonoBehaviour
     
     public TaskResults ValidateHierarchy()
     {
-        TaskResults results = new();
-        results.SubmitResults(true, "Yet to add any rules but working so far!!");
-        return results;
+        return extractionRules.ValidateHierarchy(gameObject);
     }
     
 }

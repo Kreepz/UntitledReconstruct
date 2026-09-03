@@ -4,7 +4,7 @@
     <Style src="project://database/Assets/DanProduction/UI/MainMenu/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=788bbf5770e67034b8c4a7c01efd97ac&amp;type=3#MainMenuStyle"/>
     <Style src="project://database/Assets/DanProduction/UI/MainMenu/LevelBrowser/LevelBrowserStyles.uss?fileID=7433441132597879392&amp;guid=44836ff17a614a74897f2c283b8d5fdb&amp;type=3#LevelBrowserStyles"/>
     <ui:VisualElement name="root" style="flex-grow: 1; align-items: center;">
-        <ui:VisualElement name="start-menu" class="base-page" style="flex-grow: 0; top: auto; flex-direction: column; display: flex;">
+        <ui:VisualElement name="start-menu" class="base-page" style="flex-grow: 0; top: auto; flex-direction: column; display: none;">
             <ui:VisualElement name="top" style="flex-grow: 1; max-height: 25%; min-height: 12%;">
                 <ui:Label text="Untitled Reconstruct" name="title-label" class="main-title game-title" style="border-top-left-radius: 200px; border-top-right-radius: 200px; border-bottom-right-radius: 200px; border-bottom-left-radius: 200px; background-size: 100% 100%; padding-top: 35px; padding-right: 35px; padding-bottom: 35px; padding-left: 35px; margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px; -unity-text-align: upper-center;"/>
             </ui:VisualElement>
@@ -60,7 +60,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="level-preview" class="base-page" style="flex-grow: 1; display: none;">
+        <ui:VisualElement name="level-preview" class="base-page" style="flex-grow: 1; display: flex;">
             <ui:VisualElement name="content-tab" class="menu-content-tab">
                 <ui:VisualElement name="top" style="flex-grow: 1; max-height: 15%; height: 7%; min-height: 10%; flex-direction: row; align-self: flex-start; max-width: none; width: 100%;">
                     <ui:Label text="Level preview" name="tab-header" class="tab-header"/>

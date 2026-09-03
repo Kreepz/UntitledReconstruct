@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: ReconstructableAssets
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: ReconstructableAssets
+  m_GUID: 3822a505979c91347a86eab6e68cfb66
+  m_SerializeEntries:
+  - m_GUID: 015d12f7e8d5485488dfc2f6c7a2a6e8
+    m_Address: Urban/Buildings/SquareBrickBuilding2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 117616d8c4484cd4a9842fa8ff3f9269
+    m_Address: Urban/Roads/RoadTJunction.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d1d1e48e5f49e747a27beca0dd43d03
+    m_Address: Urban/Roads/RoadStraight.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 261e901802cb56b4daf1087c3406989d
+    m_Address: Urban/Buildings/SquareConcreteBuilding.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b867c7f45447f24eb5db762e84915a6
+    m_Address: Urban/Props/DumpsterGreen.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f71575076aff1a43ad8141208e048ff
+    m_Address: Urban/Roads/RoadLongCorner.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 382b668eeaf1a9c4897a6730b0695e31
+    m_Address: Urban/Props/DumpsterRed.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4614c25bcbcd0b94aaacc1e2f54464d7
+    m_Address: Urban/Buildings/LShapeLargeBuilding.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4dc1692bf42266245a35b33d38b5dc99
+    m_Address: Urban/Props/BlueTrashBag.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 568a0f17979b5ec448abba78032d71a8
+    m_Address: Urban/Props/BrownBin.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5bcc566753237fd458b464c7da64d723
+    m_Address: Urban/Props/Bollard.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6199c01c45637cb48aa1e4d12258a003
+    m_Address: Urban/Props/ModernBollard.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64075940181f4a74b95e3c0c4dc233df
+    m_Address: Urban/Roads/RoadCorner.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b6fd9fc21825b04f969d8801971f9c8
+    m_Address: Urban/Props/DumpsterBlue.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f2e64abc747ef240b3f2c0434482543
+    m_Address: Urban/Props/BusStopSeats.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ff956e70b77ea541a70e1510cb65a67
+    m_Address: Urban/Props/TrafficBollard.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d5e65d1b130ca04395d1719880a765f
+    m_Address: Generic/Floors/Grass.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 870e27ff776c27e46ba97ffaae7e4e32
+    m_Address: Urban/Props/BlueBin.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a368714f6d410a4eb3387b486817d8f
+    m_Address: Urban/Buildings/LShapeBuilding.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bc1770fca1432b49a5cbe93620d6927
+    m_Address: Urban/Buildings/LShapeBrickBuilding.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ba2bad7d946cfc4392d4a43348b1869
+    m_Address: Urban/Buildings/SquareConcreteBuilding2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a30f33f952a38d8458cd06c7184a454e
+    m_Address: Urban/Props/BusStop.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad0dcc8620a2ae04cbae064f89693809
+    m_Address: Urban/Props/CylinderCone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae234472cf1d7cb42b7d454fe2f766b4
+    m_Address: Urban/Props/TrafficCone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afa9f294cd99f1c4bb946a24996f00de
+    m_Address: Urban/Buildings/Hangar.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbbb7326ec1a84843bb82d3833240c79
+    m_Address: Urban/Props/RoadBlock.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf5dec1de1f92614480b11c3715b70d3
+    m_Address: Urban/Buildings/SquareBrickBuilding.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc83dfcd23c26ca4e8d722e2bd28c2a1
+    m_Address: Urban/Props/TrashCanOverflowing.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2b4773266a15664b9342f7b6e438eb4
+    m_Address: Urban/Props/TrashBag.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc60f62c60476af4eb97b36745c3f307
+    m_Address: Urban/Props/TrashCan.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f5b9991c3bf1e7a45b235a8d56776d9f, type: 2}
+  m_SchemaSet:
+    m_Schemas: []
