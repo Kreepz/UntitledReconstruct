@@ -12,6 +12,7 @@ public class LevelMetadataDTO
 
     public bool Official;
 
+    public LevelMetadataDTO(){}
     public LevelMetadataDTO(LevelAuthorMetadata authorableMetadata, bool isOfficial)
     {
         ContentID = authorableMetadata.LevelId;

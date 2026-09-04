@@ -33,6 +33,7 @@ public class LevelPreviewController : UiScreenController
     DropdownField _versionSelection;
     
     //Buttons
+    Button _playButton;
     Button _deleteLevelButton;
     Button _deleteVersionButton;
     Button _returnButton;
@@ -52,6 +53,9 @@ public class LevelPreviewController : UiScreenController
         
         _deleteVersionButton = ScreenRoot.Q<Button>("delete-version-button");
         _deleteVersionButton.clicked += OnDeleteVersion;
+
+        _playButton = ScreenRoot.Q<Button>("play-button");
+        _playButton.clicked += OnLevelPlay;
         
         _returnButton = ScreenRoot.Q<Button>("return-button");
         _returnButton.clicked += CloseMenu;
@@ -169,6 +173,12 @@ public class LevelPreviewController : UiScreenController
             _dataModified = true;
             _versionSelection.value = _versionSelection.choices[newIndex];
         }
+    }
+
+    void OnLevelPlay()
+    {
+        if (_levelData == null) return;
+        GameSessionManager.StartLevel(_levelData);
     }
     #endregion
     

@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using UnityEngine;
 
 public static class FileServices
@@ -80,12 +82,37 @@ public static class FileServices
         }
 
         string json = File.ReadAllText(expectedPath);
-        LevelMetadataDTO DTO = JsonUtility.FromJson<LevelMetadataDTO>(json);
+        LevelMetadataDTO DTO = JsonConvert.DeserializeObject<LevelMetadataDTO>(json);
         if (DTO == null)
         {
             Debug.LogError("Failed to deserialise metadata");
             return null;
         }
         return new (DTO);
+    }
+
+    public static LevelCollection GetLevelCollectionFile(string expectedPath)
+    {
+        if (!File.Exists(expectedPath))
+        {
+            Debug.LogError($"Level file not found at {expectedPath}");
+            return null;
+        }
+
+        string json = File.ReadAllText(expectedPath);
+
+        //Apply settings
+        JsonSerializerSettings settings = new();
+        settings.Converters.Add(new Vector3Converter());
+        settings.Converters.Add(new QuaternionConverter());
+        
+        LevelCollection level = JsonConvert.DeserializeObject<LevelCollection>(json, settings);
+        if (level == null)
+        {
+            Debug.LogError("Failed to deserialise level collection");
+            return null;
+        }
+        
+        return level;
     }
 }

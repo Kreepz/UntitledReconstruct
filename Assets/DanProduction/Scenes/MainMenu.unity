@@ -9694,7 +9694,7 @@ GameObject:
   - component: {fileID: 2115346663}
   - component: {fileID: 2115346662}
   m_Layer: 5
-  m_Name: UI Doc root
+  m_Name: MainMenuDocRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

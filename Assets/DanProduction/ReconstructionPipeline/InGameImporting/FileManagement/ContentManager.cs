@@ -234,6 +234,28 @@ public static class ContentManager
 
     #region Reading
 
+    public static LevelCollection GetLevelCollection(LevelMetadata metadata)
+    {
+        DirectoryInfo levelRepo = new(
+            Path.Combine(LocalPaths.ContentPath, metadata.ContentID));
+        if (!levelRepo.Exists)
+        {
+            Debug.LogError($"Cannot find the level files for {metadata.ContentID}");
+            return null;
+        }
+
+        DirectoryInfo versionRepo = new(
+            Path.Combine(levelRepo.FullName, $"v{metadata.ContentVersion:D3}"));
+        if (!versionRepo.Exists)
+        {
+            Debug.LogError($"Requested version: {metadata.ContentVersion} does not exist");
+            return null;
+        }
+
+        string levelPath = Path.Combine(versionRepo.FullName, "level.json");
+        return FileServices.GetLevelCollectionFile(levelPath);
+    }
+    
     public static List<LevelMetadata> GetCatalogue()
     {
         List<LevelMetadata> catalogue = new();

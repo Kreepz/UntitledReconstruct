@@ -5,6 +5,8 @@ public class LevelCollection
 {
     public List<LevelObject> Children { get; set; }
 
+    public LevelCollection(){}
+    
     public LevelCollection(GameObject rootObject)
     {
         Children = new List<LevelObject>();
