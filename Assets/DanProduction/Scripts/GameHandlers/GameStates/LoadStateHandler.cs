@@ -98,7 +98,7 @@ public class LoadStateHandler : MonoBehaviour
     {
         _levelConstructor.StartBehaviourComponents();
         _uiDocument.rootVisualElement.style.display = DisplayStyle.None;
-        GameStateManager.SetState(GameStates.InitialisingLevel);
+        GameStateManager.SetState(GameStates.Running);
     }
     
     void PopulateUI(LevelMetadata level)

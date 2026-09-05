@@ -1,10 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rb;
-    private Transform _playerCamera;
+    [SerializeField] private Transform headPivot;
+    private Camera _playerCamera;
     public PlayerInput playerInput;
     
     [Header("Settings")]
@@ -25,21 +27,36 @@ public class PlayerController : MonoBehaviour
     {
         _rb = gameObject.GetComponent<Rigidbody>();
 
-        if (Camera.main) _playerCamera = Camera.main.transform; //transform.Find("Camera"); 
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        
+        if(Camera.main)
+        {
+            _playerCamera = Camera.main;
+            _playerCamera.transform.SetParent(headPivot, false);
+            _playerCamera.transform.localPosition = Vector3.zero;
+            _playerCamera.transform.localRotation = Quaternion.identity;
+            
+        }
+        GameStateManager.BroadcastPause += ProcessPauseState;
+        //if (Camera.main) _playerCamera = Camera.main.transform; //transform.Find("Camera"); 
+        StartPlayer();
     }
 
+    public void StartPlayer()
+    {
+        EngageCamera(true);
+    }
 
+    private void OnDestroy()
+    {
+        GameStateManager.BroadcastPause -= ProcessPauseState;
+    }
+    
     // Update is called once per frame
     void FixedUpdate()
     {
         //Looking
         //camMovement += lookInput;
         transform.rotation = Quaternion.Euler(0, _camMovement.x * mouseSensitivity, 0);
-        _playerCamera.localRotation = Quaternion.Euler(Mathf.Clamp(-_camMovement.y * mouseSensitivity, -80f, 80f), 0, 0);
+        headPivot.localRotation = Quaternion.Euler(Mathf.Clamp(-_camMovement.y * mouseSensitivity, -80f, 80f), 0, 0);
 
         //Movement
         if (!_inAir)
@@ -51,6 +68,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void EngageCamera(bool toggle)
+    {
+        if (toggle)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+    
+    void ProcessPauseState(bool toggle)
+    {
+        if(!toggle && GameStateManager.CurrentState != GameStates.Running) return;
+        EngageCamera(!toggle);
+    }
+    
     public void OnJump(InputAction.CallbackContext obj)
     {
         //Jumping 
@@ -82,5 +119,20 @@ public class PlayerController : MonoBehaviour
     {
         _camMovement += obj.ReadValue<Vector2>();
         //camMovement.y = Mathf.Clamp(-camMovement.y * mouseSensitivity, -80f, 80f);
+    }
+
+    public void OnPause(InputAction.CallbackContext obj)
+    {
+        if (obj.started)
+        { 
+            if (GameStateManager.CurrentState == GameStates.Running)
+            {
+                GameStateManager.SetState(GameStates.Paused);
+            }
+            else if (GameStateManager.GamePaused)
+            {
+                GameStateManager.SetState(GameStates.Running);
+            }
+        }
     }
 }

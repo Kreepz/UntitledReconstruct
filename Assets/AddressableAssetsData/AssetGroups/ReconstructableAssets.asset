@@ -50,6 +50,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b908ffd666dccf4b8ee304b2ebe8039
+    m_Address: Urban/Behavioural/BusStopSpawn.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4614c25bcbcd0b94aaacc1e2f54464d7
     m_Address: Urban/Buildings/LShapeLargeBuilding.prefab
     m_ReadOnly: 0

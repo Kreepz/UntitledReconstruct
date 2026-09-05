@@ -23,10 +23,14 @@ public static class GameStateManager
     static event Action OnLoadState;
     static event Action OnLoadStateExit;
 
+    static event Action OnReloadState;
+    static event Action OnReloadStateExit;
+
     static event Action OnRunState;
     static event Action OnRunStateExit;
     
     public static bool GamePaused => _currentState == GameStates.Paused;
+    public static event Action<bool> BroadcastPause;
     static event Action OnPauseState;
     static event Action OnPauseStateExit;
     
@@ -37,6 +41,10 @@ public static class GameStateManager
             case GameStates.LoadingLevel:
                 OnLoadState = enterCallback;
                 OnLoadStateExit = exitCallback;
+                break;
+            case GameStates.ReloadingLevel:
+                OnReloadState = enterCallback;
+                OnReloadStateExit = exitCallback;
                 break;
             case GameStates.Running:
                 OnRunState = enterCallback;
@@ -57,6 +65,10 @@ public static class GameStateManager
                 OnLoadState = null;
                 OnLoadStateExit = null;
                 break;
+            case GameStates.ReloadingLevel:
+                OnReloadState = null;
+                OnReloadStateExit = null;
+                break;
             case  GameStates.Running:
                 OnRunState = null;
                 OnRunStateExit = null;
@@ -75,11 +87,15 @@ public static class GameStateManager
             case  GameStates.LoadingLevel:
                 OnLoadStateExit?.Invoke();
                 break;
+            case  GameStates.ReloadingLevel:
+                OnReloadStateExit?.Invoke();
+                break;
             case  GameStates.Running:
                 OnRunStateExit?.Invoke();
                 break;
             case  GameStates.Paused:
                 OnPauseStateExit?.Invoke();
+                BroadcastPause?.Invoke(false);
                 break;
         }
         switch (newState)
@@ -87,11 +103,15 @@ public static class GameStateManager
             case  GameStates.LoadingLevel:
                 OnLoadState?.Invoke();
                 break;
+            case  GameStates.ReloadingLevel:
+                OnReloadState?.Invoke();
+                break;
             case  GameStates.Running:
                 OnRunState?.Invoke();
                 break;
             case  GameStates.Paused:
                 OnPauseState?.Invoke();
+                BroadcastPause?.Invoke(true);
                 break;
         }
     }
