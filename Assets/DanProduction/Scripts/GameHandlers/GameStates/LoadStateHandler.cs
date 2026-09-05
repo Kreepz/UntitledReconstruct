@@ -66,6 +66,7 @@ public class LoadStateHandler : MonoBehaviour
         TaskResults buildResults = await _levelConstructor.ReconstructLevel(level);
         if (buildResults.Success)
         {
+            _levelConstructor.LoadBehaviourComponents();
             _currentAction.text = "";
             _playButton.style.display = DisplayStyle.Flex;
         }
@@ -80,10 +81,10 @@ public class LoadStateHandler : MonoBehaviour
         _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
         _currentAction.text = "Reloading level...";
         
-        var reloadResults = _levelConstructor.ReloadLevel();
-        await reloadResults;
-        if (reloadResults.IsCompletedSuccessfully)
+        TaskResults reloadResults =  await _levelConstructor.ReloadLevel();
+        if (reloadResults.Success)
         {
+            _levelConstructor.LoadBehaviourComponents();
             _currentAction.text = "";
             _playButton.style.display = DisplayStyle.Flex;
         }
@@ -95,6 +96,7 @@ public class LoadStateHandler : MonoBehaviour
 
     void StartGame()
     {
+        _levelConstructor.StartBehaviourComponents();
         _uiDocument.rootVisualElement.style.display = DisplayStyle.None;
         GameStateManager.SetState(GameStates.InitialisingLevel);
     }

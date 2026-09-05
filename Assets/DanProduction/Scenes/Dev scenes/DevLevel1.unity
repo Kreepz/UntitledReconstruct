@@ -637,6 +637,52 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 206290337}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &226124501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226124503}
+  - component: {fileID: 226124502}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &226124502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226124501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8df6e727b60fc64b99c7fcf96a59381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SignTest
+  signContent:
+    stringValue: Hello world
+--- !u!4 &226124503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226124501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.51965, y: -0, z: 3.10443}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &246648575
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,11 +2062,11 @@ MonoBehaviour:
   extractionRules: {fileID: 11400000, guid: 2a9943f9c766fb64fb5004678853e00c, type: 2}
   authoredMetadata:
     LevelName: 8 Road
-    LevelDesc: The epic city
+    LevelDesc: "The epic city \n\nTHE BUS STOP TALKS NOW!!"
     Author: 0
     ThumbnailPath: C:/Users/drolo/Downloads/ezgif.com-jpg-to-png-converter.png
     Thumbnail: {fileID: 0}
-    contentVer: 1
+    contentVer: 2
     RequiredAppVer: 1
     LevelId: 9b204b7f7f154b96800ee3e63505b6bc
 --- !u!1001 &667755995
@@ -4933,6 +4979,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BusStop
       objectReference: {fileID: 0}
+    - target: {fileID: 9118450360429559684, guid: a30f33f952a38d8458cd06c7184a454e,
+        type: 3}
+      propertyPath: signContent.stringValue
+      value: i am da bustop, ho ho ho
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5462,3 +5513,4 @@ SceneRoots:
   - {fileID: 938979529}
   - {fileID: 597137994}
   - {fileID: 246648579}
+  - {fileID: 226124503}

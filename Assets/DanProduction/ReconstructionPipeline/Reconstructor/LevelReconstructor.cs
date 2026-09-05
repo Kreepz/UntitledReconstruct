@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -9,6 +11,8 @@ public class LevelReconstructor
     LevelMetadata levelData;
     LevelCollection levelCollection;
 
+    List<ReloadableObject> behaviouralCollection = new();
+    
     public async Task<TaskResults> ReconstructLevel(LevelMetadata newLevelData)
     {
         TaskResults results = new();
@@ -34,11 +38,18 @@ public class LevelReconstructor
         return results;
     }
 
-    public async Task ReloadLevel()
+    public Task<TaskResults> ReloadLevel()
     {
-        if (levelCollection == null)
+        TaskResults results = new();
+        if (behaviouralCollection is { Count: > 0 })
         {
+            foreach (ReloadableObject obj in behaviouralCollection)
+            {
+                obj.ResetTransform();
+            }
         }
+        results.SubmitResults(true, "Successfully reloaded level");
+        return Task.FromResult(results);
     }
     
     async Task<GameObject> ConstructLevelObject(LevelObject levelObject, Transform parent = null)
@@ -59,7 +70,40 @@ public class LevelReconstructor
         instance.transform.localScale = levelObject.Scale;
         
         //register possible context
-        
+        if (levelObject.BehaviourContexts is { Count: > 0 })
+        {
+            ReconstructableBehaviour[] behaviours = 
+                instance.GetComponents<ReconstructableBehaviour>();
+
+            foreach (BehaviourContext ctx in levelObject.BehaviourContexts)
+            {
+                ReconstructableBehaviour match = 
+                    Array.Find(behaviours, b => 
+                        b.BehaviourID == ctx.BehaviourID);
+
+                if (match)
+                    match.ImportContext(ctx);
+            }
+
+            ReloadableObject obj = new(instance)
+            {
+                Position = levelObject.Position,
+                Rotation = levelObject.Rotation,
+                Scale = levelObject.Scale,
+            };
+            behaviouralCollection.Add(obj);
+        }
+        else if (instance.GetComponent<ReconstructableBehaviour>())
+        {
+            ReloadableObject obj = new(instance)
+            {
+                Position = levelObject.Position,
+                Rotation = levelObject.Rotation,
+                Scale = levelObject.Scale,
+            };
+            
+            behaviouralCollection.Add(obj);
+        }
         
         //Recursively reconstruct children
         if (levelObject.Children is { Count: > 0 })
@@ -80,7 +124,21 @@ public class LevelReconstructor
         
         return await handle.Task;
     }
-    
-    
 
+
+    public void LoadBehaviourComponents()
+    {
+        foreach (ReloadableObject obj in behaviouralCollection)
+        {
+            obj.Reload();
+        }
+    }
+    
+    public void StartBehaviourComponents()
+    {
+        foreach (ReloadableObject obj in behaviouralCollection)
+        {
+            obj.Restart();
+        }
+    }
 }

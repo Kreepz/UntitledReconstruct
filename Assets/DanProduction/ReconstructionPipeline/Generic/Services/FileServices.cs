@@ -105,6 +105,7 @@ public static class FileServices
         JsonSerializerSettings settings = new();
         settings.Converters.Add(new Vector3Converter());
         settings.Converters.Add(new QuaternionConverter());
+        settings.Converters.Add(new ReconstructableParameterConverter());
         
         LevelCollection level = JsonConvert.DeserializeObject<LevelCollection>(json, settings);
         if (level == null)

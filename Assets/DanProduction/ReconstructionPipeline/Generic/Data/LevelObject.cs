@@ -10,7 +10,7 @@ public class LevelObject
     public Vector3 Scale { get; set; }
     
     public List<LevelObject> Children { get; set; }
-    //Monobehaviour context
+    public List<BehaviourContext> BehaviourContexts { get; set; } = new();
 }
 
 public enum LevelObjectType

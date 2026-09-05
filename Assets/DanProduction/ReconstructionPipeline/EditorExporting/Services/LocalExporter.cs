@@ -302,6 +302,7 @@ public static class LocalExporter
         JsonSerializerSettings settings = new JsonSerializerSettings();
         settings.Converters.Add(new Vector3Converter());
         settings.Converters.Add(new QuaternionConverter());
+        settings.Converters.Add(new ReconstructableParameterConverter());
         
         string json = JsonConvert.SerializeObject
         (context.CompiledLevel, Formatting.Indented,  settings);

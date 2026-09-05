@@ -63,6 +63,19 @@ public static class GameObjectConverter
         {
             convertedObject.Children = immediateChildren;
         }
+
+        if (objectType == LevelObjectType.ExtractableObject)
+        {
+            ReconstructableBehaviour[] behaviours = convertingObject.GetComponents<ReconstructableBehaviour>();
+
+            foreach (ReconstructableBehaviour behaviour in behaviours)
+            {
+                BehaviourContext ctx = behaviour.CompileContext();
+                
+                if (ctx != null)
+                    convertedObject.BehaviourContexts.Add(ctx);
+            }
+        }
         
         return convertedObject;
     }
