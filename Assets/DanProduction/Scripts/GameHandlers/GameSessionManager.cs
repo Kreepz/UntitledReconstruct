@@ -15,5 +15,6 @@ public static class GameSessionManager
     {
         CurrentLevel = null;
         SceneManager.LoadScene("MainMenu");
+        GameStateManager.SetState(GameStates.Inactive);
     }
 }
