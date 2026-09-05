@@ -270,6 +270,93 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 847fb83c11c9fa34096ad9040493b728, type: 3}
+--- !u!1 &13564164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13564167}
+  - component: {fileID: 13564166}
+  - component: {fileID: 13564165}
+  m_Layer: 0
+  m_Name: BootStrapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &13564165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865704c48f71155448d84e5d759b95b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApplicationInitialiser
+--- !u!114 &13564166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea5d5a490e7b5429ccdc8ec8fd3364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bootstrapper
+  onAwake:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 13564165}
+        m_TargetAssemblyTypeName: ApplicationInitialiser, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 13564165}
+        m_TargetAssemblyTypeName: ApplicationInitialiser, Assembly-CSharp
+        m_MethodName: DelayedInit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &13564167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13564164}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &18942552
 GameObject:
   m_ObjectHideFlags: 0
@@ -7094,6 +7181,52 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1478551799}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1484256775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1484256776}
+  - component: {fileID: 1484256777}
+  m_Layer: 5
+  m_Name: TaskReportController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1484256776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484256775}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2115346663}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1484256777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484256775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737b594eb39f4554b907c484ac0ec897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskReportController
+  successColour: {r: 0, g: 1, b: 0, a: 1}
+  failureColour: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &1491634376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8489a750e1d64ee4fb1b9818b55cd69a,
@@ -7738,6 +7871,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182088a7b38f31f4b9ae5180a490e488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelBrowserController
+  previewController: {fileID: 2107329243}
+  reportController: {fileID: 1484256777}
+  paginator:
+    cardPerRow: 5
+    rowPerPage: 6
+  rowTemplate: {fileID: 9197481963319205126, guid: 746987a2474f17e449471c81a2d26ad4,
+    type: 3}
 --- !u!4 &1697025502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0635a80fcdf3cab45b9f3442d068cd7c,
@@ -9489,6 +9629,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1425545706}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2107329241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107329242}
+  - component: {fileID: 2107329243}
+  m_Layer: 5
+  m_Name: PreviewController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107329242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107329241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2115346663}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2107329243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107329241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde3422419d75a94e9d4dd1e493c6b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelPreviewController
+  danoneAuthorPage: {fileID: 9197481963319205126, guid: b3aeea1e36d252240acbced85440042c,
+    type: 3}
+  katsyAuthorPage: {fileID: 9197481963319205126, guid: 7a4ef6ec349cc7045a3499a0ed2edcd8,
+    type: 3}
 --- !u!4 &2107818791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 847fb83c11c9fa34096ad9040493b728,
@@ -9506,7 +9694,7 @@ GameObject:
   - component: {fileID: 2115346663}
   - component: {fileID: 2115346662}
   m_Layer: 5
-  m_Name: UI Doc root
+  m_Name: MainMenuDocRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9551,6 +9739,8 @@ Transform:
   m_Children:
   - {fileID: 18942553}
   - {fileID: 1690771404}
+  - {fileID: 2107329242}
+  - {fileID: 1484256776}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2122714023
@@ -10033,3 +10223,4 @@ SceneRoots:
   - {fileID: 2115346663}
   - {fileID: 2140163417}
   - {fileID: 1167964703}
+  - {fileID: 13564167}

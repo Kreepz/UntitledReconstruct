@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 0c49b4c6b81a07148965d79e88bafabc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - compilerWindow: {fileID: 9197481963319205126, guid: 5e365ebfb5a62a546adef0d31ace4a58,
+      type: 3}
+  - compilerStyle: {fileID: 7433441132597879392, guid: 919c03abd4f595b49b8d34823aecb0bc,
+      type: 3}
+  - defaultThumbnail: {fileID: 2800000, guid: b8320e20fe7db384aaf7aac564b71472, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

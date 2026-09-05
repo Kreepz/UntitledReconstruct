@@ -1,0 +1,86 @@
+:root {
+}
+
+#root {
+    background-color: rgb(98, 147, 127);
+}
+
+.main-text-container {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.749);
+    justify-content: flex-end;
+    width: 1600px;
+    height: 225px;
+}
+
+.title-label {
+    color: rgb(255, 255, 255);
+    font-size: 60px;
+    -unity-font-style: bold;
+}
+
+.subtitle-label {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+}
+
+.profile-image {
+    position: absolute;
+    bottom: 175px;
+}
+
+.exit-button {
+    font-size: 50px;
+    background-color: rgb(99, 27, 27);
+    transition-duration: 0.1s;
+    color: rgb(255, 255, 255);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.play-button {
+    background-color: rgb(107, 204, 74);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    align-self: center;
+    font-size: 60px;
+    width: 300px;
+}
+
+.button {
+}
+
+.button:hover {
+    scale: 1.1 1.1 1.1;
+    rotate: 1deg;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    transition-duration: 0.25s;
+}
+
+.button:active {
+    scale: 0.9 0.9 0.9;
+    rotate: 0 0 0 0;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    transition-duration: 0.1s;
+}
+
+.current-action-label {
+    align-self: center;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+}

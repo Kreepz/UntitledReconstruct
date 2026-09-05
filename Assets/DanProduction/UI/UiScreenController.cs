@@ -24,15 +24,16 @@ public abstract class UiScreenController : MonoBehaviour
         }
     }
 
-    protected void RevealScreen()
+    public void RevealScreen()
     {
         ScreenRoot.style.display = DisplayStyle.Flex;
     }
-    protected void HideScreen()
+    public void HideScreen()
     {
         ScreenRoot.style.display = DisplayStyle.None;
     }
     
     public abstract void OpenMenu();
+    public abstract void OpenMenuWithContext<T>(T context);
     public abstract void CloseMenu();
 }

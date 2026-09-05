@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="level-card" src="project://database/Assets/DanProduction/UI/level%20browsing/BrowserCards/level-card.uxml?fileID=9197481963319205126&amp;guid=bf24c059cfc2f4d4bb24745df0dac412&amp;type=3#level-card"/>
+    <Style src="project://database/Assets/DanProduction/UI/level%20browsing/LevelBrowserStyles.uss?fileID=7433441132597879392&amp;guid=44836ff17a614a74897f2c283b8d5fdb&amp;type=3#LevelBrowserStyles"/>
+    <ContentRow name="row-container" class="level-content-row">
+        <ui:Instance template="level-card" name="card-1"/>
+        <ui:Instance template="level-card" name="card-2"/>
+        <ui:Instance template="level-card" name="card-3"/>
+        <ui:Instance template="level-card" name="card-4"/>
+        <ui:Instance template="level-card" name="card-5" style="visibility: visible;"/>
+    </ContentRow>
+</ui:UXML>

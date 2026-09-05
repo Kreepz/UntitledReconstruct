@@ -1,0 +1,67 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/DanProduction/ReconstructionPipeline/EditorExporting/Editor/ExporterUI/CompilerMenuStyle.uss?fileID=7433441132597879392&amp;guid=919c03abd4f595b49b8d34823aecb0bc&amp;type=3#CompilerMenuStyle"/>
+    <ui:VisualElement name="root" data-source-type="LevelAuthorMetadata, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:VisualElement name="compiler-window" style="flex-grow: 1; background-color: rgb(56, 56, 56); position: absolute; left: auto; width: 100%; height: 100%;">
+            <ui:VisualElement name="top-region" style="flex-grow: 1; flex-direction: row; justify-content: center; max-height: 15%; min-height: 15%;">
+                <ui:Label text="Export preview" name="tab-header" class="tab-header menu-header"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="middle-region" style="flex-grow: 1; justify-content: space-around; max-height: 70%;">
+                <ui:VisualElement name="top-region" style="flex-grow: 1; flex-direction: row; height: auto;">
+                    <ui:VisualElement name="left-region" style="flex-grow: 1; max-width: 250px; min-width: 100px; max-height: none; align-items: center;">
+                        <ui:Image name="level-thumbnail" source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" class="content-thumbnail"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="right-region" style="flex-grow: 1; justify-content: center;">
+                        <ui:TextField label="Name" placeholder-text="Enter a name" name="level-name-field" multiline="false" value="" max-length="35">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="LevelName" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:TextField>
+                        <ui:TextField label="Description" placeholder-text="Enter a description" name="level-description-field" value="" multiline="true" vertical-scroller-visibility="Auto" max-length="300" style="height: 100px; white-space: normal; flex-wrap: wrap; align-items: stretch; align-self: auto;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="LevelDesc" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:TextField>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="bottom-region" style="flex-grow: 1; max-height: none; min-height: 35%; justify-content: space-around;">
+                    <ui:VisualElement name="thumbnail-container" style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+                        <ui:Label text="Image - " name="thumbnail-label" class="content-label"/>
+                        <ui:Button text="None" name="thumbnail-selection-button" class="content-display button" style="max-width: 85%; text-overflow: ellipsis; overflow: hidden;"/>
+                    </ui:VisualElement>
+                    <uie:ObjectField name="thumbnail-field" data-source-path="Thumbnail" label="Thumbnail" enabled="true" type="UnityEngine.Texture2D, UnityEngine.CoreModule" value="" allow-scene-objects="false" style="min-width: 10px; min-height: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); color: rgb(0, 0, 0); display: none;"/>
+                    <ui:EnumField label="Author" name="author-field" type="Authors, Assembly-CSharp" value="">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="Author" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:VisualElement name="content-version-field" style="flex-grow: 0; flex-direction: row; justify-content: flex-start; align-items: center; align-self: flex-start; flex-shrink: 0; align-content: center;">
+                        <ui:Toggle label="Automatic content versioning" name="version-automation-field" value="false" toggle-on-label-click="false"/>
+                        <ui:IntegerField label="Version" value="1" name="manual-version-field" enabled="true" readonly="false" hide-placeholder-on-focus="false">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="contentVer" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:IntegerField>
+                    </ui:VisualElement>
+                    <ui:FloatField label="Required Application Version" value="1" name="required-version-field" placeholder-text="Enter a version" password="false" max-length="100" style="height: 19px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="RequiredAppVer" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:VisualElement name="level-id-container" style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+                        <ui:Label text="ID -" name="id-label" class="content-label" style="-unity-text-align: middle-center; padding-left: 5px;"/>
+                        <ui:Label text="cd26ccf675d64521884f1693c62ed303" name="id-content" class="content-display">
+                            <Bindings>
+                                <ui:DataBinding property="text" data-source-path="LevelId" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:Label>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="bottom-region" style="flex-grow: 1; flex-direction: row; max-height: 15%; justify-content: space-evenly; align-items: center; min-height: 15%;">
+                <ui:Button text="Export" name="export-button" class="main-function-button"/>
+                <ui:Button text="Ship" name="ship-button" class="main-function-button"/>
+                <ui:Button text="Export &amp; Ship" name="export-ship-button" class="main-function-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

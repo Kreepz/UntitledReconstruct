@@ -1,0 +1,35 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/DanProduction/UI/In-Game/Pause/PauseMenuStyles.uss?fileID=7433441132597879392&amp;guid=f6876331c0cd8de488782f50e7077074&amp;type=3#PauseMenuStyles"/>
+    <ui:VisualElement name="root" style="flex-grow: 1; justify-content: center;">
+        <ui:VisualElement name="pause-panel" class="main-panel" style="background-color: rgba(0, 0, 0, 0.749); flex-direction: row; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+            <ui:VisualElement name="left-region" style="align-self: stretch; width: 50%;">
+                <ui:VisualElement name="top-region" style="height: 33%;">
+                    <ui:VisualElement name="title-section" style="height: 25%; align-items: flex-start;">
+                        <ui:Label text="Game paused" name="title-text" class="panel-title"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="middle-region" style="height: 34%; justify-content: center;">
+                    <ui:VisualElement name="action-section" style="width: 50%; flex-grow: 1; justify-content: space-evenly;">
+                        <ui:Button text="Resume" name="resume-button" class="action-buttons"/>
+                        <ui:Button text="Restart level" name="restart-level-button" class="action-buttons"/>
+                        <ui:Button text="Main Menu" name="main-menu-button" class="action-buttons"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="bottom-region" style="height: 33%;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="right-region" style="align-self: stretch; width: 50%; justify-content: center;">
+                <ui:VisualElement name="level-panel" class="content-panel" style="height: 80%; align-self: stretch; flex-direction: row;">
+                    <ui:VisualElement name="right-section" style="flex-grow: 0; width: 50%;">
+                        <ui:Label text="My awesome level" name="level-title" class="content-title"/>
+                        <ui:Label text="lorem ipsum dolor sit amet consectetur adipiscing elit dignissimos elit deserunt culpa rerum laborum nulla incididunt ipsum sunt occaecat est quo excepteur cum occaecat aute animi est praesentium magna facere minus sint consectetur fugiat laborum sed officia ullamco sunt ea qui in culpa consequat culpa excepteur aute est in minim" name="level-desc" class="content-description"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="left-section" style="flex-grow: 1; justify-content: flex-start;">
+                        <ui:Image source="project://database/Assets/DanProduction/UI/images/1-1level-thumbnail.png?fileID=2800000&amp;guid=b8320e20fe7db384aaf7aac564b71472&amp;type=3#1-1level-thumbnail" name="level-thumbnail" class="content-thumbnail"/>
+                        <ui:Label text="By danone" name="level-author" class="content-metadata"/>
+                        <ui:Label text="Version - 1" name="level-version" class="content-metadata"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -83,3 +83,6 @@ Assets/Plugins/Android/Firebase
 Assets/Plugins/iOS/Firebase
 Assets/ExternalDependencyManager
 Assets/PlayServicesResolver
+
+# Models
+Assets/Outsourced assets

@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Interactable
-  - Collectable
-  - Steppable
+  - ExtractableObject
+  - GroupingNode
   layers:
   - Default
   - TransparentFX

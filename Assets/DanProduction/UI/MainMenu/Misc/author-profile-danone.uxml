@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/DanProduction/UI/MainMenu/Misc/author-profile-style.uss?fileID=7433441132597879392&amp;guid=840e7c308116643468a88c483a571745&amp;type=3#author-profile-style"/>
+    <ui:VisualElement name="root">
+        <ui:VisualElement name="author-profile" style="flex-grow: 1;">
+            <ui:VisualElement name="info-container" class="main-info-panel" style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement name="profile-page">
+                    <ui:Label text="danone" name="username" class="author-title" style="align-self: flex-start;"/>
+                    <ui:Image name="profile-image" source="project://database/Assets/DanProduction/UI/images/HJxgkLJWsAEBp1I-ezgif.com-crop.jpg?fileID=2800000&amp;guid=63de55317e5276e46880572fa27d30e8&amp;type=3#HJxgkLJWsAEBp1I-ezgif.com-crop" class="profile-image"/>
+                </ui:VisualElement>
+                <ui:Label text="Hi, I&apos;m Daniel!&#10;&#10;I&apos;m the creator of the tool and the main &#10;developer of the project!" name="about-me" class="author-description" style="flex-wrap: wrap; white-space: normal; flex-grow: 1;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="sub-info" class="sub-info-panel">
+                <ui:Label text="Github @4yala" name="template-text"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
