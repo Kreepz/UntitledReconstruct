@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CreateAssetMenu(fileName = "SimpleLevelRules", menuName = "ExtractableLevelRules/SimpleLevel")]
 public class SimpleLevelRules : ExtractableLevelRules
 {
@@ -37,3 +38,4 @@ public class SimpleLevelRules : ExtractableLevelRules
         return results;
     }
 }
+#endif

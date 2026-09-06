@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.PlayerLoop;
 
+#if UNITY_EDITOR
 public class ExportDisplay
 {
     string _currentTitle = "";
@@ -155,7 +156,7 @@ public class ExportDisplay
             CloseProgressionBar();
             return;
         }
-        EditorUtility.DisplayProgressBar(_currentTitle, _currentInfo, _currentProgress);
+        EditorUtility.DisplayProgressBar(_currentTitle, _currentInfo, _currentProgress);  
     }
 
     public void CloseProgressionBar()
@@ -181,3 +182,5 @@ public class ExportDisplay
         _currentProgress = 0;
     }
 }
+
+#endif

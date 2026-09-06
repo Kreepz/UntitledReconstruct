@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ReconstructableAssets
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: ReconstructableAssets
-  m_GUID: 3822a505979c91347a86eab6e68cfb66
+  m_GUID: cfb6e89e492409e47a7414ba7327a770
   m_SerializeEntries:
   - m_GUID: 015d12f7e8d5485488dfc2f6c7a2a6e8
     m_Address: Urban/Buildings/SquareBrickBuilding2.prefab
@@ -120,6 +120,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bf87119581e14b4e9ad6f7b7ee2233a
+    m_Address: SciFi/Props/BunkBedGrey.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ba2bad7d946cfc4392d4a43348b1869
     m_Address: Urban/Buildings/SquareConcreteBuilding2.prefab
     m_ReadOnly: 0
@@ -173,4 +178,6 @@ MonoBehaviour:
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f5b9991c3bf1e7a45b235a8d56776d9f, type: 2}
   m_SchemaSet:
-    m_Schemas: []
+    m_Schemas:
+    - {fileID: 11400000, guid: f667a197992cefe42a12d3c45433205f, type: 2}
+    - {fileID: 11400000, guid: 2c2bc283ae067934184a008aff1756ce, type: 2}

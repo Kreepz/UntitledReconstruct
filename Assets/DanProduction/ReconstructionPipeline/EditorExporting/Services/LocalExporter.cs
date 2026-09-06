@@ -10,6 +10,8 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
+#if UNITY_EDITOR
+
 public static class LocalExporter
 {
     static readonly ExportDisplay ExportDisplay = new();
@@ -346,3 +348,4 @@ public static class LocalExporter
     }
     #endregion
 }
+#endif

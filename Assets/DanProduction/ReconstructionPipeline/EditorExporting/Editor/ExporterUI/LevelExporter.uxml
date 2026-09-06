@@ -60,7 +60,7 @@
             <ui:VisualElement name="bottom-region" style="flex-grow: 1; flex-direction: row; max-height: 15%; justify-content: space-evenly; align-items: center; min-height: 15%;">
                 <ui:Button text="Export" name="export-button" class="main-function-button"/>
                 <ui:Button text="Ship" name="ship-button" class="main-function-button"/>
-                <ui:Button text="Export &amp; Ship" name="export-ship-button" class="main-function-button"/>
+                <ui:Button text="Export &amp; Ship" name="export-ship-button" class="main-function-button" style="display: none;"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

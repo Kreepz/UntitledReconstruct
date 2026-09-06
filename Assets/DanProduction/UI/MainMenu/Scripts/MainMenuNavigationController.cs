@@ -79,6 +79,10 @@ public class MainMenuNavigationController : UiScreenController
         
         //settings menu nav binding
         _settingsMenu.Q<Button>("return-button").clicked += () => ChangeMenuScreen(MainMenuStates.StartMenu);
+        
+        
+        //Application close handling
+        _startMenu.Q<Button>("quit-button").clicked += Application.Quit;
     }
 
     void ChangeMenuScreen(MainMenuStates newScreen)

@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (GameStateManager.GamePaused) return;
         //Looking
         //camMovement += lookInput;
         transform.rotation = Quaternion.Euler(0, _camMovement.x * mouseSensitivity, 0);
@@ -90,6 +91,7 @@ public class PlayerController : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext obj)
     {
+        if (GameStateManager.GamePaused) return;
         //Jumping 
         if (Physics.Raycast(transform.position, Vector3.down, 1.1f))
         {
@@ -111,12 +113,20 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        if (GameStateManager.GamePaused) return;
         _moveInput = obj.ReadValue<Vector2>();
         //Raycast and see what u interacted with if something then fire the objects interact function
     }
 
     public void OnCameraMove(InputAction.CallbackContext obj)
     {
+        if (obj.canceled)
+        {
+            _camMovement = Vector2.zero;
+            return;
+        }
+        
+        if (GameStateManager.GamePaused) return;
         _camMovement += obj.ReadValue<Vector2>();
         //camMovement.y = Mathf.Clamp(-camMovement.y * mouseSensitivity, -80f, 80f);
     }

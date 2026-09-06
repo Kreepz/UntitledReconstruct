@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
+#endif
+
 using UnityEngine;
 
 public static class GameObjectConverter
@@ -23,8 +27,11 @@ public static class GameObjectConverter
         string assetKey;
         if (objectType is LevelObjectType.ExtractableObject)
         {
-            string foundKey = GetAddressableKey(convertingObject);
-            if (foundKey == null)
+            string foundKey = null;
+#if UNITY_EDITOR
+            foundKey = GetAddressableKey(convertingObject);   
+#endif
+            if (string.IsNullOrEmpty(foundKey))
             {
                 Debug.LogError("This object is not inside the registry");
                 return null;
@@ -80,6 +87,7 @@ public static class GameObjectConverter
         return convertedObject;
     }
 
+#if UNITY_EDITOR
     static string GetAddressableKey(GameObject targetObject)
     {
         GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(targetObject);
@@ -100,5 +108,7 @@ public static class GameObjectConverter
             return null;
         
         return entry.address;
-    }
+    } 
+#endif
+
 }
