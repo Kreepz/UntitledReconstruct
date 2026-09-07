@@ -60,8 +60,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c75bf9a14e73a34a9ab042ce99c8134
+    m_Address: Generic/BehaviouralTests/SignTest.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4dc1692bf42266245a35b33d38b5dc99
     m_Address: Urban/Props/BlueTrashBag.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f47a367435a47343860f99904685b80
+    m_Address: Generic/BehaviouralTests/PlayerLauncher.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

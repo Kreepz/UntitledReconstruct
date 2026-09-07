@@ -24,8 +24,6 @@ public class ApplicationInitialiser : MonoBehaviour
     {
         if (_initialised) return;
         
-        
-        
         _initialised = true;
     }
 }

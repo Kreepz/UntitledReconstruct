@@ -1323,6 +1323,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 181696334}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &192958525
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1639609144}
+    m_Modifications:
+    - target: {fileID: 6897984839109592212, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: signContent.stringValue
+      value: O BLOCK
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.254547
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.484819
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989597813827235564, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+        type: 3}
+      propertyPath: m_Name
+      value: SignTest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c75bf9a14e73a34a9ab042ce99c8134, type: 3}
+--- !u!4 &192958526 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7725001700321847846, guid: 4c75bf9a14e73a34a9ab042ce99c8134,
+    type: 3}
+  m_PrefabInstance: {fileID: 192958525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &201594434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8607,11 +8686,12 @@ MonoBehaviour:
   extractionRules: {fileID: 11400000, guid: 2a9943f9c766fb64fb5004678853e00c, type: 2}
   authoredMetadata:
     LevelName: O block
-    LevelDesc: "A Grass Park surrounded with buildings \n\nNow has player spawning"
+    LevelDesc: "A Grass Park surrounded with buildings \n\nNow has player spawning\n\nNow
+      has a cool sign"
     Author: 1
-    ThumbnailPath: C:/Users/zacha/Downloads/OBlock.png
+    ThumbnailPath: C:/Users/drolo/Downloads/OBlock.png
     Thumbnail: {fileID: 0}
-    contentVer: 2
+    contentVer: 1
     RequiredAppVer: 0
     LevelId: 87d512ed77b544549859f6a1ac0c1243
 --- !u!4 &1639609144
@@ -8627,6 +8707,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 192958526}
   - {fileID: 135300876}
   - {fileID: 1503177715}
   - {fileID: 120050477}

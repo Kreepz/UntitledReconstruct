@@ -54,21 +54,27 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (GameStateManager.GamePaused) return;
+        CheckGrounded();
         //Looking
         //camMovement += lookInput;
         transform.rotation = Quaternion.Euler(0, _camMovement.x * mouseSensitivity, 0);
         headPivot.localRotation = Quaternion.Euler(Mathf.Clamp(-_camMovement.y * mouseSensitivity, -80f, 80f), 0, 0);
 
-        //Movement
-        if (!_inAir)
-        {
-            Vector3 targetDirection = transform.right * _moveInput.x + transform.forward * _moveInput.y;
-            Vector3 velocity = targetDirection * moveSpeed;
-            velocity.y = _rb.linearVelocity.y;
-            _rb.linearVelocity = velocity;
-        }
+        
+        Vector3 targetDirection = transform.right * _moveInput.x + transform.forward * _moveInput.y;
+        Vector3 velocity = targetDirection * moveSpeed;
+        velocity.y = _rb.linearVelocity.y;
+        _rb.linearVelocity = velocity;
     }
 
+    void CheckGrounded()
+    {
+        _inAir = !Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            1.1f
+        ); 
+    }
     void EngageCamera(bool toggle)
     {
         if (toggle)
@@ -80,6 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            _camMovement = Vector2.zero;
         }
     }
     
@@ -92,10 +99,15 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext obj)
     {
         if (GameStateManager.GamePaused) return;
+        if (!_inAir)
+        {
+            _rb.linearVelocity += Vector3.up * jumpHeight ;
+        }
+        /*
         //Jumping 
         if (Physics.Raycast(transform.position, Vector3.down, 1.1f))
         {
-            _rb.linearVelocity += Vector3.up * jumpHeight ;
+            
             //Debug.Log("Jumped");
             Debug.DrawRay(transform.position, Vector3.down * 1.5f, Color.green, 5, true);
         }
@@ -103,6 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.DrawRay(transform.position, Vector3.down * 1.5f, Color.red, 5, true);
         }
+        */
     }
 
     public void OnMove(InputAction.CallbackContext obj)

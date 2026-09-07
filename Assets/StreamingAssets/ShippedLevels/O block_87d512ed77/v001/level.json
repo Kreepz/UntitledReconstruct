@@ -1,0 +1,2863 @@
+{
+  "Children": [
+    {
+      "AssetKey": "Generic/BehaviouralTests/SignTest.prefab",
+      "Position": {
+        "x": -1.254547,
+        "y": 1.5,
+        "z": 13.4848194
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.7071068,
+        "z": 0.0,
+        "w": 0.7071068
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": null,
+      "BehaviourContexts": [
+        {
+          "BehaviourID": "Sign",
+          "Parameters": [
+            {
+              "ID": "SignContent",
+              "Type": "String",
+              "Value": "O BLOCK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "AssetKey": "Urban/Behavioural/BusStopSpawn.prefab",
+      "Position": {
+        "x": -1.15636,
+        "y": 0.0,
+        "z": -2.3806
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": -0.7071068,
+        "z": 0.0,
+        "w": 0.7071068
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": null,
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 1.84364,
+        "y": 0.0,
+        "z": 6.6194
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Buildings/SquareBrickBuilding.prefab",
+          "Position": {
+            "x": -27.5000057,
+            "y": 0.160001934,
+            "z": -9.499996
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/SquareBrickBuilding.prefab",
+          "Position": {
+            "x": 14.5599985,
+            "y": 0.160001755,
+            "z": -26.5
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.707106769,
+            "z": 0.0,
+            "w": 0.7071068
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/SquareBrickBuilding.prefab",
+          "Position": {
+            "x": -2.25000572,
+            "y": 0.160001755,
+            "z": 22.5000038
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.707516,
+            "z": 0.0,
+            "w": 0.7066973
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/SquareBrickBuilding.prefab",
+          "Position": {
+            "x": -2.50011182,
+            "y": 0.139999166,
+            "z": -51.7500648
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.9999999,
+            "z": 0.0,
+            "w": -0.0005848184
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/SquareConcreteBuilding2.prefab",
+          "Position": {
+            "x": -27.45538,
+            "y": 0.160001233,
+            "z": -34.4998779
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/SquareConcreteBuilding2.prefab",
+          "Position": {
+            "x": 21.5,
+            "y": 0.160002708,
+            "z": -1.50000477
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 2.68220873E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/SquareConcreteBuilding2.prefab",
+          "Position": {
+            "x": -27.5000114,
+            "y": 0.160005271,
+            "z": 28.0000114
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/SquareConcreteBuilding.prefab",
+          "Position": {
+            "x": -2.50000215,
+            "y": 0.1600008,
+            "z": -26.4999886
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.707106769,
+            "z": 0.0,
+            "w": 0.7071068
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/LShapeLargeBuilding.prefab",
+          "Position": {
+            "x": -29.0,
+            "y": 0.160002872,
+            "z": 3.50000954
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/LShapeLargeBuilding.prefab",
+          "Position": {
+            "x": -24.5000057,
+            "y": 0.160002708,
+            "z": -60.7500229
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.70710665,
+            "z": 0.0,
+            "w": 0.707106948
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/LShapeLargeBuilding.prefab",
+          "Position": {
+            "x": 33.14,
+            "y": 0.160002708,
+            "z": -22.5399857
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 7.003545E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/LShapeLargeBuilding.prefab",
+          "Position": {
+            "x": 17.47,
+            "y": 0.160001755,
+            "z": 15.0399952
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.7071066,
+            "z": 0.0,
+            "w": 0.707107067
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/LShapeLargeBuilding.prefab",
+          "Position": {
+            "x": 36.6399765,
+            "y": -3.83999825,
+            "z": 0.959993362
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.7071066,
+            "z": 0.0,
+            "w": 0.707107067
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/LShapeLargeBuilding.prefab",
+          "Position": {
+            "x": 17.47,
+            "y": 0.160001755,
+            "z": 15.0399952
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.7071066,
+            "z": 0.0,
+            "w": 0.707107067
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/Hangar.prefab",
+          "Position": {
+            "x": -14.9499989,
+            "y": -0.1,
+            "z": 34.75
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.7071079,
+            "z": 0.0,
+            "w": -0.7071057
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/Hangar.prefab",
+          "Position": {
+            "x": -39.57,
+            "y": -0.0999999046,
+            "z": 20.25
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 9.685754E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/Hangar.prefab",
+          "Position": {
+            "x": -6.0,
+            "y": 0.14,
+            "z": -39.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/Hangar.prefab",
+          "Position": {
+            "x": -39.97,
+            "y": 0.02,
+            "z": -22.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 1.235865E-06
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Buildings/Hangar.prefab",
+          "Position": {
+            "x": -39.9,
+            "y": 0.02,
+            "z": -46.99
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 1.235865E-06
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Roads/RoadCorner.prefab",
+          "Position": {
+            "x": 10.84364,
+            "y": 0.0,
+            "z": 16.6194
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.707106948,
+            "z": 0.0,
+            "w": 0.7071066
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": 10.84364,
+            "y": 0.0,
+            "z": 0.619399548
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.1563749,
+            "y": 0.0,
+            "z": 0.61940527
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.1563692,
+            "y": 0.0,
+            "z": 24.6194153
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": 2.84363985,
+            "y": 0.0,
+            "z": -7.380598
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": 26.84364,
+            "y": 0.0,
+            "z": -7.380619
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": 34.84364,
+            "y": 0.0,
+            "z": -7.38062668
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -21.11174,
+            "y": 0.0,
+            "z": -15.3804684
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.1118736,
+            "y": 0.0,
+            "z": -23.33584
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0,
+            "w": 9.834765E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.1118908,
+            "y": 0.0,
+            "z": -32.33584
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0,
+            "w": 9.834765E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.0673008,
+            "y": 0.0,
+            "z": -48.3290176
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0,
+            "w": 9.834765E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.1119366,
+            "y": 0.0,
+            "z": -56.33584
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0,
+            "w": 9.834765E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -21.0672836,
+            "y": 0.0,
+            "z": -48.3357
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0,
+            "w": 9.834765E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -21.1119385,
+            "y": 0.0,
+            "z": -56.3358231
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0,
+            "w": 9.834765E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -21.06727,
+            "y": 0.0,
+            "z": -40.3357
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.707106233,
+            "z": 0.0,
+            "w": 0.7071074
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -29.0672722,
+            "y": 0.0,
+            "z": -40.33569
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.707106233,
+            "z": 0.0,
+            "w": 0.7071074
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": 2.84366131,
+            "y": 0.0,
+            "z": 16.6194019
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -5.156361,
+            "y": 0.0,
+            "z": -7.38059044
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": 18.84364,
+            "y": 0.0,
+            "z": -7.38061142
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -29.11174,
+            "y": 0.0,
+            "z": -15.3804607
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -5.15633965,
+            "y": 0.0,
+            "z": 16.61941
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071065,
+            "z": 0.0,
+            "w": 0.7071071
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": 10.84364,
+            "y": 0.0,
+            "z": 8.6194
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.1563749,
+            "y": 0.0,
+            "z": 8.619406
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.1563692,
+            "y": 0.0,
+            "z": 32.6194153
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadTJunction.prefab",
+          "Position": {
+            "x": -13.1138325,
+            "y": 0.0,
+            "z": -7.37282848
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 5.8114523E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadTJunction.prefab",
+          "Position": {
+            "x": 10.8358669,
+            "y": 0.0,
+            "z": -7.338026
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.707106769,
+            "z": 0.0,
+            "w": 0.7071068
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadTJunction.prefab",
+          "Position": {
+            "x": -13.176609,
+            "y": 0.0,
+            "z": -15.36622
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.00278897537,
+            "z": 0.0,
+            "w": 0.9999961
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadTJunction.prefab",
+          "Position": {
+            "x": -13.1321421,
+            "y": 0.0,
+            "z": -40.3214569
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.00278897537,
+            "z": 0.0,
+            "w": 0.9999961
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadTJunction.prefab",
+          "Position": {
+            "x": -13.11386,
+            "y": 0.0,
+            "z": 16.62717
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 5.8114523E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Roads/RoadStraight.prefab",
+          "Position": {
+            "x": -13.1118889,
+            "y": -0.01,
+            "z": -31.3358383
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0,
+            "w": 9.834765E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/TrashCan.prefab",
+          "Position": {
+            "x": 7.090986,
+            "y": 0.160001948,
+            "z": -2.89736366
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": 7.082636,
+            "y": 0.185504258,
+            "z": -2.09790421
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.9238794,
+            "z": 0.0,
+            "w": 0.382683754
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/DumpsterGreen.prefab",
+          "Position": {
+            "x": 32.899868,
+            "y": 0.160009846,
+            "z": -9.790108
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": 31.417223,
+            "y": 0.185503542,
+            "z": -11.0339088
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": 31.5465488,
+            "y": 0.185502768,
+            "z": -10.1799183
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": 33.60418,
+            "y": 0.185503736,
+            "z": -7.758481
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficBollard.prefab",
+          "Position": {
+            "x": 29.9246674,
+            "y": 0.161792651,
+            "z": -10.5373554
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficBollard.prefab",
+          "Position": {
+            "x": 30.210535,
+            "y": 0.161792755,
+            "z": -9.265716
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficBollard.prefab",
+          "Position": {
+            "x": 30.9878559,
+            "y": 0.1617927,
+            "z": -8.24047
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficBollard.prefab",
+          "Position": {
+            "x": 32.6427727,
+            "y": 0.161793232,
+            "z": -7.21587467
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/BlueBin.prefab",
+          "Position": {
+            "x": 33.41975,
+            "y": 0.188982263,
+            "z": -1.30481529
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BrownBin.prefab",
+          "Position": {
+            "x": 32.39154,
+            "y": 0.188981831,
+            "z": 0.6328144
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": -8.94069743E-08
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": 33.6360435,
+            "y": 0.185502827,
+            "z": -2.00989342
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": 32.243187,
+            "y": 0.1855033,
+            "z": -0.164973736
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.0308484,
+            "z": 0.0,
+            "w": 0.9995241
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/Bollard.prefab",
+          "Position": {
+            "x": 32.870018,
+            "y": 0.160001129,
+            "z": -3.19950485
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/TrashCan.prefab",
+          "Position": {
+            "x": -8.706967,
+            "y": 0.0,
+            "z": 11.9490147
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": -8.795728,
+            "y": 0.0255025029,
+            "z": 11.2944126
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -8.230567,
+            "y": 0.02550255,
+            "z": 11.5218353
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashCan.prefab",
+          "Position": {
+            "x": -7.95728636,
+            "y": 0.0,
+            "z": 12.2747288
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.52336,
+            "y": 0.160006,
+            "z": 32.3334
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.625596,
+            "y": 0.227,
+            "z": 32.5716324
+          },
+          "Rotation": {
+            "x": 0.206987515,
+            "y": 0.286475,
+            "z": 0.367445648,
+            "w": 0.8602744
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.27736,
+            "y": 0.227,
+            "z": 32.0861969
+          },
+          "Rotation": {
+            "x": 0.391062975,
+            "y": 0.7607689,
+            "z": 0.1578925,
+            "w": 0.49332583
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.928277,
+            "y": 0.485,
+            "z": 32.5164
+          },
+          "Rotation": {
+            "x": -0.269471049,
+            "y": 0.2514559,
+            "z": -0.7930611,
+            "w": 0.4849839
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.40936,
+            "y": 0.319,
+            "z": 32.4990845
+          },
+          "Rotation": {
+            "x": 0.54624474,
+            "y": 0.6706409,
+            "z": 0.469713122,
+            "w": 0.176712275
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.74245,
+            "y": 0.317,
+            "z": 32.141552
+          },
+          "Rotation": {
+            "x": -0.687024653,
+            "y": 0.527171,
+            "z": -0.396746755,
+            "w": 0.3044337
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.30836,
+            "y": 0.317,
+            "z": 33.0394
+          },
+          "Rotation": {
+            "x": -0.783030748,
+            "y": 0.600839257,
+            "z": -0.127567455,
+            "w": 0.09788585
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.5193605,
+            "y": 0.317,
+            "z": 31.9049568
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -0.7933537,
+            "w": 0.608761
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -15.3513594,
+            "y": 0.317,
+            "z": 32.5054
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -0.7933537,
+            "w": 0.608761
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -13.8810263,
+            "y": 0.317,
+            "z": 32.3122368
+          },
+          "Rotation": {
+            "x": 0.7329626,
+            "y": -0.562421262,
+            "z": -0.30360502,
+            "w": 0.23296389
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": -14.8283606,
+            "y": 0.317,
+            "z": 32.9423981
+          },
+          "Rotation": {
+            "x": 0.7329626,
+            "y": -0.562421262,
+            "z": -0.30360502,
+            "w": 0.23296389
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/Bollard.prefab",
+          "Position": {
+            "x": -17.37068,
+            "y": 0.160005167,
+            "z": 24.833725
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/DumpsterBlue.prefab",
+          "Position": {
+            "x": -21.3933239,
+            "y": 0.160013914,
+            "z": 25.2461357
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.7071023,
+            "z": 0.0,
+            "w": 0.707111359
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": -19.3021412,
+            "y": 0.185507968,
+            "z": 25.74589
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -19.4767914,
+            "y": 0.185508236,
+            "z": 24.9113922
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/RoadBlock.prefab",
+          "Position": {
+            "x": -10.65636,
+            "y": 0.25,
+            "z": -50.18063
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.114967071,
+            "z": 0.0,
+            "w": 0.993369341
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/RoadBlock.prefab",
+          "Position": {
+            "x": -12.3863592,
+            "y": 0.160001576,
+            "z": -50.18063
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0976786539,
+            "z": 0.0,
+            "w": 0.995218039
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/RoadBlock.prefab",
+          "Position": {
+            "x": -14.07636,
+            "y": 0.160001576,
+            "z": -50.18063
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.05984275,
+            "z": 0.0,
+            "w": 0.998207867
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/RoadBlock.prefab",
+          "Position": {
+            "x": -15.6463594,
+            "y": 0.160001576,
+            "z": -50.18063
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.0601780824,
+            "z": 0.0,
+            "w": 0.998187661
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/RoadBlock.prefab",
+          "Position": {
+            "x": -17.0163612,
+            "y": 0.160001576,
+            "z": -50.3506
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.08962135,
+            "z": 0.0,
+            "w": 0.9959759
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueBin.prefab",
+          "Position": {
+            "x": -13.0913477,
+            "y": 0.1889832,
+            "z": -52.756176
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.707106769,
+            "z": 0.0,
+            "w": 0.7071068
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/DumpsterBlue.prefab",
+          "Position": {
+            "x": -10.8887806,
+            "y": 0.16001147,
+            "z": -52.1523743
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.7071066,
+            "z": 0.0,
+            "w": 0.707107067
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": -12.9936419,
+            "y": 0.187548876,
+            "z": -52.10518
+          },
+          "Rotation": {
+            "x": 0.0462227352,
+            "y": 0.08668849,
+            "z": 0.03271595,
+            "w": 0.994624734
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -13.8081036,
+            "y": 0.196019858,
+            "z": -52.8309364
+          },
+          "Rotation": {
+            "x": -0.027818637,
+            "y": 0.915798545,
+            "z": 0.110367127,
+            "w": 0.385172933
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -13.7509937,
+            "y": 0.132227421,
+            "z": -52.14742
+          },
+          "Rotation": {
+            "x": 0.0218942,
+            "y": -0.0683275759,
+            "z": 0.0169565883,
+            "w": 0.9972786
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/ModernBollard.prefab",
+          "Position": {
+            "x": -17.9548283,
+            "y": 0.161794111,
+            "z": -42.4906
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/ModernBollard.prefab",
+          "Position": {
+            "x": -17.9548283,
+            "y": 0.161794111,
+            "z": -41.2006
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/ModernBollard.prefab",
+          "Position": {
+            "x": -17.9548283,
+            "y": 0.161794111,
+            "z": -39.6306
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/ModernBollard.prefab",
+          "Position": {
+            "x": -17.9548283,
+            "y": 0.161794111,
+            "z": -38.2606
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/CylinderCone.prefab",
+          "Position": {
+            "x": -17.7307835,
+            "y": 0.160001531,
+            "z": -17.5331078
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/CylinderCone.prefab",
+          "Position": {
+            "x": -17.6708946,
+            "y": 0.16000177,
+            "z": -16.14106
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/CylinderCone.prefab",
+          "Position": {
+            "x": -17.573164,
+            "y": 0.160001561,
+            "z": -14.8009186
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/CylinderCone.prefab",
+          "Position": {
+            "x": -17.473753,
+            "y": 0.160001874,
+            "z": -13.3760395
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficBollard.prefab",
+          "Position": {
+            "x": -16.8127918,
+            "y": 0.16179347,
+            "z": -17.0903664
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficBollard.prefab",
+          "Position": {
+            "x": -16.6152954,
+            "y": 0.161793143,
+            "z": -13.5491943
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/DumpsterRed.prefab",
+          "Position": {
+            "x": -31.9005547,
+            "y": 0.160010755,
+            "z": -17.1322861
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 2.980232E-07
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -28.67842,
+            "y": 0.185504764,
+            "z": -17.0805435
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": -28.6402225,
+            "y": 0.185504869,
+            "z": -14.9798069
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -30.397789,
+            "y": 0.185504675,
+            "z": -18.4479179
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -29.9021435,
+            "y": 0.185504436,
+            "z": -16.1217823
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -27.0500832,
+            "y": 0.1855051,
+            "z": -18.2415562
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrashBag.prefab",
+          "Position": {
+            "x": -26.2340221,
+            "y": 0.185504735,
+            "z": -15.3628788
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": -27.1044865,
+            "y": 0.185504347,
+            "z": -17.133007
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": -29.1442356,
+            "y": 0.1855045,
+            "z": -18.5146046
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BlueTrashBag.prefab",
+          "Position": {
+            "x": -30.5027161,
+            "y": 0.219402149,
+            "z": -17.270031
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "Children": [
+        {
+          "AssetKey": "Urban/Props/TrashCan.prefab",
+          "Position": {
+            "x": -9.598895,
+            "y": 0.160001218,
+            "z": -28.4317551
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BusStopSeats.prefab",
+          "Position": {
+            "x": -7.372228,
+            "y": 0.160001755,
+            "z": -11.0856
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.707106769,
+            "z": 0.0,
+            "w": 0.7071068
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BusStopSeats.prefab",
+          "Position": {
+            "x": 2.740215,
+            "y": 0.160000682,
+            "z": 20.3023987
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.707105756,
+            "z": 0.0,
+            "w": 0.707107842
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/TrafficCone.prefab",
+          "Position": {
+            "x": 0.06948018,
+            "y": 20.70562,
+            "z": 3.3094
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -1.0,
+            "w": 2.95042946E-06
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BusStop.prefab",
+          "Position": {
+            "x": -6.96636057,
+            "y": 0.160001159,
+            "z": -2.3006
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.70711,
+            "z": 0.0,
+            "w": -0.7071036
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        },
+        {
+          "AssetKey": "Urban/Props/BusStopSeats.prefab",
+          "Position": {
+            "x": -7.52636,
+            "y": -0.039622426,
+            "z": -1.61636639
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": -0.707105756,
+            "z": 0.0,
+            "w": 0.7071079
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "Children": null,
+          "BehaviourContexts": []
+        }
+      ],
+      "BehaviourContexts": []
+    },
+    {
+      "AssetKey": "Generic/Floors/Grass.prefab",
+      "Position": {
+        "x": -1.15636,
+        "y": 0.0,
+        "z": 4.6194
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "Scale": {
+        "x": 1.6368,
+        "y": 1.0,
+        "z": 1.63913953
+      },
+      "Children": null,
+      "BehaviourContexts": []
+    }
+  ]
+}

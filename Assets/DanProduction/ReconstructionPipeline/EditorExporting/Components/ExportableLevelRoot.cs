@@ -7,7 +7,7 @@ using UnityEditor;
 
 public class ExportableLevelRoot : MonoBehaviour
 {
-    [SerializeField] ExtractableLevelRules extractionRules;
+    [SerializeField] ExportableLevelRules extractionRules;
     [SerializeField, CreateProperty] LevelAuthorMetadata authoredMetadata;
     public LevelAuthorMetadata AuthoredMetadata => authoredMetadata;
 

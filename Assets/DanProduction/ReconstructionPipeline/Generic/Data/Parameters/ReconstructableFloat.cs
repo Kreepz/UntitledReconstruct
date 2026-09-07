@@ -5,7 +5,7 @@ public class ReconstructableFloat: ReconstructableParameter<float>
 {
     public override string ID { get; set; }
     [SerializeField] float  floatValue;
-    public override float Value { get; }
+    public override float Value => floatValue;
 
     public void SetValue(float? value)
     {
